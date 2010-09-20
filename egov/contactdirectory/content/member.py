@@ -225,7 +225,7 @@ class Member(ATDocumentBase):
         return self.getField('image').tag(self, **kwargs)
     
     def getBlockText(self,**kwargs):  
-        mtool = getToolByName(self.context, "portal_membership")
+        mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 
         if not mitglied:
             return "Mitglied geloescht"
@@ -270,7 +270,7 @@ class Member(ATDocumentBase):
        )
     
     def getImage(self, **kwargs):
-        mtool = getToolByName(self.context, "portal_membership")
+        mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 
         if not mtool.checkPermission('View', mitglied):
             return None
@@ -285,7 +285,7 @@ class Member(ATDocumentBase):
         pass
 
     def getImageAltText(self):
-        mtool = getToolByName(self.context, "portal_membership")
+        mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 
         if not mtool.checkPermission('View', mitglied):
             return ''
