@@ -234,7 +234,7 @@ class Contact(ATCTContent):
         if self.getFirstname() == '' or self.getLastname() == '':
             return '...'
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
-        return '%s' % personstr
+        return '%s' % full_name
             
     def get_orgunits(self, **kwargs):
         roles = []
