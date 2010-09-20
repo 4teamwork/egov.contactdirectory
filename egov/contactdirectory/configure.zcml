@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="egov">
+
+
+    <include package=".browser" />
+    <include package=".content" />
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <utility component=".i18n.egovdomain" name="egov" />
+
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
+      name="default"
+      title="egov.contactdirectory"
+      directory="profiles/default"
+      description="Directory for Egov GemeindePortal"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+
+</configure>

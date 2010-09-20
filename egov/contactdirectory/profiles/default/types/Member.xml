@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<object name="Member"
+   meta_type="Factory-based Type Information with dynamic views"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Member</property>
+ <property name="description"></property>
+ <property name="content_icon">member_icon.gif</property>
+ <property name="content_meta_type">Member</property>
+ <property name="product">egov.contactdirectory</property>
+ <property name="factory">addMember</property>
+ <property name="immediate_view">base_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">member_view</property>
+ <property name="view_methods">
+  <element value="member_view"/>
+  <element value="base_view"/>
+ </property> 
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="base_edit"/>
+ <alias from="properties" to="base_metadata"/>
+ <alias from="sharing" to="folder_localrole_form"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/view" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object"
+    condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Properties" action_id="metadata" category="object"
+    condition_expr="" url_expr="string:${object_url}/properties"
+    visible="False">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz"
+    url_expr="string:${object_url}/reference_graph" visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+ <action title="History" action_id="history" category="object"
+    condition_expr="" url_expr="string:${object_url}/atct_history"
+    visible="False">
+  <permission value="ATContentTypes: View history"/>
+ </action>
+ <action title="Edit" action_id="sl-edit" category="sl-actions"
+    condition_expr="" url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Delete" action_id="sl-delete" category="sl-actions"
+    condition_expr=""
+    url_expr="string:${here/absolute_url}/delete_confirmation" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Move Up" action_id="sl-moveup" category="sl-actions"
+    condition_expr=""
+    url_expr="string:${here/absolute_url}/block_control?action=moveup"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Move Down" action_id="sl-movedo" category="sl-actions"
+    condition_expr=""
+    url_expr="string:${here/absolute_url}/block_control?action=movedo"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="thumbnail" action_id="sl-thumbnail" category="sl-layouts"
+    condition_expr=""
+    url_expr="string:${here/absolute_url}/block_control?layout=thumbnail"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>

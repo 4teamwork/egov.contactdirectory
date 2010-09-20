@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="egov.website">
+
+   <browser:page
+      for="*"
+      name="contacts_view"
+      class=".views.ContactFolderView"
+      permission="zope.Public"
+      template="contactfolder.pt"
+      />
+
+   <browser:page
+      for="*"
+      name="contact_view"
+      class=".views.ContactView"
+      permission="zope.Public"
+      template="contact.pt"
+      />
+
+   <browser:page
+      for="*"
+      name="member_view"
+      class=".views.MemberView"
+      permission="zope.Public"
+      template="member.pt"
+      />
+
+</configure>

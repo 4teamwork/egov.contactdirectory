@@ -1,0 +1,99 @@
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="egov">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                       templateId template/getId;
+							   Batch python:modules['Products.CMFPlone'].Batch;
+					           b_size python:20;
+					           b_size request/b_size | b_size;
+					           b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
+					           b_start python:0;b_start request/b_start | b_start;
+					           b_range python: b_start==0 and 5 or 3;
+					           batch python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
+">
+<!--
+			   Batch python:modules['Products.CMFPlone'].Batch;
+	           b_size python:1;
+	           b_size request/b_size | b_size;
+	           b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
+	           b_start python:0;b_start request/b_start | b_start;
+	           b_range python: b_start==0 and 5 or 3;
+	           contacts python:Batch(view.list_contacts(), int(b_size), int(b_start),
+	orphan=1,pagerange=int(b_range));	
+-->
+	<h1 tal:content="here/Title"></h1>
+	<style>
+	.contact-list th{
+		background-color:#184965;
+		border:1px solid white;
+		color:white;
+	}
+	.contact-list th span{
+		margin-left:0.5em;
+	}
+	#sideBarLeft {
+		width:0em;
+	}
+	html > body #content h1 {
+	width:55.6em;
+	}
+	.documentContent {
+	float:left;
+	width: 90em;
+	}
+	.documentEditable .documentContent {
+	float:left;
+	width: 90em;
+	}
+	</style>
+	<form>
+		<input id="Suchbegriff" class="portlet-search-gadget inputLabel" type="text" accesskey="5" size="15" name="SearchableText"/>
+		<input id="sendSearch" class="Submit submitting allowMultiSubmit" type="submit" value="suchen"/>
+		<!--<strong>Bereich: </strong>
+		<select id="searchType" name="portal_type">
+			<option>alle</option>
+		</select>-->
+	</form>
+    <div metal:use-macro="here/batch_macros_search/macros/navigation" tal:condition="request/show" />
+	<table class="contact-list">
+		<thead>
+			<tr>
+				<th><span>Name</span></th>
+				<th><span>Organisation</span></th>
+				<th><span>E-Mail</span></th>
+				<th><span>Telefon</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr tal:repeat="contact batch">
+				<td>
+					<a tal:attributes="href contact/getURL" tal:content="contact/Title" />
+				</td>
+				<td tal:define="roles python: contact.getObject().get_orgunits()">
+					<tal:b repeat="role roles">
+						<a 	tal:content="role/orgunit" 
+							tal:attributes="href role/link" /> (<tal:b content="role/function"></tal:b>)
+							<tal:b tal:condition="not: repeat/role/end">
+							<tal:b content="role/phone" />
+							<br /></tal:b>
+					</tal:b>
+				</td>
+				<td tal:content="python:contact.getObject().getEmail()" />
+				<td tal:content="contact/phone_office|nothing" />
+			</tr>
+		</tbody>
+	</table>
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
