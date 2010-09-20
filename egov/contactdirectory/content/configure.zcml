@@ -7,7 +7,7 @@
 
     <five:implements
         class=".member.Member"
-        interface="Products.ZugWebsite.simplelayout.interfaces.ISimpleLayoutBlock"
+        interface="simplelayout.base.interfaces.ISimpleLayoutBlock"
         />
 
 
