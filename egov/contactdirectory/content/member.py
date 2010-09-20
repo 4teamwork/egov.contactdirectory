@@ -21,6 +21,7 @@ from Acquisition import aq_inner
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.CMFCore.permissions import View
 from Products.CMFCore.utils import getToolByName
+from zope.i18n import translate
 
 
 schema = Schema((
@@ -240,13 +241,13 @@ class Member(ATDocumentBase):
             address = ''
         tel = ''
         if self.getPhone_office():
-            tel = tel + '%s: %s<br />' % (self.translate('egov_label_phone_office',domain='egov'),self.getPhone_office())
+            tel = tel + '%s: %s<br />' % (translate('egov_label_phone_office',domain='egov'),self.getPhone_office())
         mobile = ''
         if self.getPhone_mobile():
-            mobile = mobile + '%s: %s<br />' % (self.translate('egov_label_phone_mobile',domain='egov'),self.getPhone_mobile())
+            mobile = mobile + '%s: %s<br />' % (translate('egov_label_phone_mobile',domain='egov'),self.getPhone_mobile())
         fax = ''
         if self.getFax():
-            fax = fax + '%s: %s<br />' % (self.translate('egov_label_fax',domain='egov'),self.getFax())
+            fax = fax + '%s: %s<br />' % (translate('egov_label_fax',domain='egov'),self.getFax())
             
         return """\
 <p>
