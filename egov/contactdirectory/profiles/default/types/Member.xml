@@ -33,47 +33,13 @@
     url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
- <action title="Properties" action_id="metadata" category="object"
-    condition_expr="" url_expr="string:${object_url}/properties"
-    visible="False">
-  <permission value="Modify portal content"/>
- </action>
- <action title="References" action_id="references" category="object"
-    condition_expr="object/archetype_tool/has_graphviz"
-    url_expr="string:${object_url}/reference_graph" visible="True">
-  <permission value="Modify portal content"/>
-  <permission value="Review portal content"/>
- </action>
- <action title="History" action_id="history" category="object"
-    condition_expr="" url_expr="string:${object_url}/atct_history"
-    visible="False">
-  <permission value="ATContentTypes: View history"/>
- </action>
- <action title="Edit" action_id="sl-edit" category="sl-actions"
+ <action title="Edit" icon_expr="string:edit.gif" action_id="sl-edit" category="sl-actions"
     condition_expr="" url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
- <action title="Delete" action_id="sl-delete" category="sl-actions"
+ <action title="Delete" icon_expr="string:delete_icon.gif" action_id="sl-delete" category="sl-actions"
     condition_expr=""
     url_expr="string:${here/absolute_url}/delete_confirmation" visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Move Up" action_id="sl-moveup" category="sl-actions"
-    condition_expr=""
-    url_expr="string:${here/absolute_url}/block_control?action=moveup"
-    visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Move Down" action_id="sl-movedo" category="sl-actions"
-    condition_expr=""
-    url_expr="string:${here/absolute_url}/block_control?action=movedo"
-    visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="thumbnail" action_id="sl-thumbnail" category="sl-layouts"
-    condition_expr=""
-    url_expr="string:${here/absolute_url}/block_control?layout=thumbnail"
-    visible="True">
   <permission value="Modify portal content"/>
  </action>
 </object>
