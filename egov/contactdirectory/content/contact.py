@@ -8,7 +8,8 @@ from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import *
-from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+#from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 #from egov_schemas import classificationSchema, textSchema, maps_configuration_schema, finalize_egov_schema, QuantifiedSearchableTextMixin
 from Products.ATContentTypes.content.base import registerATCT
 from Products.ATContentTypes.content.base import ATCTContent
@@ -183,7 +184,7 @@ schema = Schema((
 contact_schema = ATContentTypeSchema.copy() + \
     schema.copy()# + textSchema.copy()
 
-finalizeZugSchema(contact_schema)
+finalizeATCTSchema(contact_schema)
 contact_schema.moveField(name='description',pos='bottom')
 #contact_schema.moveField(name='text',after='description')
 contact_schema['title'].required = 0

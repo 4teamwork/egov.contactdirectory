@@ -4,9 +4,11 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import *
-from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+#from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+from simplelayout.types.common.content.simplelayout_schemas import textSchema
 #from egov_schemas import classificationSchema, textSchema, imageSchema, finalize_egov_schema
-from Products.ZugWebsite.content.zugschemas import textSchema
+#from Products.ZugWebsite.content.zugschemas import textSchema
+from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.content.base import registerATCT
 from Products.ATContentTypes.content.base import translateMimetypeAlias
 from Products.ATContentTypes.content.document import ATDocumentBase
@@ -176,7 +178,7 @@ member_schema = ATContentTypeSchema.copy() + \
 member_schema['excludeFromNav'].default = True
 
 
-finalizeZugSchema(member_schema)
+finalizeATCTSchema(member_schema)
 member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
 member_schema['title'].required = 0
 member_schema['title'].widget.visible = {'edit': 'invisible', 'view': 'invisible'}
