@@ -1,6 +1,8 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
+
+
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import *
@@ -18,6 +20,7 @@ from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 from Acquisition import aq_inner
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.CMFCore.permissions import View
+from Products.CMFCore.utils import getToolByName
 
 
 schema = Schema((
@@ -222,7 +225,7 @@ class Member(ATDocumentBase):
         return self.getField('image').tag(self, **kwargs)
     
     def getBlockText(self,**kwargs):  
-        mtool = self.portal_membership
+        mtool = getToolByName(self.context, "portal_membership")
         mitglied = self.getContact() 
         if not mitglied:
             return "Mitglied geloescht"
@@ -267,7 +270,7 @@ class Member(ATDocumentBase):
        )
     
     def getImage(self, **kwargs):
-        mtool = self.portal_membership
+        mtool = getToolByName(self.context, "portal_membership")
         mitglied = self.getContact() 
         if not mtool.checkPermission('View', mitglied):
             return None
@@ -282,7 +285,7 @@ class Member(ATDocumentBase):
         pass
 
     def getImageAltText(self):
-        mtool = self.portal_membership
+        mtool = getToolByName(self.context, "portal_membership")
         mitglied = self.getContact() 
         if not mtool.checkPermission('View', mitglied):
             return ''
