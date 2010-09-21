@@ -5,3 +5,8 @@ from zope.viewlet.interfaces import IViewletManager
 class IContact(Interface):
     """
     """
+
+class IMember(Interface):
+    """
+    """
+

@@ -22,7 +22,7 @@
         				  bio here/getText | nothing;"
         	  class="zugMitglied-body">
         				  
-            <div class="rightFloat" tal:define="portrait contact/getFoto | nothing">
+            <div class="rightFloat" tal:define="portrait contact/getFoto | nothing" tal:condition="here/getShow_image">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${firstname}, ${lastname}" />
@@ -54,7 +54,7 @@
                        title="externer Link (&ouml;ffnet neuem Fenster)"
                        target="_blank" />
 				</p>	        	
-                <h3 i18n:translate="Contact" i18n:domain="plone">Contact</h3>
+                <h3 i18n:translate="label_contact_more" i18n:domain="egov">Contact</h3>
                 <a tal:condition="nocall:contact" tal:content="contact/Title" href="" tal:attributes="href contact/absolute_url"></a>
 
               </div>
@@ -65,7 +65,7 @@
             show related items if they exist
         </div>
     
-        <div tal:replace="structure provider:plone.belowcontentbody" />
+        <!--div tal:replace="structure provider:plone.belowcontentbody" / XXX: produziert fehler -->
 
     </tal:main-macro>
 </metal:main>

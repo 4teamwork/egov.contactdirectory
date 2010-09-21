@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="egov.website">
+    i18n_domain="egov.contactdirectory">
 
    <browser:page
       for="*"
@@ -20,12 +20,27 @@
       template="contact.pt"
       />
 
-   <browser:page
+<!--   <browser:page
       for="*"
       name="member_view"
       class=".views.MemberView"
       permission="zope.Public"
       template="member.pt"
+      /> -->
+
+      <browser:page
+          for="*"
+          name="member_view"
+          class=".views.MemberView"
+          permission="zope.Public"
+          template="member_view.pt"
       />
+
+    <browser:page
+       for="egov.contactdirectory.interfaces.IMember"
+       name="block_view"
+       class=".views.MemberBlockView"
+       template="member_block.pt"
+       permission="zope2.View" />
 
 </configure>

@@ -1,6 +1,8 @@
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
+from simplelayout.types.common.browser.views import BlockView 
+
 class ContactFolderView(BrowserView):
     """
     """
@@ -21,5 +23,9 @@ class ContactView(BrowserView):
     """
 
 class MemberView(BrowserView):
+    """
+    """
+
+class MemberBlockView(BlockView):
     """
     """

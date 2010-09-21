@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 
+from zope.interface import implements
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import *
+from egov.contactdirectory import contactdirectoryMessageFactory as _
 #from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
 from simplelayout.types.common.content.simplelayout_schemas import textSchema
 #from egov_schemas import classificationSchema, textSchema, imageSchema, finalize_egov_schema
@@ -23,6 +26,7 @@ from Products.CMFCore.permissions import View
 from Products.CMFCore.utils import getToolByName
 from zope.i18n import translate
 
+from egov.contactdirectory.interfaces import IMember
 
 schema = Schema((
 #     BooleanField('showTitle',
@@ -81,6 +85,16 @@ schema = Schema((
 
                                              ),
     ),
+    
+     BooleanField('show_image',
+        schemata='Kontakt',
+        default=1,
+        widget=BooleanWidget(description_msgid = "help_desc_show_image",
+            label = "Show image",
+            label_msgid = "label_show_image",
+            i18n_domain = "egov",
+            ),
+     ),
     
     BooleanField('acquireAddress',
                 schemata='Kontakt',
@@ -194,6 +208,7 @@ member_schema['text'].widget.visible = {'edit': 'invisible', 'view': 'invisible'
 class Member(ATDocumentBase):
     """
     """
+    implements(IMember)
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 
@@ -232,8 +247,11 @@ class Member(ATDocumentBase):
             return "Mitglied geloescht"
         if not mtool.checkPermission('View', mitglied):
             return "Unzureichende Berechtigung"
+            
+            
 
         street = self.getAddress().replace('\n','<br />') + ', '
+        #import pdb; pdb.set_trace()
         zip = self.getZip() + ' '
         city = self.getCity() + '<br />'
         address = street + zip + city
@@ -241,13 +259,13 @@ class Member(ATDocumentBase):
             address = ''
         tel = ''
         if self.getPhone_office():
-            tel = tel + '%s: %s<br />' % (translate('egov_label_phone_office',domain='egov'),self.getPhone_office())
+            tel = tel + '%s: %s<br />' % (_('egov_label_phone_office', default=u"Telefon geschäftlich"),self.getPhone_office())
         mobile = ''
         if self.getPhone_mobile():
-            mobile = mobile + '%s: %s<br />' % (translate('egov_label_phone_mobile',domain='egov'),self.getPhone_mobile())
+            mobile = mobile + '%s: %s<br />' % (_('egov_label_phone_mobile', default=u"Telefon mobil"),self.getPhone_mobile())
         fax = ''
         if self.getFax():
-            fax = fax + '%s: %s<br />' % (translate('egov_label_fax',domain='egov'),self.getFax())
+            fax = fax + '%s: %s<br />' % (_('egov_label_fax', default=u"Fax"),self.getFax())
             
         return """\
 <p>
@@ -293,54 +311,56 @@ class Member(ATDocumentBase):
         if mitglied:
             return mitglied.Title()
             
+    getImageCaption = getImageAltText
+            
     def getAddress(self):
         #import pdb; pdb.set_trace()
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getAddress()
         else:
-            return self.getField("address").get(self)
+            return self.getField("address").get(self.getContact())
         
     def getZip(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getZip()
         else:
-            return self.getField("zip").get(self)
+            return self.getField("zip").get(self.getContact())
                 
     def getCity(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getCity()
         else:
-            return self.getField("city").get(self)
+            return self.getField("city").get(self.getContact())
                     
     def getPhone_office(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getPhone_office()
         else:
-            return self.getField("phone_office").get(self)
+            return self.getField("phone_office").get(self.getContact())
                 
     def getPhone_mobile(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getPhone_mobile()
         else:
-            return self.getField("phone_mobile").get(self)
+            return self.getField("phone_mobile").get(self.getContact())
                     
     def getFax(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getFax()
         else:
-            return self.getField("fax").get(self)
+            return self.getField("fax").get(self.getContact())
                     
     def getEmail(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getEmail()
         else:
-            return self.getField("email").get(self)
+            return self.getField("email").get(self.getContact())
                 
     def getWww(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getWww()
         else:
-            return self.getField("www").get(self)
+            return self.getField("www").get(self.getContact())
 
     def Title(self):
         if self.getContact(): 

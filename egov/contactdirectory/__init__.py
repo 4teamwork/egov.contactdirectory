@@ -5,7 +5,7 @@ from Products.CMFCore.permissions import setDefaultRoles
 
 from Products.PlacelessTranslationService.utility import PTSTranslationDomain
 from config import PROJECTNAME, product_globals, ADD_PERMISSIONS
-websiteMessageFactory = MessageFactory('egov')
+contactdirectoryMessageFactory = MessageFactory('egov.contactdirectory')
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
