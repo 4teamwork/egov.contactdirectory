@@ -13,7 +13,9 @@
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                        templateId template/getId">
 
-
+           <div tal:replace="structure provider:plone.abovecontenttitle" />
+           <h1 class="documentFirstHeading" tal:content="context/pretty_title_or_id">Title or id</h1>
+           <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <div tal:define="beschreibung here/getDescription | nothing;
         				  bio here/getText | nothing;"

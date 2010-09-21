@@ -13,7 +13,9 @@
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                        templateId template/getId">
 
-
+<div tal:replace="structure provider:plone.abovecontenttitle" />
+<h1 class="documentFirstHeading" tal:content="context/pretty_title_or_id">Title or id</h1>
+<div tal:replace="structure provider:plone.belowcontenttitle" />    	  
 
         <div tal:define="beschreibung here/getDescription | nothing;
                           contact here/getContact | nothing;
@@ -21,12 +23,14 @@
                           lastname contact/getLastname | nothing;
         				  bio here/getText | nothing;"
         	  class="zugMitglied-body">
+        	  
+
         				  
             <div class="rightFloat" tal:define="portrait contact/getFoto | nothing" tal:condition="here/getShow_image">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${firstname}, ${lastname}" />
-            </div>
+            </div>sdfsdfsdsdf
         	<div class="zugMitglied-details">
                 <h2><span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
 	        	<p>
