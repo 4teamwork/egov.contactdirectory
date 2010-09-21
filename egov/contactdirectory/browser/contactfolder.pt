@@ -67,10 +67,10 @@
 	<table class="contact-list">
 		<thead>
 			<tr>
-				<th><span>Name</span></th>
-				<th><span>Organisation</span></th>
-				<th><span>E-Mail</span></th>
-				<th><span>Telefon</span></th>
+				<th><span i18n:translate="label_name">Name</span></th>
+				<th><span i18n:translate="label_organisation">Organisation</span></th>
+				<th><span i18n:translate="label_email">E-Mail</span></th>
+				<th><span i18n:translate="label_phone">Phone</span></th>
 			</tr>
 		</thead>
 		<tbody>

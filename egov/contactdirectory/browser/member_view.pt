@@ -41,9 +41,9 @@
 		        	<tal:block tal:condition="here/getZip"><span tal:replace="here/getZip | nothing" /></tal:block>
 		        	<tal:block tal:condition="here/getCity"><span tal:replace="here/getCity | nothing" /><br /><br /></tal:block>
                     </tal:block>
-		        	<tal:block tal:condition="here/getPhone_office"><span i18n:translate="egov_label_phone_office">Office</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
-		        	<tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="egov_label_phone_mobile">Mobile</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
-		        	<tal:block tal:condition="here/getFax"><span i18n:translate="egov_label_fax">Fax</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
+		        	<tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_short_office">Office</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
+		        	<tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_short_mobile">Mobile</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
+		        	<tal:block tal:condition="here/getFax"><span i18n:translate="label_short_fax">Fax</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
   					<span tal:define="email here/getEmail | nothing" tal:condition="email">
 						<a tal:replace="structure python:context.spamProtect(mailaddress=email)"/>
   					</span>
@@ -58,7 +58,7 @@
                        title="externer Link (&ouml;ffnet neuem Fenster)"
                        target="_blank" />
 				</p>	        	
-                <h3 i18n:translate="label_contact_more" i18n:domain="egov">Contact</h3>
+                <h3 i18n:translate="label_contact_more">Contact</h3>
                 <a tal:condition="nocall:contact" tal:content="contact/Title" href="" tal:attributes="href contact/absolute_url"></a>
 
               </div>

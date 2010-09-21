@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="egov.contactdirectory">
 
 <body>
 
@@ -24,7 +24,7 @@
             Description
         </p>
 <form method="post">
-Suche: <input type="text" name="SearchableText" tal:attributes="value request/Title|string:Suchbegriff*">
+<span i18n:translate="label_search">Search:</span> <input type="text" name="SearchableText" tal:attributes="value request/Title|string:Suchbegriff*">
 </form>
 
 
@@ -117,10 +117,14 @@ Suche: <input type="text" name="SearchableText" tal:attributes="value request/Ti
 </td>
 <td valign="top">
                                 <h3><span class="visualIconPadding">&nbsp;</span></h3><div>
-                                <div>Tel G: <span tal:content="obj/getPhone_office" /></div>
-                                <div>Tel M: <span tal:content="obj/getPhone_mobile" /></div>
-                                <div>Email: <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" /></div>
-                                <div>Webseite: <span tal:define="url obj/getUrl|nothing" 
+                                <div><span i18n:translate="label_short_phone_office">Phone W:</span> 
+                                    <span tal:content="obj/getPhone_office" /></div>
+                                <div><span i18n:translate="label_short_phone_mobile">Phone M:</span> 
+                                    <span tal:content="obj/getPhone_mobile" /></div>
+                                <div><span i18n:translate="label_short_mail">Email:</span> 
+                                    <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" /></div>
+                                <div><span i18n:translate="label_short_www">Website:</span> 
+                                    <span tal:define="url obj/getUrl|nothing" 
 	                                                 tal:condition="url"><a tal:content="url" tal:attributes="href url"/></span></div>
                                 </div>
 

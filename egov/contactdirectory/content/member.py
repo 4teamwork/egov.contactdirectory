@@ -43,12 +43,10 @@ schema = Schema((
     ReferenceField(
         name='contact',
         required=True,
-        widget = ReferenceWidget(description="",
-                                 description_msgid = "egov_help_contact_reference",
-                                 label="Contact reference",
-                                 label_msgid = "egov_label_contact_reference",
-                                 i18n_domain = "egov"),              
-
+        widget = ReferenceWidget(label=_(u'label_contact_reference', default='Contact reference'),
+                                 description=_(u'help_contact_reference', default='')
+                                 ),
+                                 
 #        widget=ReferenceBrowserWidget(
 #            allow_browse = False,
 #            restrict_browsing_to_startup_directory=True,
@@ -69,122 +67,93 @@ schema = Schema((
         name='function',
         searchable=1,
         widget=StringWidget(
-            label='Function',
-            label_msgid='egov_label_function',
-            i18n_domain='egov',
+            label=_(u'label_function', default='Function'),
         )
     ),
 
     BooleanField('show_address',
                 schemata='default',
                 default=0,
-                widget=BooleanWidget(description_msgid = "help_desc_show_address",
-                                             label = "Show adress",
-                                             label_msgid = "label_show_address",
-                                             i18n_domain = "egov",
-
+                widget=BooleanWidget(label=_(u'label_show_address', default='Show address'),
+                                     description=_(u'help_show_address', default='')
                                              ),
     ),
     
      BooleanField('show_image',
         schemata='Kontakt',
         default=1,
-        widget=BooleanWidget(description_msgid = "help_desc_show_image",
-            label = "Show image",
-            label_msgid = "label_show_image",
-            i18n_domain = "egov",
+        widget=BooleanWidget(label=_(u'label_show_image', default='Show Image'),
+                             description=_(u'help_show_image', default='')
             ),
      ),
     
     BooleanField('acquireAddress',
                 schemata='Kontakt',
                 default=0,
-                widget=BooleanWidget(description_msgid = "help_desc_acquire_address",
-                                             label = "Acquire adress",
-                                             label_msgid = "label_acquire_address",
-                                             i18n_domain = "egov",
-                                             helper_js = ('member_block_control.js', )
-                                             ),
+                widget=BooleanWidget(label=_(u'label_acquire_address', default='Acquire address'),
+                                     description=_(u'help_acquire_address', default=''),
+                                     helper_js = ('member_block_control.js', )
+                                    ),
     ),
     TextField('address',
         schemata='Kontakt',
-        widget=TextAreaWidget(description='Bitte Adresse eingeben',
-                              description_msgid='egov_desc_adresse',
-                              i18n_domain='egov',
-                              label='Adresse',
-                              label_msgid='egov_label_adresse',
+        widget=TextAreaWidget(label=_(u'label_address', default='Address'),
+                              description=_(u'help_address', default="Please enter address"),
         ),
     ),
     
     StringField('zip',
                 schemata='Kontakt',
                 searchable = 1,
-                widget = StringWidget(  label = 'Postal code',
-                                        label_msgid = 'egov_label_zip',
-                                        i18n_domain = 'egov',
-                                        description = 'Enter the postal code',
-                                        description_msgid = 'egov_help_zip',),
+                widget = StringWidget(label=_(u'label_zip', default='Postal code'),
+                                      description=_(u'help_zip', default="Enter the postal code"),
+                                      ),
                    ),
 
     StringField('city', 
                 schemata='Kontakt',
                 searchable=1,
-                widget = StringWidget(  label = 'City',
-                                        label_msgid = 'egov_label_city',
-                                        i18n_domain = 'egov',
-                                        description = 'Enter the name of the city',
-                                        description_msgid = 'egov_help_city',),
+                widget = StringWidget(label=_(u'label_city', default="City"),
+                                      description=_(u'help_city', default="Enter the name of the city"),
+                                      )
                    ),
 
     StringField('phone_office',
                 schemata='Kontakt',
                 searchable = 1,
-                widget = StringWidget(  label = 'Phone number (office)',
-                                        label_msgid = 'egov_label_phone_office',
-                                        i18n_domain = 'egov',
-                                        description = 'Enter the phone number',
-                                        description_msgid = 'egov_help_phone_office',),
+                widget = StringWidget(label=_(u'label_phone_office', default="Phone number (office)"),
+                                      description=_(u'help_phone_office', default="Enter the phone number"),
+                                      )
                 ),
                 
     StringField('phone_mobile',
                 schemata='Kontakt',
                 searchable = 1,
-                widget = StringWidget(  label = 'Mobile number',
-                                        label_msgid = 'egov_label_phone_mobile',
-                                        i18n_domain = 'egov',
-                                        description = 'Enter the mobile number',
-                                        description_msgid = 'egov_help_phone_mobile',),
+                widget = StringWidget(label=_(u'label_phone_mobile', default='Mobile number'),
+                                      description=_(u'help_phone_mobile', default="Enter the mobile number"),
+                                      )
                 ),
 
     StringField('fax',
                 schemata='Kontakt',
                 searchable = 1,
-                widget = StringWidget(  label = 'Fax number',
-                                        label_msgid = 'egov_label_fax',
-                                        i18n_domain = 'egov',
-                                        description = 'Enter the fax number',
-                                        description_msgid = 'egov_help_fax',),
-            
+                widget = StringWidget(label=_(u'label_fax', default="Fax number"),
+                                      description=_(u'help_fax', default="Enter the fax number"),
+                                      )
                 ),
 
     StringField('email',
         schemata='Kontakt',
-        widget=StringWidget(description='Bitte E-Mailadresse eingeben',
-                            description_msgid='egov_desc_email',
-                            i18n_domain='egov',
-                            label='E-Mail',
-                            label_msgid='egov_label_email',
+        widget=StringWidget(label=_(u'label_email', default='E-Mail'),
+                            description=_(u'help_email', default='Please enter e-Mail address'),
                             ),
     ),
 
     StringField('www',
         schemata='Kontakt',
         validators=('isURL',),
-        widget=StringWidget(description='Bitte eine Website angeben',
-                            description_msgid='zugWebsite_desc_www',
-                            i18n_domain='zug',
-                            label='WWW',
-                            label_msgid='egov_label_www',
+        widget=StringWidget(label=_(u'label_www', default='WWW'),
+                            description=_(u'help_www', default='Please enter a website URL'),
                             ),
     ),
 ),
@@ -244,9 +213,9 @@ class Member(ATDocumentBase):
         mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 
         if not mitglied:
-            return "Mitglied geloescht"
+            return _('msg_member_deleted', default=u"Member deleted")
         if not mtool.checkPermission('View', mitglied):
-            return "Unzureichende Berechtigung"
+            return _('msg_insufficient_privileges', default=u"Insufficient privileges")
             
             
 
@@ -259,13 +228,13 @@ class Member(ATDocumentBase):
             address = ''
         tel = ''
         if self.getPhone_office():
-            tel = tel + '%s: %s<br />' % (_('egov_label_phone_office', default=u"Telefon geschäftlich"),self.getPhone_office())
+            tel = tel + '%s: %s<br />' % (_('label_phone_office', default=u"Phone number (office)"),self.getPhone_office())
         mobile = ''
         if self.getPhone_mobile():
-            mobile = mobile + '%s: %s<br />' % (_('egov_label_phone_mobile', default=u"Telefon mobil"),self.getPhone_mobile())
+            mobile = mobile + '%s: %s<br />' % (_('label_phone_mobile', default=u"Mobile number"),self.getPhone_mobile())
         fax = ''
         if self.getFax():
-            fax = fax + '%s: %s<br />' % (_('egov_label_fax', default=u"Fax"),self.getFax())
+            fax = fax + '%s: %s<br />' % (_('label_fax', default=u"Fax number"),self.getFax())
             
         return """\
 <p>
