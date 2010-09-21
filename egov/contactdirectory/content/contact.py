@@ -9,9 +9,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import *
 from egov.contactdirectory import contactdirectoryMessageFactory as _
-#from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-#from egov_schemas import classificationSchema, textSchema, maps_configuration_schema, finalize_egov_schema, QuantifiedSearchableTextMixin
 from Products.ATContentTypes.content.base import registerATCT
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
@@ -220,7 +219,7 @@ class Contact(ATCTContent):
         for member in members:
             for i in range(1,10):
                 parent = member.aq_explicit.aq_parent
-                if parent.portal_type == 'ZugOrgEinheit':
+                if parent.portal_type == 'OrgUnit':
                     break
                 else:
                      parent = parent.aq_explicit.aq_parent     

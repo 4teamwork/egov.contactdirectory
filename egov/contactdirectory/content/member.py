@@ -2,31 +2,24 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
-
 from zope.interface import implements
 
 from AccessControl import ClassSecurityInfo
+#from Products.Archetypes.atapi import BaseContent, BooleanField, BooleanWidget, StringWidget
 from Products.Archetypes.atapi import *
-from egov.contactdirectory.config import *
+from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory import contactdirectoryMessageFactory as _
-#from Products.ZugWebsite.content.zugschemas import finalizeZugSchema
+from egov.contactdirectory.interfaces import IMember
+
 from simplelayout.types.common.content.simplelayout_schemas import textSchema
-#from egov_schemas import classificationSchema, textSchema, imageSchema, finalize_egov_schema
-#from Products.ZugWebsite.content.zugschemas import textSchema
+
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-from Products.ATContentTypes.content.base import registerATCT
-from Products.ATContentTypes.content.base import translateMimetypeAlias
 from Products.ATContentTypes.content.document import ATDocumentBase
-from Products.ATContentTypes.content.image import ATCTImageTransform
-from Products.ATContentTypes.interfaces import IATNewsItem
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
-from Acquisition import aq_inner
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+
 from Products.CMFCore.permissions import View
 from Products.CMFCore.utils import getToolByName
-from zope.i18n import translate
 
-from egov.contactdirectory.interfaces import IMember
 
 schema = Schema((
 #     BooleanField('showTitle',
@@ -54,7 +47,7 @@ schema = Schema((
 #            base_query={"portal_type": "Contact"},
 #            force_close_on_insert = True, 
 #            label='Mitglied',
-#            label_msgid='egov_label_mitglied',
+#            label_msgid='label_mitglied',
 #            i18n_domain='egov',
 #        ),
         allowed_types=('Contact',),
@@ -228,13 +221,13 @@ class Member(ATDocumentBase):
             address = ''
         tel = ''
         if self.getPhone_office():
-            tel = tel + '%s: %s<br />' % (_('label_phone_office', default=u"Phone number (office)"),self.getPhone_office())
+            tel = tel + '%s: %s<br />' % (_(u'label_phone_office', default=u"Phone number (office)"),self.getPhone_office())
         mobile = ''
         if self.getPhone_mobile():
-            mobile = mobile + '%s: %s<br />' % (_('label_phone_mobile', default=u"Mobile number"),self.getPhone_mobile())
+            mobile = mobile + '%s: %s<br />' % (_(u'label_phone_mobile', default=u"Mobile number"),self.getPhone_mobile())
         fax = ''
         if self.getFax():
-            fax = fax + '%s: %s<br />' % (_('label_fax', default=u"Fax number"),self.getFax())
+            fax = fax + '%s: %s<br />' % (_(u'label_fax', default=u"Fax number"),self.getFax())
             
         return """\
 <p>
@@ -331,11 +324,11 @@ class Member(ATDocumentBase):
         else:
             return self.getField("www").get(self.getContact())
 
-    def Title(self):
-        if self.getContact(): 
-            return self.getContact().Title()
-        else:
-            return ''
+#    def Title(self):
+#        if self.getContact(): 
+#            return self.getContact().Title()
+#        else:
+#            return ''
             
     def getOrganisation(self):
         try:
