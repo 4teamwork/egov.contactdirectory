@@ -9,7 +9,7 @@
       name="contacts_view"
       class=".views.ContactFolderView"
       permission="zope.Public"
-      template="contactfolder.pt"
+      template="folder_contacts_listing.pt"
       />
 
    <browser:page

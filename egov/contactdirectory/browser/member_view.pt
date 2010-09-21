@@ -30,7 +30,7 @@
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${firstname}, ${lastname}" />
-            </div>sdfsdfsdsdf
+            </div>
         	<div class="zugMitglied-details">
                 <h2><span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
 	        	<p>
