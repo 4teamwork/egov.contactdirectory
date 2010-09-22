@@ -117,13 +117,13 @@
 </td>
 <td valign="top">
                                 <h3><span class="visualIconPadding">&nbsp;</span></h3><div>
-                                <div><span i18n:translate="label_short_phone_office">Phone W:</span> 
+                                <div><span i18n:translate="label_short_phone_office">Phone W</span>:  
                                     <span tal:content="obj/getPhone_office" /></div>
-                                <div><span i18n:translate="label_short_phone_mobile">Phone M:</span> 
+                                <div><span i18n:translate="label_short_phone_mobile">Phone M</span>: 
                                     <span tal:content="obj/getPhone_mobile" /></div>
-                                <div><span i18n:translate="label_short_mail">Email:</span> 
+                                <div><span i18n:translate="label_short_mail">Email</span>: 
                                     <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" /></div>
-                                <div><span i18n:translate="label_short_www">Website:</span> 
+                                <div><span i18n:translate="label_short_www">Website</span>: 
                                     <span tal:define="url obj/getUrl|nothing" 
 	                                                 tal:condition="url"><a tal:content="url" tal:attributes="href url"/></span></div>
                                 </div>
