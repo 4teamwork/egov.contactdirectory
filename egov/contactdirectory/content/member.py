@@ -276,53 +276,52 @@ class Member(ATDocumentBase):
     getImageCaption = getImageAltText
             
     def getAddress(self):
-        #import pdb; pdb.set_trace()
-        if self.getAcquireAddress() and self.getContact(): 
+        if self.getAcquireAddress() and self.getContact():
             return self.getContact().getAddress()
         else:
-            return self.getField("address").get(self.getContact())
+            return self.getField("address").get(self)
         
     def getZip(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getZip()
         else:
-            return self.getField("zip").get(self.getContact())
+            return self.getField("zip").get(self)
                 
     def getCity(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getCity()
         else:
-            return self.getField("city").get(self.getContact())
+            return self.getField("city").get(self)
                     
     def getPhone_office(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getPhone_office()
         else:
-            return self.getField("phone_office").get(self.getContact())
+            return self.getField("phone_office").get(self)
                 
     def getPhone_mobile(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getPhone_mobile()
         else:
-            return self.getField("phone_mobile").get(self.getContact())
+            return self.getField("phone_mobile").get(self)
                     
     def getFax(self):
-        if self.getAcquireAddress() and self.getContact(): 
+        if self.getAcquireAddress() and self.getContact():
             return self.getContact().getFax()
         else:
-            return self.getField("fax").get(self.getContact())
+            return self.getField("fax").get(self)
                     
     def getEmail(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getEmail()
         else:
-            return self.getField("email").get(self.getContact())
+            return self.getField("email").get(self)
                 
     def getWww(self):
         if self.getAcquireAddress() and self.getContact(): 
             return self.getContact().getWww()
         else:
-            return self.getField("www").get(self.getContact())
+            return self.getField("www").get(self)
 
 #    def Title(self):
 #        if self.getContact(): 
