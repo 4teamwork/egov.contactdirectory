@@ -7,54 +7,47 @@
     
     <browser:resourceDirectory
         name='egov-contactdirectory-resources'
-        directory="resources" />
-
-   <browser:page
-      for="*"
-      name="contacts_view"
-      class=".views.ContactFolderView"
-      permission="zope.Public"
-      template="folder_contacts_listing.pt"
-   />
-      
-      <browser:menuItem
-            for="Products.ATContentTypes.interface.IATFolder"
-            menu="plone_displayviews"
-            title="Kontaktansicht"
-            action="@@contacts_view"
-            description="List contents of a contacts folder"
-        />
-
-
-   <browser:page
-      for="*"
-      name="contact_view"
-      class=".views.ContactView"
-      permission="zope.Public"
-      template="contact.pt"
-      />
-
-<!--   <browser:page
-      for="*"
-      name="member_view"
-      class=".views.MemberView"
-      permission="zope.Public"
-      template="member.pt"
-      /> -->
-
-      <browser:page
-          for="*"
-          name="member_view"
-          class=".views.MemberView"
-          permission="zope.Public"
-          template="member_view.pt"
-      />
+        directory="resources"
+    />
 
     <browser:page
-       for="egov.contactdirectory.interfaces.IMember"
-       name="block_view"
-       class=".views.MemberBlockView"
-       template="member_block.pt"
-       permission="zope2.View" />
+        for="*"
+        name="contacts_view"
+        class=".views.ContactFolderView"
+        permission="zope.Public"
+        template="folder_contacts_listing.pt"
+    />
+      
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATFolder"
+        menu="plone_displayviews"
+        title="Kontaktansicht"
+        action="@@contacts_view"
+        description="List contents of a contacts folder"
+    />
+
+    <browser:page
+        for="*"
+        name="contact_view"
+        class=".views.ContactView"
+        permission="zope.Public"
+        template="contact.pt"
+    />
+      
+    <browser:page
+        for="*"
+        name="member_view"
+        class=".views.MemberView"
+        permission="zope.Public"
+        template="member_view.pt"
+    />
+
+    <browser:page
+        for="egov.contactdirectory.interfaces.IMember"
+        name="block_view"
+        class=".views.MemberBlockView"
+        template="member_block.pt"
+        permission="zope2.View" 
+    />
 
 </configure>

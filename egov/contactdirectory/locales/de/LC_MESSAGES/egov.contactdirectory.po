@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-09-24 07:36+0000\n"
+"POT-Creation-Date: 2010-09-24 08:48+0000\n"
 "PO-Revision-Date: 2010-09-21 13:32+0000\n"
 "Last-Translator: Lukas Graf <lukas.graf@4teamwork.ch>\n"
 "Language-Team: German<lukas.graf@4teamwork.ch>\n"
@@ -93,6 +93,11 @@ msgstr "Geben Sie die Mobil Nummer ein"
 #: ./egov/contactdirectory/content/member.py:118
 msgid "help_phone_office"
 msgstr "Geben Sie die Telefonnummer ein"
+
+#. Default: "If chosen, this Organisation Unit's title will be included in your address"
+#: ./egov/contactdirectory/content/contact.py:159
+msgid "help_primary_org_unit"
+msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer Adresse angezeigt"
 
 #: ./egov/contactdirectory/content/member.py:71
 msgid "help_show_address"
@@ -224,6 +229,11 @@ msgstr "Telefon mobil"
 #: ./egov/contactdirectory/content/member.py:117
 msgid "label_phone_office"
 msgstr "Telefon geschäftlich"
+
+#. Default: "Primary Organisation Unit"
+#: ./egov/contactdirectory/content/contact.py:158
+msgid "label_primary_org_unit"
+msgstr "Primäre Organisationseinheit"
 
 #. Default: "Related Items"
 #: ./egov/contactdirectory/browser/contact.pt:119

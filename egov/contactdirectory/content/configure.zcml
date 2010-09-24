@@ -9,4 +9,12 @@
         class=".member.Member"
         interface="simplelayout.base.interfaces.ISimpleLayoutBlock"
         />
+
+
+    <!-- VocabularyFactory for listing all OrgUnits a Contact is Member of -->
+    <utility 
+        component=".contact.OrgUnitsVocabularyFactory" 
+        name="egov.contactdirectory.OrgUnitsVocabularyFactory"
+        provides="zope.schema.interfaces.IVocabularyFactory" 
+        />
 </configure>

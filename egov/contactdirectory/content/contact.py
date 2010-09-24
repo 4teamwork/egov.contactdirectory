@@ -1,29 +1,35 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
-from zope.interface import implements
-
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore import permissions
-from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.atapi import *
-from egov.contactdirectory.config import *
 from egov.contactdirectory import contactdirectoryMessageFactory as _
-
-from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-from Products.ATContentTypes.content.base import registerATCT
-from Products.ATContentTypes.content.base import ATCTContent
-from Products.ATContentTypes.content.schemata import ATContentTypeSchema
+from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IContact
 
-try:
-    from Products.Maps.content.Location import Location, LocationSchema
-    from Products.Maps.interfaces import ILocation
-    MAPS_PACKAGE_PRESENT = True
-except:
-    MAPS_PACKAGE_PRESENT = False
-    class Location:
-        pass
+from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, registerType
+from Products.Archetypes.atapi import StringField, ImageField, ComputedField
+from Products.Archetypes.atapi import TextField, ReferenceField
+from Products.Archetypes.atapi import ReferenceWidget, StringWidget, ImageWidget
+from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget
+
+from Products.ATContentTypes.content.base import ATCTContent
+from Products.ATContentTypes.content.schemata import ATContentTypeSchema
+from Products.ATContentTypes.content.schemata import finalizeATCTSchema
+from Products.CMFCore import permissions
+from Products.CMFCore.utils import getToolByName
+from zope.interface import implements, directlyProvides
+from zope.schema.interfaces import IVocabularyFactory 
+from zope.schema.vocabulary import SimpleVocabulary
+
+# try:
+#     from Products.Maps.content.Location import Location
+#     from Products.Maps.content.Location import LocationSchema
+#     from Products.Maps.interfaces import ILocation
+#     MAPS_PACKAGE_PRESENT = True
+# except:
+#     MAPS_PACKAGE_PRESENT = False
+#     class Location:
+#         pass
 
 
 schema = Schema((
@@ -150,6 +156,22 @@ schema = Schema((
                             description=_(u'help_www', default='Please enter a website URL')
                             ),
     ),
+    
+    
+    ReferenceField(
+        name='primaryOrgUnit',
+        required=False,
+        widget = ReferenceWidget(label=_(u'label_primary_org_unit', default='Primary Organisation Unit'),
+                                 description=_(u'help_primary_org_unit', 
+                                    default='If chosen, this Organisation Unit\'s title will be included in your address')
+                                 ),
+        allowed_types=('OrgUnit',),
+        multiValued=0,
+        relationship='contact_to_org_unit',
+        vocabulary_display_path_bound = 999999,
+        vocabulary_factory= 'egov.contactdirectory.OrgUnitsVocabularyFactory'
+    ),
+    
 
 ),
 )
@@ -229,9 +251,29 @@ class Contact(ATCTContent):
             phone = member.getPhone_office()
             roles.append(dict(orgunit=orgunit, link=link, function=function, phone=phone))
         return roles
+        
 
     def SearchableText(self):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])
         return '%s %s' % (ATCTContent.SearchableText(self),orgunitinfo)
+
+
+def OrgUnitsVocabularyFactory(context):
+    """Vocabulary factory for all OrgUnits a contact is a member of"""
+    available_org_units = []
+    members = context.getBRefs(relationship='member_to_contact')
+    for member in members:
+        for i in range(1,10):
+            parent = member.aq_explicit.aq_parent
+            if parent.portal_type == 'OrgUnit':
+                break
+            else:
+                 parent = parent.aq_explicit.aq_parent
+        available_org_units.append(parent)        
+
+    # This turns a list of title->id pairs into a Zope 3 style vocabulary
+    items = [(o.Title(), o.UID()) for o in available_org_units]
+    return SimpleVocabulary.fromItems([('<Keine>', '')] + items)
+    directlyProvides(OrgUnitsVocabularyFactory, IVocabularyFactory)        
 
 registerType(Contact, PROJECTNAME)

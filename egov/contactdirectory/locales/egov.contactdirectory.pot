@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-09-24 07:36+0000\n"
+"POT-Creation-Date: 2010-09-24 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,6 +96,11 @@ msgstr ""
 #: ./egov/contactdirectory/content/contact.py:117
 #: ./egov/contactdirectory/content/member.py:118
 msgid "help_phone_office"
+msgstr ""
+
+#. Default: "If chosen, this Organisation Unit's title will be included in your address"
+#: ./egov/contactdirectory/content/contact.py:159
+msgid "help_primary_org_unit"
 msgstr ""
 
 #: ./egov/contactdirectory/content/member.py:71
@@ -227,6 +232,11 @@ msgstr ""
 #: ./egov/contactdirectory/content/contact.py:116
 #: ./egov/contactdirectory/content/member.py:117
 msgid "label_phone_office"
+msgstr ""
+
+#. Default: "Primary Organisation Unit"
+#: ./egov/contactdirectory/content/contact.py:158
+msgid "label_primary_org_unit"
 msgstr ""
 
 #. Default: "Related Items"

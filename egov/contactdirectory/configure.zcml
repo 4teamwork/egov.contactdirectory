@@ -15,8 +15,6 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
-<!--    <utility component=".i18n.egovdomain" name="egov" /> -->
-
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
       name="default"
@@ -25,6 +23,5 @@
       description="Directory for Egov GemeindePortal"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-
 
 </configure>
