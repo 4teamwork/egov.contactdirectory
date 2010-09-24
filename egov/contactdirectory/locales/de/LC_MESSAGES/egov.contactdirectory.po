@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-09-22 08:00+0000\n"
+"POT-Creation-Date: 2010-09-24 07:36+0000\n"
 "PO-Revision-Date: 2010-09-21 13:32+0000\n"
 "Last-Translator: Lukas Graf <lukas.graf@4teamwork.ch>\n"
 "Language-Team: German<lukas.graf@4teamwork.ch>\n"
@@ -12,8 +12,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: egov.contactdirectory\n"
 
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+msgid "Search"
+msgstr "Suche"
+
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+msgid "Search contacts"
+msgstr "Kontakte durchsuchen"
+
 #. Default: "There are currently no items in this folder."
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:148
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:130
 msgid "description_no_items_in_folder"
 msgstr "Zur Zeit sind keine Objekte in diesem Ordner vorhanden."
 
@@ -222,11 +230,6 @@ msgstr "Telefon geschäftlich"
 msgid "label_related_items"
 msgstr "Verwandte Objekte"
 
-#. Default: "Search:"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:27
-msgid "label_search"
-msgstr "Suche:"
-
 #. Default: "Fax"
 #: ./egov/contactdirectory/browser/member_block.pt:49
 #: ./egov/contactdirectory/browser/member_view.pt:46
@@ -234,7 +237,7 @@ msgid "label_short_fax"
 msgstr "Fax"
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:124
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
 msgid "label_short_mail"
 msgstr "E-Mail"
 
@@ -251,17 +254,17 @@ msgid "label_short_office"
 msgstr "Geschäft"
 
 #. Default: "Phone M"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:122
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:104
 msgid "label_short_phone_mobile"
 msgstr "Tel M"
 
 #. Default: "Phone W"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:120
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:102
 msgid "label_short_phone_office"
 msgstr "Tel G"
 
 #. Default: "Website"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:126
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
 msgid "label_short_www"
 msgstr "Website"
 
@@ -288,7 +291,7 @@ msgid "label_zip"
 msgstr "Postleitzahl"
 
 #. Default: "Content listing"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:51
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:50
 msgid "summary_content_listing"
 msgstr "Inhaltsauflistung"
 

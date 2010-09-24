@@ -19,8 +19,8 @@
            tal:condition="here/Description">
             Description
         </p>
-<form method="post">
-<span i18n:translate="label_search">Search:</span> <input type="text" name="SearchableText" tal:attributes="value request/Title|string:Suchbegriff*">
+<form id="contactSearch" method="post">
+<input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
 </form>
 
 

@@ -1,0 +1,20 @@
+
+#contactSearchGadget {
+    border:1px solid #00538C;
+    float:left;
+    font-family:"Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+    padding:0.1818em 0.4545em 0.3636em;
+    width:16.8182em;
+
+}
+
+form#contactSearch .searchButton {
+    padding:0.1818em 0.4545em;
+    border:1px solid #006FBA;
+}
+
+.listingBar {
+    background-color: #EFEFEF;
+    padding: 0.2em;
+    font-size: 1.1em;
+}

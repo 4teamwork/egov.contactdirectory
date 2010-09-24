@@ -3,6 +3,11 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="egov.contactdirectory">
+    
+    
+    <browser:resourceDirectory
+        name='egov-contactdirectory-resources'
+        directory="resources" />
 
    <browser:page
       for="*"
@@ -10,7 +15,16 @@
       class=".views.ContactFolderView"
       permission="zope.Public"
       template="folder_contacts_listing.pt"
-      />
+   />
+      
+      <!-- <browser:menuItem
+            for="Products.ATContentTypes.interface.IATFolder"
+            menu="plone_displayviews"
+            title="Contacts View"
+            action="@@contacts_view"
+            description="List contents of a contacts folder"
+        /> -->
+
 
    <browser:page
       for="*"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-09-22 08:00+0000\n"
+"POT-Creation-Date: 2010-09-24 07:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: egov.contactdirectory\n"
 
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+msgid "Search"
+msgstr ""
+
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+msgid "Search contacts"
+msgstr ""
+
 #. Default: "There are currently no items in this folder."
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:148
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:130
 msgid "description_no_items_in_folder"
 msgstr ""
 
@@ -226,11 +234,6 @@ msgstr ""
 msgid "label_related_items"
 msgstr ""
 
-#. Default: "Search:"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:27
-msgid "label_search"
-msgstr ""
-
 #. Default: "Fax"
 #: ./egov/contactdirectory/browser/member_block.pt:49
 #: ./egov/contactdirectory/browser/member_view.pt:46
@@ -238,7 +241,7 @@ msgid "label_short_fax"
 msgstr ""
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:124
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
 msgid "label_short_mail"
 msgstr ""
 
@@ -255,17 +258,17 @@ msgid "label_short_office"
 msgstr ""
 
 #. Default: "Phone M"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:122
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:104
 msgid "label_short_phone_mobile"
 msgstr ""
 
 #. Default: "Phone W"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:120
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:102
 msgid "label_short_phone_office"
 msgstr ""
 
 #. Default: "Website"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:126
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
 msgid "label_short_www"
 msgstr ""
 
@@ -292,7 +295,7 @@ msgid "label_zip"
 msgstr ""
 
 #. Default: "Content listing"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:51
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:50
 msgid "summary_content_listing"
 msgstr ""
 
