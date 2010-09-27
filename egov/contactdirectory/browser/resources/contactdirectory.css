@@ -20,7 +20,7 @@ form#contactSearch .searchButton {
 }
 
 #content .contenttype-member {
-	background:url("http://++resource++egov-topics-resources/icon_objekt_kontakt.gif") no-repeat scroll 0 50% transparent;
+	background:url("/icon_objekt_kontakt.gif") no-repeat scroll 0 50% transparent;
 	line-height:2em;
 	padding-left:20px !important;
 }
