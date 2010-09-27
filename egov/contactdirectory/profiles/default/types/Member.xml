@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <object name="Member"
    meta_type="Factory-based Type Information with dynamic views"
-   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title">Member</property>
- <property name="description"></property>
- <property name="content_icon">member_icon.gif</property>
+   i18n:domain="egov.contactdirectory" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property i18n:translate="" name="title">Member</property>
+ <property i18n:translate="" name="description"></property>
+ <property name="content_icon">contact_icon.gif</property>
  <property name="content_meta_type">Member</property>
  <property name="product">egov.contactdirectory</property>
  <property name="factory">addMember</property>
