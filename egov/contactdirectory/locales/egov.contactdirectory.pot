@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-09-24 08:48+0000\n"
+"POT-Creation-Date: 2010-09-25 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: egov.contactdirectory\n"
 
+#: ./egov/contactdirectory/profiles/default/types/Contact.xml
+msgid "Contact"
+msgstr ""
+
+#: ./egov/contactdirectory/profiles/default/types/Member.xml
+msgid "Member"
+msgstr ""
+
 #: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
 msgid "Search"
 msgstr ""
@@ -26,23 +34,23 @@ msgid "Search contacts"
 msgstr ""
 
 #. Default: "There are currently no items in this folder."
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:130
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:132
 msgid "description_no_items_in_folder"
 msgstr ""
 
-#: ./egov/contactdirectory/content/member.py:87
+#: ./egov/contactdirectory/content/member.py:91
 msgid "help_acquire_address"
 msgstr ""
 
 #. Default: "Please enter address"
-#: ./egov/contactdirectory/content/contact.py:81
-#: ./egov/contactdirectory/content/member.py:94
+#: ./egov/contactdirectory/content/contact.py:87
+#: ./egov/contactdirectory/content/member.py:98
 msgid "help_address"
 msgstr ""
 
 #. Default: "Enter the name of the city"
-#: ./egov/contactdirectory/content/contact.py:97
-#: ./egov/contactdirectory/content/member.py:110
+#: ./egov/contactdirectory/content/contact.py:103
+#: ./egov/contactdirectory/content/member.py:114
 msgid "help_city"
 msgstr ""
 
@@ -51,92 +59,94 @@ msgid "help_contact_reference"
 msgstr ""
 
 #. Default: "Enter the name of the country"
-#: ./egov/contactdirectory/content/contact.py:109
+#: ./egov/contactdirectory/content/contact.py:115
 msgid "help_country"
 msgstr ""
 
 #. Default: "Please enter e-Mail address"
-#: ./egov/contactdirectory/content/contact.py:142
-#: ./egov/contactdirectory/content/member.py:141
+#: ./egov/contactdirectory/content/contact.py:148
+#: ./egov/contactdirectory/content/member.py:145
 msgid "help_email"
 msgstr ""
 
 #. Default: "Enter the fax number"
-#: ./egov/contactdirectory/content/contact.py:133
-#: ./egov/contactdirectory/content/member.py:134
+#: ./egov/contactdirectory/content/contact.py:139
+#: ./egov/contactdirectory/content/member.py:138
 msgid "help_fax"
 msgstr ""
 
 #. Default: "Please enter first name"
-#: ./egov/contactdirectory/content/contact.py:45
+#: ./egov/contactdirectory/content/contact.py:51
 msgid "help_firstname"
 msgstr ""
 
 #. Default: "Please supply an image"
-#: ./egov/contactdirectory/content/contact.py:54
+#: ./egov/contactdirectory/content/contact.py:60
 msgid "help_foto"
 msgstr ""
 
 #. Default: "Please enter last name"
-#: ./egov/contactdirectory/content/contact.py:36
+#: ./egov/contactdirectory/content/contact.py:42
 msgid "help_lastname"
 msgstr ""
 
-#: ./egov/contactdirectory/content/contact.py:71
+#: ./egov/contactdirectory/content/contact.py:77
 msgid "help_memberships"
 msgstr ""
 
 #. Default: "Enter the mobile number"
-#: ./egov/contactdirectory/content/contact.py:125
-#: ./egov/contactdirectory/content/member.py:126
+#: ./egov/contactdirectory/content/contact.py:131
+#: ./egov/contactdirectory/content/member.py:130
 msgid "help_phone_mobile"
 msgstr ""
 
 #. Default: "Enter the phone number"
-#: ./egov/contactdirectory/content/contact.py:117
-#: ./egov/contactdirectory/content/member.py:118
+#: ./egov/contactdirectory/content/contact.py:123
+#: ./egov/contactdirectory/content/member.py:122
 msgid "help_phone_office"
 msgstr ""
 
 #. Default: "If chosen, this Organisation Unit's title will be included in your address"
-#: ./egov/contactdirectory/content/contact.py:159
+#: ./egov/contactdirectory/content/contact.py:165
 msgid "help_primary_org_unit"
 msgstr ""
 
+#. Default: "Also show address on membership page of the organisation unit"
 #: ./egov/contactdirectory/content/member.py:71
 msgid "help_show_address"
 msgstr ""
 
-#: ./egov/contactdirectory/content/member.py:79
+#. Default: "Also show image on membership page of the organisation unit"
+#: ./egov/contactdirectory/content/member.py:82
 msgid "help_show_image"
 msgstr ""
 
 #. Default: "Please enter a website URL"
-#: ./egov/contactdirectory/content/contact.py:150
-#: ./egov/contactdirectory/content/member.py:149
+#: ./egov/contactdirectory/content/contact.py:156
+#: ./egov/contactdirectory/content/member.py:153
 msgid "help_www"
 msgstr ""
 
 #. Default: "Enter the postal code"
-#: ./egov/contactdirectory/content/contact.py:89
-#: ./egov/contactdirectory/content/member.py:102
+#: ./egov/contactdirectory/content/contact.py:95
+#: ./egov/contactdirectory/content/member.py:106
 msgid "help_zip"
 msgstr ""
 
 #. Default: "Acquire address"
-#: ./egov/contactdirectory/content/member.py:86
+#: ./egov/contactdirectory/content/member.py:90
 msgid "label_acquire_address"
 msgstr ""
 
 #. Default: "Address"
-#: ./egov/contactdirectory/content/contact.py:80
-#: ./egov/contactdirectory/content/member.py:93
+#: ./egov/contactdirectory/content/contact.py:86
+#: ./egov/contactdirectory/content/member.py:97
 msgid "label_address"
 msgstr ""
 
 #. Default: "City"
-#: ./egov/contactdirectory/content/contact.py:96
-#: ./egov/contactdirectory/content/member.py:109
+#: ./egov/contactdirectory/content/contact.py:102
+#: ./egov/contactdirectory/content/member.py:113
 msgid "label_city"
 msgstr ""
 
@@ -151,36 +161,36 @@ msgid "label_contact_reference"
 msgstr ""
 
 #. Default: "Country"
-#: ./egov/contactdirectory/content/contact.py:108
+#: ./egov/contactdirectory/content/contact.py:114
 msgid "label_country"
 msgstr ""
 
 #. Default: "Description"
-#: ./egov/contactdirectory/browser/contact.pt:94
+#: ./egov/contactdirectory/browser/contact.pt:97
 msgid "label_description"
 msgstr ""
 
 #. Default: "E-Mail"
 #: ./egov/contactdirectory/browser/contactfolder.pt:72
-#: ./egov/contactdirectory/content/contact.py:141
-#: ./egov/contactdirectory/content/member.py:140
+#: ./egov/contactdirectory/content/contact.py:147
+#: ./egov/contactdirectory/content/member.py:144
 msgid "label_email"
 msgstr ""
 
 #. Default: "Fax number"
-#: ./egov/contactdirectory/browser/contact.pt:38
-#: ./egov/contactdirectory/content/contact.py:132
-#: ./egov/contactdirectory/content/member.py:133
+#: ./egov/contactdirectory/browser/contact.pt:41
+#: ./egov/contactdirectory/content/contact.py:138
+#: ./egov/contactdirectory/content/member.py:137
 msgid "label_fax"
 msgstr ""
 
 #. Default: "Firstname"
-#: ./egov/contactdirectory/content/contact.py:43
+#: ./egov/contactdirectory/content/contact.py:49
 msgid "label_firstname"
 msgstr ""
 
 #. Default: "Image"
-#: ./egov/contactdirectory/content/contact.py:52
+#: ./egov/contactdirectory/content/contact.py:58
 msgid "label_foto"
 msgstr ""
 
@@ -190,18 +200,18 @@ msgid "label_function"
 msgstr ""
 
 #. Default: "Lastname"
-#: ./egov/contactdirectory/content/contact.py:34
+#: ./egov/contactdirectory/content/contact.py:40
 msgid "label_lastname"
 msgstr ""
 
 #. Default: "Membership"
-#: ./egov/contactdirectory/content/contact.py:62
+#: ./egov/contactdirectory/content/contact.py:68
 msgid "label_membership"
 msgstr ""
 
 #. Default: "Memberships"
-#: ./egov/contactdirectory/browser/contact.pt:54
-#: ./egov/contactdirectory/content/contact.py:69
+#: ./egov/contactdirectory/browser/contact.pt:57
+#: ./egov/contactdirectory/content/contact.py:75
 msgid "label_memberships"
 msgstr ""
 
@@ -221,26 +231,26 @@ msgid "label_phone"
 msgstr ""
 
 #. Default: "Mobile number"
-#: ./egov/contactdirectory/browser/contact.pt:37
-#: ./egov/contactdirectory/content/contact.py:124
-#: ./egov/contactdirectory/content/member.py:125
+#: ./egov/contactdirectory/browser/contact.pt:40
+#: ./egov/contactdirectory/content/contact.py:130
+#: ./egov/contactdirectory/content/member.py:129
 msgid "label_phone_mobile"
 msgstr ""
 
 #. Default: "Phone number (office)"
-#: ./egov/contactdirectory/browser/contact.pt:36
-#: ./egov/contactdirectory/content/contact.py:116
-#: ./egov/contactdirectory/content/member.py:117
+#: ./egov/contactdirectory/browser/contact.pt:39
+#: ./egov/contactdirectory/content/contact.py:122
+#: ./egov/contactdirectory/content/member.py:121
 msgid "label_phone_office"
 msgstr ""
 
 #. Default: "Primary Organisation Unit"
-#: ./egov/contactdirectory/content/contact.py:158
+#: ./egov/contactdirectory/content/contact.py:164
 msgid "label_primary_org_unit"
 msgstr ""
 
 #. Default: "Related Items"
-#: ./egov/contactdirectory/browser/contact.pt:119
+#: ./egov/contactdirectory/browser/contact.pt:122
 msgid "label_related_items"
 msgstr ""
 
@@ -251,7 +261,7 @@ msgid "label_short_fax"
 msgstr ""
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
 msgid "label_short_mail"
 msgstr ""
 
@@ -268,17 +278,17 @@ msgid "label_short_office"
 msgstr ""
 
 #. Default: "Phone M"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:104
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
 msgid "label_short_phone_mobile"
 msgstr ""
 
 #. Default: "Phone W"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:102
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:104
 msgid "label_short_phone_office"
 msgstr ""
 
 #. Default: "Website"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:110
 msgid "label_short_www"
 msgstr ""
 
@@ -288,19 +298,19 @@ msgid "label_show_address"
 msgstr ""
 
 #. Default: "Show Image"
-#: ./egov/contactdirectory/content/member.py:78
+#: ./egov/contactdirectory/content/member.py:80
 msgid "label_show_image"
 msgstr ""
 
 #. Default: "WWW"
-#: ./egov/contactdirectory/content/contact.py:149
-#: ./egov/contactdirectory/content/member.py:148
+#: ./egov/contactdirectory/content/contact.py:155
+#: ./egov/contactdirectory/content/member.py:152
 msgid "label_www"
 msgstr ""
 
 #. Default: "Postal code"
-#: ./egov/contactdirectory/content/contact.py:88
-#: ./egov/contactdirectory/content/member.py:101
+#: ./egov/contactdirectory/content/contact.py:94
+#: ./egov/contactdirectory/content/member.py:105
 msgid "label_zip"
 msgstr ""
 

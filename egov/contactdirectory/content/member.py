@@ -68,15 +68,19 @@ schema = Schema((
                 schemata='default',
                 default=0,
                 widget=BooleanWidget(label=_(u'label_show_address', default='Show address'),
-                                     description=_(u'help_show_address', default='')
+                                     description=_(u'help_show_address', 
+                                                   default='Also show address on membership page of the organisation unit')
                                              ),
     ),
     
      BooleanField('show_image',
         schemata='Kontakt',
         default=1,
-        widget=BooleanWidget(label=_(u'label_show_image', default='Show Image'),
-                             description=_(u'help_show_image', default='')
+        widget=BooleanWidget(
+            label=_(u'label_show_image', 
+                default='Show Image'),
+            description=_(u'help_show_image', 
+                default='Also show image on membership page of the organisation unit')
             ),
      ),
     
