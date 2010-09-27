@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_properties">
+    <object name="navtree_properties">
+        <property name="metaTypesNotToList" type="lines" purge="False">
+           <element value="Contact"/>
+           <element value="Member"/>
+        </property>
+    </object>
+</object>
