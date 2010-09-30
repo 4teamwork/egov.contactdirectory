@@ -197,78 +197,7 @@ class Member(ATDocumentBase):
             return '%s %s, %s %s' % (contact.getLastname(),contact.getFirstname(), self.getFunction(), org)
         else:
           return ''
-
-    security.declareProtected(View, 'tag')
-    def tag(self, **kwargs):
-        """Generate image tag using the api of the ImageField
-        """
-        if 'title' not in kwargs:
-            kwargs['title'] = self.getImageCaption()
-        return self.getField('image').tag(self, **kwargs)
-#     
-#    def getBlockText(self,**kwargs):  
-#        mtool = getToolByName(self, "portal_membership")
-#        mitglied = self.getContact() 
-#        if not mitglied:
-#            return _('msg_member_deleted', default=u"Member deleted")
-#        if not mtool.checkPermission('View', mitglied):
-#            return _('msg_insufficient_privileges', default=u"Insufficient privileges")
-#             
-#             
-# 
-#        street = self.getAddress().replace('\n','<br />') + ', '
-#        #import pdb; pdb.set_trace()
-#        zip = self.getZip() + ' '
-#        city = self.getCity() + '<br />'
-#        address = street + zip + city
-#        if not self.getShow_address():
-#            address = ''
-#        tel = ''
-#        if self.getPhone_office():
-#            tel = tel + '%s: %s<br />' % (_(u'label_phone_office', default=u"Phone number (office)"),self.getPhone_office())
-#        mobile = ''
-#        if self.getPhone_mobile():
-#            mobile = mobile + '%s: %s<br />' % (_(u'label_phone_mobile', default=u"Mobile number"),self.getPhone_mobile())
-#        fax = ''
-#        if self.getFax():
-#            fax = fax + '%s: %s<br />' % (_(u'label_fax', default=u"Fax number"),self.getFax())
-#            
-#        return """\
-# <p>
-# <strong><a href="%(url)s">%(title)s</a></strong> <br />
-# %(function)s<br />
-# %(address)s
-# %(tel)s
-# %(mobile)s
-# %(fax)s
-# <a href="&#0109;ailto&#0058;%(mail)s">%(mail)s</a>
-# </p>
-# """ % dict(
-#       url = self.absolute_url(),
-#       title=unicode(mitglied.Title(),'utf-8'),
-#       function=unicode(self.getFunction() and self.getFunction() or mitglied.getFunction(),'utf-8'),
-#       address = unicode(address,'utf-8'),
-#       tel = tel,
-#       mobile = mobile,
-#       fax = fax,
-#       mail = unicode(self.getEmail().replace('@', '&#0064;'),'utf-8')
-#       )
-    
-    def getImage(self, **kwargs):
-        mtool = getToolByName(self, "portal_membership")
-        mitglied = self.getContact() 
-        if not mtool.checkPermission('View', mitglied):
-            return None
-        if mitglied:
-            return mitglied.getImage()
         
-    def getImageLayout(self):
-        return 'thumbnail'
-    
-    def setImageLayout(self, fun):
-        """dummy"""
-        pass
-
     def getImageAltText(self):
         mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 
@@ -343,8 +272,6 @@ class Member(ATDocumentBase):
         except: 
             return ""
     
-    def getMitglied(self):
-        return self.getContact()
 
 registerType(Member, PROJECTNAME)
 

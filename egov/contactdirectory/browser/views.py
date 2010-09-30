@@ -42,3 +42,8 @@ class MemberView(BrowserView):
 class MemberBlockView(BlockView):
     """
     """
+    
+    def has_image(self):
+        #check for a 'image' field in schemata
+        contact = self.context.getContact()
+        return bool(contact.getField('image').get(contact))
