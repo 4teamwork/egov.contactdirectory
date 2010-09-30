@@ -1,15 +1,14 @@
 <tal:block i18n:domain="egov.contactdirectory">
 
 <div class="#" id="#"
-                tal:define="slclass view/getCSSClass;
-                text here/getBlockText|here/getText|nothing;
+                tal:define="text here/getBlockText|here/getText|nothing;
                 title here/Title | here/pretty_title_or_id;
                 fullblock python: text and ' sl-fullblock' or ''"
                 tal:attributes="id here/id;
-                                class string:simplelayout-block-wrapper ${slclass}${fullblock};">
+                                class string:simplelayout-block-wrapper ${fullblock};">
     <h3 tal:content="here/Title" tal:condition="here/getShowTitle|python:True" />
     <a tal:attributes="name here/id" ></a>
-    <div class="sl-img-wrapper" style="float: right;" tal:condition="python:view.checkForImage() and here.getShow_image()">
+    <div class="sl-img-wrapper" style="float: right;" tal:condition="python:view.has_image() and here.getShow_image()">
     <!-- <pre tal:content="here/getShow_image"/> -->
                     <a  target="_blank"
                         tal:attributes="
@@ -19,7 +18,10 @@
                                         "
                                         tal:omit-tag="not: here/getImageClickable|nothing"
                     >
-                        <img tal:replace="structure view/getImageTag" />
+                    <img tal:define="contact python: context.getContact(); 
+                                     scale contact/@@images"
+                         tal:replace="structure python: scale.scale('image',
+                                      scale='thumbnail').tag(title=here.Title())" />
                         <p tal:define="image_desc context/getImageCaption | context/Description" 
                            tal:condition="image_desc"
                            tal:content="context/getImageCaption">Caption</p>
