@@ -26,7 +26,7 @@
         	  
 
         				  
-            <div class="rightFloat" tal:define="portrait contact/getFoto | nothing" tal:condition="here/getShow_image">
+            <div class="rightFloat" tal:define="portrait contact/getImage | nothing" tal:condition="here/getShow_image">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${firstname}, ${lastname}" />

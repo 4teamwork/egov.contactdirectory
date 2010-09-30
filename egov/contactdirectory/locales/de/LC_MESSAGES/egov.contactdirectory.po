@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-09-25 19:51+0000\n"
+"POT-Creation-Date: 2010-09-30 13:14+0000\n"
 "PO-Revision-Date: 2010-09-21 13:32+0000\n"
 "Last-Translator: Lukas Graf <lukas.graf@4teamwork.ch>\n"
 "Language-Team: German<lukas.graf@4teamwork.ch>\n"
@@ -20,16 +20,16 @@ msgstr "Kontakt"
 msgid "Member"
 msgstr "Mitglied"
 
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:25
 msgid "Search"
 msgstr "Suche"
 
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:23
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:25
 msgid "Search contacts"
 msgstr "Kontakte durchsuchen"
 
 #. Default: "There are currently no items in this folder."
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:132
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:134
 msgid "description_no_items_in_folder"
 msgstr "Zur Zeit sind keine Objekte in diesem Ordner vorhanden."
 
@@ -77,8 +77,8 @@ msgstr "Geben Sie den Vornamen ein"
 
 #. Default: "Please supply an image"
 #: ./egov/contactdirectory/content/contact.py:60
-msgid "help_foto"
-msgstr "Bitte Foto angeben"
+msgid "help_image"
+msgstr "Bitte geben sie ein Bild"
 
 #. Default: "Please enter last name"
 #: ./egov/contactdirectory/content/contact.py:42
@@ -184,15 +184,15 @@ msgstr "Fax"
 msgid "label_firstname"
 msgstr "Vorname"
 
-#. Default: "Image"
-#: ./egov/contactdirectory/content/contact.py:58
-msgid "label_foto"
-msgstr "Foto"
-
 #. Default: "Function"
 #: ./egov/contactdirectory/content/member.py:63
 msgid "label_function"
 msgstr "Funktion"
+
+#. Default: "Image"
+#: ./egov/contactdirectory/content/contact.py:58
+msgid "label_image"
+msgstr "Bild"
 
 #. Default: "Lastname"
 #: ./egov/contactdirectory/content/contact.py:40
@@ -256,7 +256,7 @@ msgid "label_short_fax"
 msgstr "Fax"
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:110
 msgid "label_short_mail"
 msgstr "E-Mail"
 
@@ -273,17 +273,17 @@ msgid "label_short_office"
 msgstr "Geschäft"
 
 #. Default: "Phone M"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:108
 msgid "label_short_phone_mobile"
 msgstr "Tel M"
 
 #. Default: "Phone W"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:104
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:106
 msgid "label_short_phone_office"
 msgstr "Tel G"
 
 #. Default: "Website"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:110
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:112
 msgid "label_short_www"
 msgstr "Website"
 
@@ -295,7 +295,7 @@ msgstr "Adresse anzeigen"
 #. Default: "Show Image"
 #: ./egov/contactdirectory/content/member.py:80
 msgid "label_show_image"
-msgstr "Foto anzeigen"
+msgstr "Bild anzeigen"
 
 #. Default: "WWW"
 #: ./egov/contactdirectory/content/contact.py:155
@@ -310,7 +310,7 @@ msgid "label_zip"
 msgstr "Postleitzahl"
 
 #. Default: "Content listing"
-#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:50
+#: ./egov/contactdirectory/browser/folder_contacts_listing.pt:52
 msgid "summary_content_listing"
 msgstr "Inhaltsauflistung"
 

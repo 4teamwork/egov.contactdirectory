@@ -53,11 +53,11 @@ schema = Schema((
                                     ),
                 ),
                 
-    ImageField('foto',
+    ImageField('image',
                sizes={'thumbnail': (175,999),},
-               widget=ImageWidget(label=_(u'label_foto',
+               widget=ImageWidget(label=_(u'label_image',
                                       default='Image'),
-                                  description=_(u'help_foto',
+                                  description=_(u'help_image',
                                       default='Please supply an image')
                                   ),
                ),

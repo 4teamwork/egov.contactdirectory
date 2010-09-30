@@ -21,7 +21,7 @@
         				  bio here/getText | nothing;"
         	  class="contact_view">
         				  
-            <div class="rightFloat" tal:define="portrait here/getFoto | nothing">
+            <div class="rightFloat" tal:define="portrait here/getImage | nothing">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${here/getFirstname}, ${here/getLastname}" />

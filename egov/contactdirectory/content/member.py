@@ -260,7 +260,7 @@ class Member(ATDocumentBase):
         if not mtool.checkPermission('View', mitglied):
             return None
         if mitglied:
-            return mitglied.getFoto()
+            return mitglied.getImage()
         
     def getImageLayout(self):
         return 'thumbnail'
