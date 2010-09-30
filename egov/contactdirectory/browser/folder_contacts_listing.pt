@@ -12,6 +12,8 @@
           <h1 class="documentFirstHeading" tal:content="title_string | here/title_or_id">
           </h1>
        <div tal:replace="structure provider:plone.belowcontenttitle" />
+       
+       <div tal:replace="structure provider:egov.contactdirectory.alphabeticalsearch" />
           
 
         <p class="documentDescription"

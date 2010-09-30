@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+
+    <browser:viewletManager
+        name="egov.contactdirectory.alphabeticalsearch"
+        provides="egov.contactdirectory.interfaces.IContactListing"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+    
+    <browser:viewlet
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="egov.contactdirectory.alphabeticalsearchviewlet"
+        manager="egov.contactdirectory.interfaces.IContactListing"
+        class=".viewlets.ContactsAlphabeticalSearchViewlet"
+        permission="zope2.View"
+        view="egov.contactdirectory.interfaces.IContactFolderView"
+    />
+
+</configure>

@@ -1,0 +1,15 @@
+<!-- <tal:check condition="python:getattr(context, 'show_index', None)"> -->
+<tal:index define="display_chars python:[chr(c) for c in range(65, 91)];">
+					
+<tal:chars repeat="d_char display_chars">
+<tal:def define="s_char python:d_char.lower();">
+	<a tal:content="d_char"
+	   tal:attributes="href string:${context/absolute_url}?alphabetical_contact_name=${s_char}*;">A</a>
+</tal:def>	
+</tal:chars>
+
+<br />
+<br />
+
+</tal:index>
+<!-- </tal:check> -->
