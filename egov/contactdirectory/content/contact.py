@@ -157,6 +157,15 @@ schema = Schema((
                             ),
     ),
     
+    StringField('organisation',
+                required=0,
+                searchable=1,
+                widget=StringWidget(label=_(u'label_organisation',
+                                        default='Organisation'),
+                                    description_=_(u'help_organisation',
+                                        default='Please enter your organisation')
+                                    ),
+                ),
     
     ReferenceField(
         name='primaryOrgUnit',
@@ -234,6 +243,18 @@ class Contact(ATCTContent):
             return '...'
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
         return '%s' % full_name
+    
+    def getOrganisation(self):
+        #import pdb; pdb.set_trace()
+        if self.getPrimaryOrgUnit() is not None:
+            return self.getPrimaryOrgUnit().Title()
+        elif self.get_orgunits() != []:
+            return self.get_orgunits()[0]['orgunit']
+        elif self.organisation is not None:
+            return self.organisation
+        else:
+            return None
+            
             
     def get_orgunits(self, **kwargs):
         roles = []

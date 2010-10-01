@@ -28,9 +28,9 @@
             </div>
             <h2><span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
 	        <p>
-	            <span tal:condition="context/getPrimaryOrgUnit">
-                    <tal:orgunit tal:content="python:context.getPrimaryOrgUnit().Title()" />
-                </span>
+                <tal:block tal:condition="here/getOrganisation">
+                    <span tal:replace="string: ${here/getOrganisation | nothing}" />
+                </tal:block>
 		    	<span tal:replace="beschreibung" />
 		    	<span tal:replace="here/getFunction | nothing" /><br />
 		    	<span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />

@@ -36,8 +36,8 @@
 	        	<p>
 		        	<span tal:replace="beschreibung" />
 		        	<span tal:replace="here/getFunction | nothing" /><br />
-                    <tal:block tal:condition="here/getShow_address">
-		        	<tal:block tal:condition="here/getAddress"><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
+                    <tal:block>
+		        	<tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
 		        	<tal:block tal:condition="here/getZip"><span tal:replace="here/getZip | nothing" /></tal:block>
 		        	<tal:block tal:condition="here/getCity"><span tal:replace="here/getCity | nothing" /><br /><br /></tal:block>
                     </tal:block>
