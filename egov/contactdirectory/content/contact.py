@@ -250,7 +250,7 @@ class Contact(ATCTContent):
             return self.getPrimaryOrgUnit().Title()
         elif self.get_orgunits() != []:
             return self.get_orgunits()[0]['orgunit']
-        elif self.organisation is not None:
+        elif getattr(self, 'organisation', None) is not None:
             return self.organisation
         else:
             return None
