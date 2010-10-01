@@ -3,7 +3,9 @@
  <object name="Contact"
          meta_type="Factory-based Type Information with dynamic views"/>
  <object name="Member"
-         meta_type="Factory-based Type Information with dynamic views"/>    
+         meta_type="Factory-based Type Information with dynamic views"/>
  <object name="Folder"
-         meta_type="Factory-based Type Information with dynamic views"/>        
+         meta_type="Factory-based Type Information with dynamic views"/>
+ <obect name="Workspace"
+        meta_type="Factory-based Type Information with dynamic views"/>
 </object>

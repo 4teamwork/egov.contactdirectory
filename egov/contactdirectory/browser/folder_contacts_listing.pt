@@ -93,8 +93,8 @@
                                     Item Title
                                 </a>
                                 </h3>
-                                <tal:block tal:condition="obj/getOrganisation">
-                                    <span tal:replace="string: ${obj/getOrganisation | nothing}" />
+                                <tal:block tal:condition="obj/getOrganization">
+                                    <span tal:replace="string: ${obj/getOrganization | nothing}" />
                                 </tal:block>
                                 <div><span tal:content="obj/getFirstname|nothing" /> <span tal:content="obj/getLastname|nothing" /></div>
                                 <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>

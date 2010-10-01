@@ -51,4 +51,11 @@
         permission="zope2.View" 
     />
 
+    <browser:page
+        for="Products.CMFCore.interfaces._content.IFolderish"
+        name="tabbedview_view-contacts"
+        class=".views.ContactTab"
+        permission="zope2.View"
+        />
+
 </configure>

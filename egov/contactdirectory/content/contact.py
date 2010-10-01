@@ -11,6 +11,8 @@ from Products.Archetypes.atapi import StringField, ImageField, ComputedField
 from Products.Archetypes.atapi import TextField, ReferenceField
 from Products.Archetypes.atapi import ReferenceWidget, StringWidget, ImageWidget
 from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget
+from Products.Archetypes.atapi import SelectionWidget
+from Products.Archetypes.public import DisplayList
 
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
@@ -33,6 +35,30 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 schema = Schema((
+
+    StringField('organization',
+        searchable = 1,
+        widget = StringWidget(
+            label = _(u'label_organization', default=u'Organization'),
+            description = _(u'description_organization',
+                            u'Enter the name of the organization'),
+            ),
+        ),
+        
+    StringField('gender',
+        default = 'm',
+        vocabulary=DisplayList((
+            ('m','male'),
+            ('f','female'),
+            ('','-'),
+        )),
+        widget = SelectionWidget(
+            label = _(u'label_gender', default=u'Gender'),
+            description = _(u'description_gender',
+                            default=u'Enter the gender'),
+        ),
+    ),
+    
     StringField('lastname',
                 required=1,
                 searchable=1,
@@ -52,16 +78,7 @@ schema = Schema((
                                         default='Please enter first name')
                                     ),
                 ),
-                
-    ImageField('image',
-               sizes={'thumbnail': (175,999),},
-               widget=ImageWidget(label=_(u'label_image',
-                                      default='Image'),
-                                  description=_(u'help_image',
-                                      default='Please supply an image')
-                                  ),
-               ),
-    
+
     ComputedField('searchableMemberships',
       expression='context.getSearchableMembershipText()',
       searchable=1,
@@ -81,29 +98,29 @@ schema = Schema((
                       ),
 
     TextField('address',
-       # schemata='Kontakt',
         searchable = 1,        
-        widget=TextAreaWidget(label=_(u'label_address', default='Address'),
-                              description=_(u'help_address', default='Please enter address'),
+        widget=TextAreaWidget(
+            label=_(u'label_address', default='Address'),
+            description=_(u'help_address', default='Please enter address'),
+            rows = 2,
         ),
     ),
     
     StringField('zip',
-       #         schemata='Kontakt',
                 searchable = 1,
-                widget = StringWidget(label=_(u'label_zip', default='Postal code'),
-                                        description=_(u'help_zip', default='Enter the postal code'),
-                                        )
-                   ),
+                widget = StringWidget(
+                    label=_(u'label_zip', default='Postal code'),
+                    description=_(u'help_zip', default='Enter the postal code'),
+                    )
+                ),
 
     StringField('city', 
-        #        schemata='Kontakt',
                 searchable=1,
-                widget = StringWidget(label=_(u'label_city', default='City'),
-                                      description=_(u'help_city', default="Enter the name of the city")
-                                      )
-                                      
-                   ),
+                widget = StringWidget(
+                    label=_(u'label_city', default='City'),
+                    description=_(u'help_city', default="Enter the name of the city")
+                    )
+                ),
 
     StringField('country',
                 required = True,
@@ -111,13 +128,20 @@ schema = Schema((
                 languageIndependent = False,
                 default = 'Schweiz',
                 storage = AnnotationStorage(),
-                widget = StringWidget(label=_(u'label_country', default='Country'),
-                                      description=_(u'help_country', default="Enter the name of the country")
-                                      ),
+                widget = StringWidget(
+                    label=_(u'label_country', default='Country'),
+                    description=_(u'help_country', default="Enter the name of the country")
+                    ),
                 ),
 
+    StringField('email',
+        searchable = 1,        
+        widget=StringWidget(label=_(u'label_email', default='E-Mail'),
+                            description=_(u'help_email', default='Please enter e-Mail address')
+                            ),
+    ),
+
     StringField('phone_office',
-          #      schemata='Kontakt',
                 searchable = 1,
                 widget = StringWidget(label=_(u'label_phone_office', default='Phone number (office)'),
                                       description=_(u'help_phone_office', default='Enter the phone number')
@@ -125,7 +149,6 @@ schema = Schema((
                 ),
                 
     StringField('phone_mobile',
-        #        schemata='Kontakt',
                 searchable = 1,
                 widget = StringWidget(label=_(u'label_phone_mobile', default='Mobile number'),
                                       description=_(u'help_phone_mobile', default='Enter the mobile number')
@@ -133,7 +156,6 @@ schema = Schema((
                 ),
 
     StringField('fax',
-        #        schemata='Kontakt',
                 searchable = 1,
                 widget = StringWidget(label=_(u'label_fax', default='Fax number'),
                                       description=_(u'help_fax', default='Enter the fax number')
@@ -141,47 +163,110 @@ schema = Schema((
             
                 ),
 
-    StringField('email',
-       # schemata='Kontakt',
-        searchable = 1,        
-        widget=StringWidget(label=_(u'label_email', default='E-Mail'),
-                            description=_(u'help_email', default='Please enter e-Mail address')
-                            ),
-    ),
-
     StringField('www',
-        schemata='settings',
         validators=('isURL',),
         widget=StringWidget(label=_(u'label_www', default='WWW'),
                             description=_(u'help_www', default='Please enter a website URL')
                             ),
     ),
-    
-    StringField('organisation',
-                required=0,
-                searchable=1,
-                widget=StringWidget(label=_(u'label_organisation',
-                                        default='Organisation'),
-                                    description_=_(u'help_organisation',
-                                        default='Please enter your organisation')
-                                    ),
-                ),
-    
+
+    ImageField('image',
+       schemata='Erweitert',
+       sizes={'thumbnail': (175,999),},
+       widget=ImageWidget(label=_(u'label_image',
+                              default='Image'),
+                          description=_(u'help_image',
+                              default='Please supply an image')
+                          ),
+       ),
+
+    StringField('academic_title',
+        schemata='Erweitert',
+        searchable = 0,
+        widget = StringWidget(
+            label = _(u'label_academic_title', default=u'Academic title'),
+            description = _(u'help_academic_title',
+                            u'Enter the academic title'),
+            ),
+        ),
+
+    StringField('function',
+        schemata='Erweitert',
+        searchable = 1,
+        widget = StringWidget(
+            label = _(u'label_function', default=u'Function'),
+            description = _(u'help_function', default=u'Enter the function'),
+            ),
+        ),
+            
+    StringField('department',
+        schemata='Erweitert',
+        searchable = 1,
+        widget = StringWidget(
+            label = _(u'label_department', default=u'Department'),
+            description = _(u'help_department', u'Enter the department'),
+            ),
+        ),
+
     ReferenceField(
+        schemata='Erweitert',
         name='primaryOrgUnit',
         required=False,
-        widget = ReferenceWidget(label=_(u'label_primary_org_unit', default='Primary Organisation Unit'),
-                                 description=_(u'help_primary_org_unit', 
-                                    default='If chosen, this Organisation Unit\'s title will be included in your address')
-                                 ),
+        widget = ReferenceWidget(
+            label=_(u'label_primary_org_unit', default='Primary Organisation Unit'),
+            description=_(u'help_primary_org_unit', 
+                          default='If chosen, this Organisation Unit\'s \
+                                   title will be included in your address')
+            ),
         allowed_types=('OrgUnit',),
         multiValued=0,
         relationship='contact_to_org_unit',
         vocabulary_display_path_bound = 999999,
         vocabulary_factory= 'egov.contactdirectory.OrgUnitsVocabularyFactory'
     ),
-    
 
+    StringField('salutation',
+        schemata='Erweitert',
+        searchable = 1,
+        widget = StringWidget(
+            label = _(u'label_salutation', default=u'Salutation'),
+            description = _(u'help_salutation',
+                            default=u'Enter the salutation'),
+        ),
+    ),
+
+    TextField('address_private',
+        default='',
+        searchable=1,
+        schemata = "Privatanschrift",
+        widget = TextAreaWidget(
+            label = _(u'label_address', default=u'Address'),
+            description = _(u'help_address', default=u'Enter the address'),
+            rows = 2,
+            i18n_domain = 'teamraum')),
+
+    StringField('zip_private',
+        searchable = 1,
+        schemata = "Privatanschrift",
+        widget = StringWidget(
+            label = 'Postal code',
+            label_msgid = 'ftw_zip_code_label',
+            i18n_domain = 'teamraum',
+            description = 'Enter the postal code',
+            description_msgid = 'ftw_zip_code_description',
+            ),
+        ),
+
+    StringField('city_private',
+        searchable=1,
+        schemata = "Privatanschrift",
+        widget = StringWidget(
+            label = 'City',
+            label_msgid = 'ftw_city_label',
+            i18n_domain = 'teamraum',
+            description = 'Enter the name of the city',
+            description_msgid = 'ftw_city_description',),
+            ),
 ),
 )
 
@@ -193,7 +278,7 @@ contact_schema = ATContentTypeSchema.copy() + \
     schema.copy()# + textSchema.copy()
 
 finalizeATCTSchema(contact_schema)
-contact_schema.moveField(name='description',pos='bottom')
+contact_schema.moveField(name='description', pos='bottom')
 #contact_schema.moveField(name='text',after='description')
 contact_schema['title'].required = 0
 contact_schema['title'].widget.visible = {'edit': 'invisible', 'view': 'invisible'}
@@ -230,7 +315,7 @@ class Contact(ATCTContent):
         memberships = self.getMemberships()
         result = ""
         for membership in memberships:
-            result += " %s %s" % (membership.getOrganisation(), '')
+            result += " %s %s" % (membership.getOrganization(), '')
         return result
 
             
@@ -244,14 +329,13 @@ class Contact(ATCTContent):
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
         return '%s' % full_name
     
-    def getOrganisation(self):
-        #import pdb; pdb.set_trace()
+    def getOrganization(self):
         if self.getPrimaryOrgUnit() is not None:
             return self.getPrimaryOrgUnit().Title()
         elif self.get_orgunits() != []:
             return self.get_orgunits()[0]['orgunit']
-        elif getattr(self, 'organisation', None) is not None:
-            return self.organisation
+        elif getattr(self, 'organization', None) is not None:
+            return self.organization
         else:
             return None
             

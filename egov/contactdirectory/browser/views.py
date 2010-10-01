@@ -4,8 +4,11 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
 from simplelayout.types.common.browser.views import BlockView 
-
+from ftw.tabbedview.browser import listing
 from egov.contactdirectory.interfaces import IContactFolderView
+from ftw.table import helper
+from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+
 
 class ContactFolderView(BrowserView):
     """
@@ -47,3 +50,16 @@ class MemberBlockView(BlockView):
         #check for a 'image' field in schemata
         contact = self.context.getContact()
         return bool(contact.getField('image').get(contact))
+
+class ContactTab(listing.BaseListingView):
+    types = ['Contact']
+
+    sort_on = 'start'
+    sort_order = 'reverse'
+
+    columns = (('', helper.path_checkbox),
+               ('Title', 'sortable_title', helper.linked),
+              )
+
+#    template = ViewPageTemplateFile('contacttab.pt')
+    

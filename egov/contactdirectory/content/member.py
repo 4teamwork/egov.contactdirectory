@@ -262,7 +262,7 @@ class Member(ATDocumentBase):
 #        else:
 #            return ''
             
-    def getOrganisation(self):
+    def getOrganization(self):
         try:
             parent = self.aq_parent
             while parent.portal_type not in ['OrgUnit', "Plone Site"]:
