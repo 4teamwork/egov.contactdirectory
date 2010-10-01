@@ -93,9 +93,6 @@
                                     Item Title
                                 </a>
                                 </h3>
-                                <div tal:condition="obj/getPrimaryOrgUnit">
-                                    <tal:orgunit tal:content="python:obj.getPrimaryOrgUnit().Title()" />
-                                </div>
                                 <tal:block tal:condition="obj/getOrganisation">
                                     <span tal:replace="string: ${obj/getOrganisation | nothing}" />
                                 </tal:block>
