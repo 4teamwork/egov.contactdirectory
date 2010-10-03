@@ -22,7 +22,7 @@
     <browser:menuItem
         for="Products.ATContentTypes.interface.IATFolder"
         menu="plone_displayviews"
-        title="Kontaktansicht"
+        title="Kontakverzeichnis"
         action="@@contacts_view"
         description="List contents of a contacts folder"
     />
@@ -34,6 +34,14 @@
         permission="zope.Public"
         template="contact.pt"
     />
+    
+    <browser:menuItem
+        for="egov.contactdirectory.interfaces.IContact"
+        menu="plone_displayviews"
+        title="Kontaktansicht"
+        action="@@contact_view"
+        description="View for a single contact"
+    />    
       
     <browser:page
         for="*"
