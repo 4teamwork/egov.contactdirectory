@@ -10,7 +10,7 @@ from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, re
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
 from Products.Archetypes.atapi import TextField, ReferenceField
 from Products.Archetypes.atapi import ReferenceWidget, StringWidget, ImageWidget
-from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget
+from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget, RichWidget
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.public import DisplayList
 
@@ -64,18 +64,18 @@ schema = Schema((
                 searchable=1,
                 index = ('TextIndex'),                     
                 widget=StringWidget(label=_(u'label_lastname', 
-                                        default="Lastname"),
+                                    default="Lastname"),
                                     description=_(u'help_lastname', 
-                                        default='Please enter last name')
+                                    default='Please enter last name')
                                     ),
                 ),
     StringField('firstname',
                 required=1,
                 searchable=1,
                 widget=StringWidget(label=_(u'label_firstname',
-                                        default='Firstname'),
+                                    default='Firstname'),
                                     description_=_(u'help_firstname',
-                                        default='Please enter first name')
+                                    default='Please enter first name')
                                     ),
                 ),
 
@@ -135,7 +135,8 @@ schema = Schema((
                 ),
 
     StringField('email',
-        searchable = 1,        
+        searchable = 1,
+        validators=('isEmail',),     
         widget=StringWidget(label=_(u'label_email', default='E-Mail'),
                             description=_(u'help_email', default='Please enter e-Mail address')
                             ),
@@ -234,7 +235,17 @@ schema = Schema((
                             default=u'Enter the salutation'),
         ),
     ),
-
+    TextField('text',
+              required=False,
+              searchable=True,
+              schemata = "Erweitert",
+              default_input_type = 'text/html',
+              default_output_type = 'text/html',
+              widget = RichWidget(
+                        description = '',
+                        label = _(u'label_text', default=u'Text'),
+                        rows = 25,),
+    ),
     TextField('address_private',
         default='',
         searchable=1,

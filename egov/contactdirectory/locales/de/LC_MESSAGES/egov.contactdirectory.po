@@ -41,7 +41,7 @@ msgstr "Zur Zeit sind keine Objekte in diesem Ordner vorhanden."
 #. Default: "Enter the name of the organization"
 #: ./egov/contactdirectory/content/contact.py:43
 msgid "description_organization"
-msgstr "Geben Sie den Namen Ihrer Firma ein"
+msgstr "Geben Sie den Namen Ihrer Organisation ein"
 
 #. Default: "Enter the academic title"
 #: ./egov/contactdirectory/content/contact.py:187
@@ -126,7 +126,7 @@ msgstr "Geben Sie die Mobil Nummer ein"
 msgid "help_phone_office"
 msgstr "Geben Sie die Telefonnummer ein"
 
-#. Default: "If chosen, this Organisation Unit's                                    title will be included in your address"
+#. Default: "If chosen, this Organisation Unit's title will be included in your address"
 #: ./egov/contactdirectory/content/contact.py:216
 msgid "help_primary_org_unit"
 msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer Adresse angezeigt"
@@ -135,6 +135,11 @@ msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer A
 #: ./egov/contactdirectory/content/contact.py:232
 msgid "help_salutation"
 msgstr "Geben Sie die gewünschte Anschrift ein."
+
+#. Default: "Text"
+#: ./egov/contactdirectory/content/contact.py:246
+msgid "label_text"
+msgstr "Text"
 
 #. Default: "Also show address on membership page of the organisation unit"
 #: ./egov/contactdirectory/content/member.py:71
@@ -161,7 +166,7 @@ msgstr "Geben Sie die Postleitzahl ein"
 #. Default: "Academic title"
 #: ./egov/contactdirectory/content/contact.py:186
 msgid "label_academic_title"
-msgstr "Akademischer Titelms"
+msgstr "Akademischer Titel"
 
 #. Default: "Acquire address"
 #: ./egov/contactdirectory/content/member.py:90
@@ -269,7 +274,7 @@ msgstr "Organisation"
 #. Default: "Organization"
 #: ./egov/contactdirectory/content/contact.py:42
 msgid "label_organization"
-msgstr "Firma"
+msgstr "Organisation"
 
 #. Default: "Phone"
 #: ./egov/contactdirectory/browser/contactfolder.pt:73

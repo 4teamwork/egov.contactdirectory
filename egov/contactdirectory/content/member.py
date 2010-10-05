@@ -11,8 +11,6 @@ from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.interfaces import IMember
 
-from simplelayout.types.common.content.simplelayout_schemas import textSchema
-
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.content.document import ATDocumentBase
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
@@ -157,16 +155,13 @@ schema = Schema((
 )
 
 
-member_schema = ATContentTypeSchema.copy() + \
-    schema.copy() + textSchema.copy()
+member_schema = ATContentTypeSchema.copy() + schema.copy()
 member_schema['excludeFromNav'].default = True
-
 
 finalizeATCTSchema(member_schema)
 member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
 member_schema['title'].required = 0
 member_schema['title'].widget.visible = {'edit': 'invisible', 'view': 'invisible'}
-member_schema['text'].widget.visible = {'edit': 'invisible', 'view': 'invisible'}
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema

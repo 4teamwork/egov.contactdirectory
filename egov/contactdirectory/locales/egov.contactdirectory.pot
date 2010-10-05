@@ -131,7 +131,7 @@ msgstr ""
 msgid "help_phone_office"
 msgstr ""
 
-#. Default: "If chosen, this Organisation Unit's                                    title will be included in your address"
+#. Default: "If chosen, this Organisation Unit's title will be included in your address"
 #: ./egov/contactdirectory/content/contact.py:216
 msgid "help_primary_org_unit"
 msgstr ""
@@ -139,6 +139,11 @@ msgstr ""
 #. Default: "Enter the salutation"
 #: ./egov/contactdirectory/content/contact.py:232
 msgid "help_salutation"
+msgstr ""
+
+#. Default: "Text"
+#: ./egov/contactdirectory/content/contact.py:246
+msgid "label_text"
 msgstr ""
 
 #. Default: "Also show address on membership page of the organisation unit"
