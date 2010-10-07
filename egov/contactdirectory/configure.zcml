@@ -11,17 +11,13 @@
     <include package=".browser" />
     <include package=".content" />
     
+    <include file="skins.zcml" />
+    <include file="profiles.zcml" />
+
+    
     <i18n:registerTranslations directory="locales" />
 
     <five:registerPackage package="." initialize=".initialize" />
 
-    <!-- Register the installation GenericSetup extension profile -->
-    <genericsetup:registerProfile
-      name="default"
-      title="egov.contactdirectory"
-      directory="profiles/default"
-      description="Directory for Egov GemeindePortal"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
 
 </configure>

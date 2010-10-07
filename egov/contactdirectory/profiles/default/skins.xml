@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+ <object name="egov_contactdirectory"
+    meta_type="Filesystem Directory View"
+    directory="egov.contactdirectory:skins/egov_contactdirectory"/>
+
+ <skin-path name="*">
+  <layer name="egov_contactdirectory"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>
