@@ -117,7 +117,7 @@
 
                             </td>
                             <td tal:define="img obj/getImage|nothing">
-                                <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumb"/>
+                                <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumbnail"/>
                             </td>
                         </tal:defs>
                     </tr>
