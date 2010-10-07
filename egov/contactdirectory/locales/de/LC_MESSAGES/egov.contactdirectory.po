@@ -31,7 +31,7 @@ msgstr "Kontakte durchsuchen"
 #. Default: "Enter the gender"
 #: ./egov/contactdirectory/content/contact.py:57
 msgid "description_gender"
-msgstr "Geben Sie Ihr Geschlecht ein."
+msgstr "Geben Sie Ihre Anrede ein."
 
 #. Default: "There are currently no items in this folder."
 #: ./egov/contactdirectory/browser/folder_contacts_listing.pt:134
@@ -238,7 +238,7 @@ msgstr "Funktion"
 #. Default: "Gender"
 #: ./egov/contactdirectory/content/contact.py:56
 msgid "label_gender"
-msgstr "Geschlecht"
+msgstr "Anrede"
 
 #. Default: "Image"
 #: ./egov/contactdirectory/content/contact.py:175
@@ -375,4 +375,8 @@ msgstr "Postleitzahl"
 msgid "summary_content_listing"
 msgstr "Inhaltsauflistung"
 
+msgid "male"
+msgstr "Herr"
 
+msgid "female"
+msgstr "Frau"

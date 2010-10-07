@@ -48,8 +48,8 @@ schema = Schema((
     StringField('gender',
         default = 'm',
         vocabulary=DisplayList((
-            ('m','male'),
-            ('f','female'),
+            ('m',_(u'male')),
+            ('f',_(u'female')),
             ('','-'),
         )),
         widget = SelectionWidget(
