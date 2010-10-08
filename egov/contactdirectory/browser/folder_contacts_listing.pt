@@ -51,7 +51,8 @@
 
             <table class="listing"
                    summary="Content listing"
-                   i18n:attributes="summary summary_content_listing;">
+                   i18n:attributes="summary summary_content_listing;"
+                   width="100%">
                 <thead>
                     <tr> 
                         <th class="nosort">&nbsp;</th>
@@ -100,8 +101,7 @@
                                 <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>
                                 <div><span tal:content="obj/getZip | nothing" /> <span tal:content="obj/getCity" /></div>
 
-</td>
-<td valign="top">
+
                                 <h3><span class="visualIconPadding">&nbsp;</span></h3><div>
                                 <div><span i18n:translate="label_short_phone_office">Phone W</span>:  
                                     <span tal:content="obj/getPhone_office" /></div>
@@ -117,7 +117,8 @@
 
                             </td>
                             <td tal:define="img obj/getImage|nothing">
-                                <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumbnail"/>
+                                <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumbnail"
+                                     class="image-right"/>
                             </td>
                         </tal:defs>
                     </tr>
