@@ -15,7 +15,7 @@
         for="*"
         name="contacts_view"
         class=".views.ContactFolderView"
-        permission="zope.Public"
+        permission="zope2.View"
         template="folder_contacts_listing.pt"
     />
       
@@ -31,7 +31,7 @@
         for="*"
         name="contact_view"
         class=".views.ContactView"
-        permission="zope.Public"
+        permission="zope2.View"
         template="contact.pt"
     />
     
@@ -47,7 +47,7 @@
         for="*"
         name="member_view"
         class=".views.MemberView"
-        permission="zope.Public"
+        permission="zope2.View"
         template="member_view.pt"
     />
 
