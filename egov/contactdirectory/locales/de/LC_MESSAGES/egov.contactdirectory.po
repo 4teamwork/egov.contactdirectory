@@ -43,6 +43,9 @@ msgstr "Zur Zeit sind keine Objekte in diesem Ordner vorhanden."
 msgid "description_organization"
 msgstr "Geben Sie den Namen Ihrer Organisation ein"
 
+msgid "female"
+msgstr "Frau"
+
 #. Default: "Enter the academic title"
 #: ./egov/contactdirectory/content/contact.py:187
 msgid "help_academic_title"
@@ -135,11 +138,6 @@ msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer A
 #: ./egov/contactdirectory/content/contact.py:232
 msgid "help_salutation"
 msgstr "Geben Sie die gewünschte Anschrift ein."
-
-#. Default: "Text"
-#: ./egov/contactdirectory/content/contact.py:246
-msgid "label_text"
-msgstr "Text"
 
 #. Default: "Also show address on membership page of the organisation unit"
 #: ./egov/contactdirectory/content/member.py:71
@@ -358,6 +356,11 @@ msgstr "Adresse anzeigen"
 msgid "label_show_image"
 msgstr "Bild anzeigen"
 
+#. Default: "Text"
+#: ./egov/contactdirectory/content/contact.py:246
+msgid "label_text"
+msgstr "Text"
+
 #. Default: "WWW"
 #: ./egov/contactdirectory/content/contact.py:167
 #: ./egov/contactdirectory/content/member.py:152
@@ -370,13 +373,12 @@ msgstr "URL"
 msgid "label_zip"
 msgstr "Postleitzahl"
 
+msgid "male"
+msgstr "Herr"
+
 #. Default: "Content listing"
 #: ./egov/contactdirectory/browser/folder_contacts_listing.pt:52
 msgid "summary_content_listing"
 msgstr "Inhaltsauflistung"
 
-msgid "male"
-msgstr "Herr"
 
-msgid "female"
-msgstr "Frau"

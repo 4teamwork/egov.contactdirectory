@@ -10,7 +10,7 @@
     <action title="Contacts" action_id="contacts" category="tabbedview-tabs" 
             condition_expr="" url_expr="string:${object_url}?view=contacts" 
             visible="True"
-            i18n:attributes="title" >
+            i18n:attributes="title">
         <permission value="View"/>
     </action>
 
