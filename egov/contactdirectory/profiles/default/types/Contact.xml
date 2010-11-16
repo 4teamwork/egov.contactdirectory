@@ -4,7 +4,7 @@
    i18n:domain="egov.contactdirectory" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property i18n:translate="" name="title">Contact</property>
  <property i18n:translate="" name="description"></property>
- <property name="content_icon">contact_icon.gif</property>
+ <property name="content_icon">icon_objekt_kontakt.gif</property>
  <property name="content_meta_type">Contact</property>
  <property name="product">egov.contactdirectory</property>
  <property name="factory">addContact</property>
