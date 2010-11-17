@@ -3,7 +3,7 @@ Changelog
 
 
 1.1.1
----
+-----
 * added Icon
   [16.11.2010, mathias.leimgruber]
 
