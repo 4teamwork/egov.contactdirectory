@@ -51,7 +51,7 @@ class MemberBlockView(BlockView):
         contact = self.context.getContact()
         return bool(contact.getField('image').get(contact))
 
-class ContactTab(listing.BaseListingView):
+class ContactTab(listing.CatalogListingView):
     types = ['Contact']
 
     sort_on = 'start'
