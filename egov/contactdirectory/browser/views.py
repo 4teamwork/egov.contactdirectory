@@ -14,13 +14,10 @@ def linked(item, value):
     if 'url' in item:
         url = item['url']
 
-    img = u''
-
     value = value.decode('utf-8')
-    link = u'<a href="%s">%s%s</a>' % (url, img, value)
+    link = u'<a href="%s">%s</a>' % (url, value)
     wrapper = u'<span class="linkWrapper">%s</span>' % link
     return wrapper
-
 
 
 class ContactFolderView(BrowserView):
@@ -79,11 +76,10 @@ class ContactTab(listing.ListingView):
     sort_order = 'reverse'
 
     columns = (
-               ('Name', 'name', linked),
-               ('Phone', 'phone', ),
-               ('Email', 'email', ),
-              )
-    columns = ({'column' : 'name',
+               {'column' : 'icon',
+                'column_title' : 'Type',
+                'transform' : linked},
+               {'column' : 'name',
                 'column_title' : 'Name',
                 'sort_index' : 'name',
                 'transform' : linked}, 
@@ -124,6 +120,7 @@ class ContactTableSource(BaseTableSource):
                         name = name,
                         phone = user.getProperty('phone', ''),
                         email = user.getProperty('email',''),
+                        icon = '',
                         url = '%s/author/%s' % (
                             context.portal_url(),
                             user._id),))
@@ -141,6 +138,7 @@ class ContactTableSource(BaseTableSource):
                     phone = obj.getPhone_office(),
                     email = obj.getEmail(),
                     url = obj.absolute_url(),
+                    icon = '<img src="%s/%s" />' % (context.portal_url(), brain.getIcon),
             ))
         return results
 
