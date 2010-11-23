@@ -11,8 +11,8 @@ from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.interfaces import IMember
 
+from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-from Products.ATContentTypes.content.document import ATDocumentBase
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 
 from Products.CMFCore.permissions import View
@@ -166,7 +166,7 @@ member_schema['title'].widget.visible = {'edit': 'invisible', 'view': 'invisible
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Member(ATDocumentBase):
+class Member(base.ATCTContent):
     """
     """
     implements(IMember)
