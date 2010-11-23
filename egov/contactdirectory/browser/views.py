@@ -1,5 +1,6 @@
 from zope.interface import implements, Interface
-from zope.component import adapts
+from zope.component import adapts, getUtility
+from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from ftw.table.basesource import BaseTableSource
@@ -104,27 +105,29 @@ class ContactTableSource(BaseTableSource):
 
     def validate_base_query(self, query):
         context = self.config.context
+        registry = getUtility(IRegistry)
         acl_users = getToolByName(context, 'acl_users')
         results = []
         
-        # Get members
-        for user_id in dict(context.get_local_roles()).keys():
-            user = user = acl_users.getUserById(user_id)
-            if user is not None:
-                name = '%s %s' % (
-                    user.getProperty('lastname', user.id),
-                    user.getProperty('firstname', ''))
-                results.append(
-                    dict(
-                        user_id = user._id,
-                        name = name,
-                        phone = user.getProperty('phone', ''),
-                        email = user.getProperty('email',''),
-                        icon = '',
-                        url = '%s/author/%s' % (
-                            context.portal_url(),
-                            user._id),))
         
+        # Get members
+        if registry['ftw.contactdirectory.showlocalroles']:
+            for user_id in dict(context.get_local_roles()).keys():
+                user = user = acl_users.getUserById(user_id)
+                if user is not None:
+                    name = '%s %s' % (
+                        user.getProperty('lastname', user.id),
+                        user.getProperty('firstname', ''))
+                    results.append(
+                        dict(
+                            user_id = user._id,
+                            name = name,
+                            phone = user.getProperty('phone', ''),
+                            email = user.getProperty('email',''),
+                            icon = '',
+                            url = '%s/author/%s' % (
+                                context.portal_url(),
+                                user._id),))        
         # Get contacts
         query = dict(
             portal_type='Contact',

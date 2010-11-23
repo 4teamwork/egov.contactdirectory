@@ -1,0 +1,8 @@
+<registry>
+    <record name="ftw.contactdirectory.showlocalroles">
+        <field type="plone.registry.field.Bool">
+            <title>Show local roles in contact listing</title>
+        </field>
+        <value>False</value>
+    </record>
+</registry>

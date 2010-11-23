@@ -4,6 +4,9 @@ Changelog
 
 1.1.2
 -----
+* Added possibility to configure the contact listing with plone.registry
+  [23.11.2010, mathias.leimgruber]
+
 * First implementation of mixed contact listing in tabbedview
   [23.11.2010, mathias.leimgruber]
 
