@@ -17,4 +17,7 @@
         name="egov.contactdirectory.OrgUnitsVocabularyFactory"
         provides="zope.schema.interfaces.IVocabularyFactory" 
         />
+
+    <subscriber provides="Products.Archetypes.interfaces.IObjectPostValidation"
+                factory=".contact.ValidateOrganizationOrFullname" />
 </configure>

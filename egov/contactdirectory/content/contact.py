@@ -13,6 +13,7 @@ from Products.Archetypes.atapi import ReferenceWidget, StringWidget, ImageWidget
 from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget, RichWidget
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.public import DisplayList
+from Products.Archetypes.interfaces import IObjectPostValidation
 
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
@@ -20,6 +21,7 @@ from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from zope.interface import implements, directlyProvides
+from zope.component import adapts
 from zope.schema.interfaces import IVocabularyFactory 
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -60,7 +62,7 @@ schema = Schema((
     ),
     
     StringField('lastname',
-                required=1,
+                required=0,
                 searchable=1,
                 index = ('TextIndex'),                     
                 widget=StringWidget(label=_(u'label_lastname', 
@@ -70,7 +72,7 @@ schema = Schema((
                                     ),
                 ),
     StringField('firstname',
-                required=1,
+                required=0,
                 searchable=1,
                 widget=StringWidget(label=_(u'label_firstname',
                                     default='Firstname'),
@@ -336,7 +338,10 @@ class Contact(ATCTContent):
         arguments since PortalFolder defines it."""
         full_name = ''
         if self.getFirstname() == '' or self.getLastname() == '':
-            return '...'
+            if not self.getOrganization():
+                return '...'
+            else:
+                return self.getOrganization()
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
         return '%s' % full_name
     
@@ -372,6 +377,32 @@ class Contact(ATCTContent):
     def SearchableText(self):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])
         return '%s %s' % (ATCTContent.SearchableText(self),orgunitinfo)
+
+
+
+class ValidateOrganizationOrFullname(object):
+    """Validate that either an organization or a full name (first
+    and last name) has been supplied.
+    """
+    implements(IObjectPostValidation)
+    adapts(IContact)
+
+    msg = _(u"Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an")
+
+    def __init__(self, context):
+        self.context = context
+
+    def __call__(self, request):
+        organization = request.form.get('organization', request.get('organization', None))
+        firstname = request.form.get('firstname', request.get('firstname', None))
+        lastname = request.form.get('lastname', request.get('lastname', None))
+        if organization or (firstname and lastname):
+            return None
+        else:
+            return {'organization': self.msg,
+            'firstname': self.msg,
+            'lastname': self.msg}
+# Returning None means no error
 
 
 def OrgUnitsVocabularyFactory(context):
