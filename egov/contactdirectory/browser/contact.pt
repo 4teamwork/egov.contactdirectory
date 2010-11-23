@@ -28,9 +28,6 @@
             </div>
             <h2><span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
 	        <p>
-	            <span tal:condition="context/getPrimaryOrgUnit">
-                    <tal:orgunit tal:content="python:context.getPrimaryOrgUnit().Title()" />
-                </span>
 	            <span tal:condition="context/getOrganization"
 	                  tal:content="context/getOrganization"/>
 
