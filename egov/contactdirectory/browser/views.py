@@ -8,7 +8,7 @@ from simplelayout.types.common.browser.views import BlockView
 from ftw.tabbedview.browser import listing
 from egov.contactdirectory.interfaces import IContactFolderView
 from ftw.table.interfaces import ITableSourceConfig, ITableSource
-
+from egov.contactdirectory import contactdirectoryMessageFactory as _
 
 def linked(item, value):
     url = '#'
@@ -78,17 +78,17 @@ class ContactTab(listing.ListingView):
 
     columns = (
                {'column' : 'icon',
-                'column_title' : 'Type',
+                'column_title' : _(u'Type', default=u'Type'),
                 'transform' : linked},
                {'column' : 'name',
-                'column_title' : 'Name',
+                'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
                 'transform' : linked}, 
               {'column' : 'phone',
-               'column_title' : 'Phone',
+               'column_title' : _(u'Phone', default=u'Phone'),
                'sort_index' : 'phone',},
                {'column' : 'email',
-                'column_title' : 'Email',
+                'column_title' : _(u'Email', default=u'Email'),
                 'sort_index' : 'email',},
                )
     

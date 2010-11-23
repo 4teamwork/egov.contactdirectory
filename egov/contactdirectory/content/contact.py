@@ -252,7 +252,7 @@ schema = Schema((
         schemata = "Privatanschrift",
         widget = TextAreaWidget(
             label = _(u'label_address', default=u'Address'),
-            description = _(u'help_address', default=u'Enter the address'),
+            description = _(u'help_address_private', default=u'Enter the address'),
             rows = 2,
             i18n_domain = 'teamraum')),
 
