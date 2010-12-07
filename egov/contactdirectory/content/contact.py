@@ -211,23 +211,6 @@ schema = Schema((
             ),
         ),
 
-    ReferenceField(
-        schemata='Erweitert',
-        name='primaryOrgUnit',
-        required=False,
-        widget = ReferenceWidget(
-            label=_(u'label_primary_org_unit', default='Primary Organisation Unit'),
-            description=_(u'help_primary_org_unit', 
-                          default='If chosen, this Organisation Unit\'s \
-                                   title will be included in your address')
-            ),
-        allowed_types=('OrgUnit',),
-        multiValued=0,
-        relationship='contact_to_org_unit',
-        vocabulary_display_path_bound = 999999,
-        vocabulary_factory= 'egov.contactdirectory.OrgUnitsVocabularyFactory'
-    ),
-
     StringField('salutation',
         schemata='Erweitert',
         searchable = 1,
@@ -299,7 +282,29 @@ contact_schema['description'].widget.visible = {'edit': 'invisible', 'view': 'in
 
 contact_schema['country'].widget.visible = {'view' : 'hidden', 'edit': 'hidden'}
 
-#if MAPS_PACKAGE_PRESENT:
+# Hide settings schemata for non-managers
+settings_fields = [contact_schema[key] for key in contact_schema.keys()
+                        if contact_schema[key].schemata == 'settings']
+for field in settings_fields:
+    field.write_permission = permissions.ManagePortal
+
+# Hide ownership schemata for non-managers
+ownership_fields = [contact_schema[key] for key in contact_schema.keys()
+                        if contact_schema[key].schemata == 'ownership']
+for field in ownership_fields:
+    field.write_permission = permissions.ManagePortal
+
+# Hide ownership schemata for non-managers
+dates_fields = [contact_schema[key] for key in contact_schema.keys()
+                        if contact_schema[key].schemata == 'dates']
+for field in dates_fields:
+    field.write_permission = permissions.ManagePortal
+
+contact_schema['language'].write_permission = permissions.ManagePortal
+contact_schema['location'].write_permission = permissions.ManagePortal
+
+
+# #if MAPS_PACKAGE_PRESENT:
 #    # Hide the geolocation and markerIcon fields since we automatically calculate the location from the address
 #    contact_schema['geolocation'].widget.visible = {'edit': 'invisible'}
 #    contact_schema['markerIcon'].widget.visible = {'edit': 'invisible'}
@@ -344,18 +349,13 @@ class Contact(ATCTContent):
                 return self.getOrganization()
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
         return '%s' % full_name
-    
+
     def getOrganization(self):
-        if self.getPrimaryOrgUnit() is not None:
-            return self.getPrimaryOrgUnit().Title()
-        elif self.get_orgunits() != []:
-            return self.get_orgunits()[0]['orgunit']
-        elif getattr(self, 'organization', None) is not None:
+        if getattr(self, 'organization', None) is not None:
             return self.organization
         else:
-            return None
-            
-            
+            return 'None'''
+
     def get_orgunits(self, **kwargs):
         roles = []
         members = self.getBRefs(relationship='member_to_contact')
@@ -372,7 +372,7 @@ class Contact(ATCTContent):
             phone = member.getPhone_office()
             roles.append(dict(orgunit=orgunit, link=link, function=function, phone=phone))
         return roles
-        
+
 
     def SearchableText(self):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])
