@@ -4,7 +4,8 @@ Changelog
 
 1.1.4
 -----
-
+* Fix problem with organization getter - what's the reason for this method
+  [22.12.2010, mathias.leimgruber]
 
 1.1.3
 -----

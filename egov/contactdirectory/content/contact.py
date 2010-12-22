@@ -8,8 +8,8 @@ from egov.contactdirectory.interfaces import IContact
 
 from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, registerType
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
-from Products.Archetypes.atapi import TextField, ReferenceField
-from Products.Archetypes.atapi import ReferenceWidget, StringWidget, ImageWidget
+from Products.Archetypes.atapi import TextField
+from Products.Archetypes.atapi import StringWidget, ImageWidget
 from Products.Archetypes.atapi import ComputedWidget, TextAreaWidget, RichWidget
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.public import DisplayList
@@ -350,11 +350,11 @@ class Contact(ATCTContent):
         full_name = '%s %s' % (self.getLastname(), self.getFirstname())
         return '%s' % full_name
 
-    def getOrganization(self):
-        if getattr(self, 'organization', None) is not None:
-            return self.organization
-        else:
-            return 'None'''
+    # def getOrganization(self):
+    #     if getattr(self, 'organization', None) is not None:
+    #         return self.organization
+    #     else:
+    #         return 'None'''
 
     def get_orgunits(self, **kwargs):
         roles = []
