@@ -159,9 +159,6 @@ msgstr "Geben Sie die Mobil Nummer ein"
 msgid "help_phone_office"
 msgstr "Geben Sie die Telefonnummer ein"
 
-#. Default: "If chosen, this Organisation Unit's                                    title will be included in your address"
-#: ./egov/contactdirectory/content/contact.py:220
-#, fuzzy
 msgid "help_primary_org_unit"
 msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer Adresse angezeigt"
 
