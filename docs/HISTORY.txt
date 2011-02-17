@@ -2,6 +2,10 @@ Changelog
 =========
 
 
+1.1.6
+-----
+
+
 1.1.5
 -----
 * Bugfix: Check for contact reference. 
