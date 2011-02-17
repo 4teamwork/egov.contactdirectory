@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-11-23 15:58+0000\n"
+"POT-Creation-Date: 2011-02-17 08:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,25 +22,25 @@ msgid "Contact"
 msgstr ""
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/views.py:91
+#: ./egov/contactdirectory/browser/views.py:97
 msgid "Email"
 msgstr ""
 
 #: ./egov/contactdirectory/content/contact.py:390
-msgid "Enter either an organization or first and last name"
-msgstr "Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an"
+msgid "Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an"
+msgstr ""
 
 #: ./egov/contactdirectory/profiles/default/types/Member.xml
 msgid "Member"
 msgstr ""
 
 #. Default: "Name"
-#: ./egov/contactdirectory/browser/views.py:84
+#: ./egov/contactdirectory/browser/views.py:90
 msgid "Name"
 msgstr ""
 
 #. Default: "Phone"
-#: ./egov/contactdirectory/browser/views.py:88
+#: ./egov/contactdirectory/browser/views.py:94
 msgid "Phone"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgid "Search contacts"
 msgstr ""
 
 #. Default: "Type"
-#: ./egov/contactdirectory/browser/views.py:81
+#: ./egov/contactdirectory/browser/views.py:87
 msgid "Type"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgid "help_address"
 msgstr ""
 
 #. Default: "Enter the address"
-#: ./egov/contactdirectory/content/contact.py:257
+#: ./egov/contactdirectory/content/contact.py:240
 msgid "help_address_private"
 msgstr ""
 
@@ -164,13 +164,8 @@ msgstr ""
 msgid "help_phone_office"
 msgstr ""
 
-#. Default: "If chosen, this Organisation Unit's                                    title will be included in your address"
-#: ./egov/contactdirectory/content/contact.py:220
-msgid "help_primary_org_unit"
-msgstr ""
-
 #. Default: "Enter the salutation"
-#: ./egov/contactdirectory/content/contact.py:236
+#: ./egov/contactdirectory/content/contact.py:219
 msgid "help_salutation"
 msgstr ""
 
@@ -328,18 +323,13 @@ msgstr ""
 msgid "label_phone_office"
 msgstr ""
 
-#. Default: "Primary Organisation Unit"
-#: ./egov/contactdirectory/content/contact.py:219
-msgid "label_primary_org_unit"
-msgstr ""
-
 #. Default: "Related Items"
 #: ./egov/contactdirectory/browser/contact.pt:122
 msgid "label_related_items"
 msgstr ""
 
 #. Default: "Salutation"
-#: ./egov/contactdirectory/content/contact.py:235
+#: ./egov/contactdirectory/content/contact.py:218
 msgid "label_salutation"
 msgstr ""
 
@@ -392,7 +382,7 @@ msgid "label_show_image"
 msgstr ""
 
 #. Default: "Text"
-#: ./egov/contactdirectory/content/contact.py:248
+#: ./egov/contactdirectory/content/contact.py:231
 msgid "label_text"
 msgstr ""
 

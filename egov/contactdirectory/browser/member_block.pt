@@ -62,7 +62,7 @@
 </div>
 
 <div tal:condition="not: view/has_contact" class="simplelayout-block-wrapper">
-    <p i18:translate="text_contact_deleted">
+    <p i18n:domain="egov.contactdirectory" i18:translate="text_contact_deleted">
         Contact not found. 
     </p>
 </div>

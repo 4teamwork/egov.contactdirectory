@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-11-23 15:58+0000\n"
+"POT-Creation-Date: 2011-02-17 08:38+0000\n"
 "PO-Revision-Date: 2010-09-21 13:32+0000\n"
 "Last-Translator: Lukas Graf <lukas.graf@4teamwork.ch>\n"
 "Language-Team: German<lukas.graf@4teamwork.ch>\n"
@@ -17,12 +17,12 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #. Default: "Email"
-#: ./egov/contactdirectory/browser/views.py:91
+#: ./egov/contactdirectory/browser/views.py:97
 msgid "Email"
 msgstr "E-Mail"
 
 #: ./egov/contactdirectory/content/contact.py:390
-msgid "Enter either an organization or first and last name"
+msgid "Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an"
 msgstr ""
 
 #: ./egov/contactdirectory/profiles/default/types/Member.xml
@@ -30,12 +30,12 @@ msgid "Member"
 msgstr "Mitglied"
 
 #. Default: "Name"
-#: ./egov/contactdirectory/browser/views.py:84
+#: ./egov/contactdirectory/browser/views.py:90
 msgid "Name"
 msgstr "Name"
 
 #. Default: "Phone"
-#: ./egov/contactdirectory/browser/views.py:88
+#: ./egov/contactdirectory/browser/views.py:94
 msgid "Phone"
 msgstr "Telefon (Geschäft)"
 
@@ -48,7 +48,7 @@ msgid "Search contacts"
 msgstr "Kontakte durchsuchen"
 
 #. Default: "Type"
-#: ./egov/contactdirectory/browser/views.py:81
+#: ./egov/contactdirectory/browser/views.py:87
 msgid "Type"
 msgstr "Typ"
 
@@ -87,7 +87,7 @@ msgid "help_address"
 msgstr "Bitte Adresse eingeben"
 
 #. Default: "Enter the address"
-#: ./egov/contactdirectory/content/contact.py:257
+#: ./egov/contactdirectory/content/contact.py:240
 msgid "help_address_private"
 msgstr "Bitte Adresse eingeben"
 
@@ -159,11 +159,8 @@ msgstr "Geben Sie die Mobil Nummer ein"
 msgid "help_phone_office"
 msgstr "Geben Sie die Telefonnummer ein"
 
-msgid "help_primary_org_unit"
-msgstr "Falls ausgewählt, wird der Titel dieser Organisationseinheit in Ihrer Adresse angezeigt"
-
 #. Default: "Enter the salutation"
-#: ./egov/contactdirectory/content/contact.py:236
+#: ./egov/contactdirectory/content/contact.py:219
 msgid "help_salutation"
 msgstr "Geben Sie die gewünschte Anschrift ein."
 
@@ -321,18 +318,13 @@ msgstr "Telefon mobil"
 msgid "label_phone_office"
 msgstr "Telefon geschäftlich"
 
-#. Default: "Primary Organisation Unit"
-#: ./egov/contactdirectory/content/contact.py:219
-msgid "label_primary_org_unit"
-msgstr "Primäre Organisationseinheit"
-
 #. Default: "Related Items"
 #: ./egov/contactdirectory/browser/contact.pt:122
 msgid "label_related_items"
 msgstr "Verwandte Objekte"
 
 #. Default: "Salutation"
-#: ./egov/contactdirectory/content/contact.py:235
+#: ./egov/contactdirectory/content/contact.py:218
 msgid "label_salutation"
 msgstr "Begrüssung"
 
@@ -385,7 +377,7 @@ msgid "label_show_image"
 msgstr "Bild anzeigen"
 
 #. Default: "Text"
-#: ./egov/contactdirectory/content/contact.py:248
+#: ./egov/contactdirectory/content/contact.py:231
 msgid "label_text"
 msgstr "Text"
 
