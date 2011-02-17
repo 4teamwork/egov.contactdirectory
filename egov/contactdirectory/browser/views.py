@@ -57,10 +57,16 @@ class MemberBlockView(BlockView):
     """
     """
     
+    @property
+    def has_contact(self):
+        return bool(self.context.getContact())
+
     def has_image(self):
         #check for a 'image' field in schemata
         contact = self.context.getContact()
-        return bool(contact.getField('image').get(contact))
+        if contact:
+            return bool(contact.getField('image').get(contact))
+        return False
 
 
 class IContactSourceConfig(ITableSourceConfig):

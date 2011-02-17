@@ -1,6 +1,6 @@
 <tal:block i18n:domain="egov.contactdirectory">
 
-<div class="#" id="#"
+<div class="#" id="#" tal:condition="view/has_contact"
                 tal:define="text here/getBlockText|here/getText|nothing;
                 title here/Title | here/pretty_title_or_id;
                 fullblock python: text and ' sl-fullblock' or ''"
@@ -60,5 +60,12 @@
        
 
 </div>
+
+<div tal:condition="not: view/has_contact" class="simplelayout-block-wrapper">
+    <p i18:translate="text_contact_deleted">
+        Contact not found. 
+    </p>
+</div>
+
 <span class="visualClear">&nbsp;</span>
 </tal:block>
