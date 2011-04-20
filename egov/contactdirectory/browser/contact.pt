@@ -28,11 +28,12 @@
             </div>
             <h2><span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
 	        <p>
-	            <span tal:condition="context/getOrganization"
-	                  tal:content="context/getOrganization"/>
 
 		    	<span tal:replace="beschreibung" />
-		    	<span tal:replace="here/getFunction | nothing" /><br />
+		    	<span tal:replace="here/getFunction | nothing" /><br /><br />
+		    	
+		    	<span tal:replace="context/getOrganization|nothing"/><br />
+	            <span tal:replace="context/getDepartment|nothing"/><br />
 		    	<span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
 		    	<span tal:replace="here/getZip | nothing" />
 		    	<span tal:replace="here/getCity | nothing" /><br /><br />
