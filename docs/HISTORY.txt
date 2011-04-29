@@ -4,6 +4,10 @@ Changelog
 
 1.1.6
 -----
+
+* Code cleanup (contact.py) / translations
+  [28.04.2011, mathias.leimgruber]
+
 * Slightly changed contact detail view according to ruetis requirements
   [20.04.2011, florian.sprenger]
 

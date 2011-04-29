@@ -38,6 +38,8 @@
                <tal:fn tal:content="here/getFunction"></tal:fn><br/>
                <tal:addr tal:condition="here/getShow_address">
                     <span tal:content="here/getAddress"/><br/>
+                    <span tal:content="here/getZip"/>
+                    <span tal:content="here/getCity"/><br />
                </tal:addr>
                <tal:phone tal:condition="python:context.getPhone_office() != ''">
                     <span i18n:translate="label_short_office">Office</span>: 

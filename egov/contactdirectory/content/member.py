@@ -20,34 +20,24 @@ from Products.CMFCore.utils import getToolByName
 
 
 schema = Schema((
-#     BooleanField('showTitle',
-#                schemata='default',
-#                default=0,
-#                widget=BooleanWidget(description = "Show title",
-#                                             description_msgid = "help_showtitle",
-#                                             label = "Show Title",
-#                                             label_msgid = "label_showtitle",
-#                                             i18n_domain = "zug",
-#                                             )),   
-
+     BooleanField(
+        'showTitle',
+        schemata='default',
+        default=0,
+        widget=BooleanWidget(
+        label=_(
+            u'label_show_title', 
+            default='Show title'),
+        description=_(
+            u'help_show_title', 
+            default='Show Title of member contact'))),   
 
     ReferenceField(
         name='contact',
         required=True,
-        widget = ReferenceWidget(label=_(u'label_contact_reference', default='Contact reference'),
-                                 description=_(u'help_contact_reference', default='')
-                                 ),
-                                 
-#        widget=ReferenceBrowserWidget(
-#            allow_browse = False,
-#            restrict_browsing_to_startup_directory=True,
-#            show_results_without_query=True,
-#            base_query={"portal_type": "Contact"},
-#            force_close_on_insert = True, 
-#            label='Mitglied',
-#            label_msgid='label_mitglied',
-#            i18n_domain='egov',
-#        ),
+        widget = ReferenceWidget(
+            label=_(u'label_contact_reference', default='Contact reference'),
+            description=_(u'help_contact_reference', default='')),                                 
         allowed_types=('Contact',),
         multiValued=0,
         relationship='member_to_contact',
@@ -62,16 +52,18 @@ schema = Schema((
         )
     ),
 
-    BooleanField('show_address',
-                schemata='default',
-                default=0,
-                widget=BooleanWidget(label=_(u'label_show_address', default='Show address'),
-                                     description=_(u'help_show_address', 
-                                                   default='Also show address on membership page of the organisation unit')
-                                             ),
-    ),
+    BooleanField(
+        'show_address',
+        schemata='default',
+        default=0,
+        widget=BooleanWidget(
+            label=_(u'label_show_address', default='Show address'),
+            description=_(
+                u'help_show_address', 
+               default='Also show address on membership page of the organisation unit'))),
     
-     BooleanField('show_image',
+     BooleanField(
+        'show_image',
         schemata='Kontakt',
         default=1,
         widget=BooleanWidget(
@@ -82,75 +74,86 @@ schema = Schema((
             ),
      ),
     
-    BooleanField('acquireAddress',
-                schemata='Kontakt',
-                default=0,
-                widget=BooleanWidget(label=_(u'label_acquire_address', default='Acquire address'),
-                                     description=_(u'help_acquire_address', default=''),
-                                     helper_js = ('member_block_control.js', )
-                                    ),
-    ),
-    TextField('address',
+    BooleanField(
+        'acquireAddress',
         schemata='Kontakt',
-        widget=TextAreaWidget(label=_(u'label_address', default='Address'),
-                              description=_(u'help_address', default="Please enter address"),
-        ),
-    ),
+        default=0,
+        widget=BooleanWidget(
+            label=_(u'label_acquire_address', default='Acquire address'),
+            description=_(u'help_acquire_address', default=''),
+            helper_js = ('member_block_control.js', ))),
+            
+    TextField(
+        'address',
+        schemata='Kontakt',
+        widget=TextAreaWidget(
+            label=_(u'label_address', default='Address'),
+            description=_(u'help_address', default="Please enter address"))),
     
-    StringField('zip',
-                schemata='Kontakt',
-                searchable = 1,
-                widget = StringWidget(label=_(u'label_zip', default='Postal code'),
-                                      description=_(u'help_zip', default="Enter the postal code"),
-                                      ),
-                   ),
-
-    StringField('city', 
-                schemata='Kontakt',
-                searchable=1,
-                widget = StringWidget(label=_(u'label_city', default="City"),
-                                      description=_(u'help_city', default="Enter the name of the city"),
-                                      )
-                   ),
-
-    StringField('phone_office',
-                schemata='Kontakt',
-                searchable = 1,
-                widget = StringWidget(label=_(u'label_phone_office', default="Phone number (office)"),
-                                      description=_(u'help_phone_office', default="Enter the phone number"),
-                                      )
-                ),
-                
-    StringField('phone_mobile',
-                schemata='Kontakt',
-                searchable = 1,
-                widget = StringWidget(label=_(u'label_phone_mobile', default='Mobile number'),
-                                      description=_(u'help_phone_mobile', default="Enter the mobile number"),
-                                      )
-                ),
-
-    StringField('fax',
-                schemata='Kontakt',
-                searchable = 1,
-                widget = StringWidget(label=_(u'label_fax', default="Fax number"),
-                                      description=_(u'help_fax', default="Enter the fax number"),
-                                      )
-                ),
-
-    StringField('email',
+    StringField(
+        'zip',
         schemata='Kontakt',
-        widget=StringWidget(label=_(u'label_email', default='E-Mail'),
-                            description=_(u'help_email', default='Please enter e-Mail address'),
-                            ),
-    ),
+        searchable = 1,
+        widget = StringWidget(
+            label=_(u'label_zip', default='Postal code'),
+            description=_(u'help_zip', default="Enter the postal code"))),
 
-    StringField('www',
+    StringField(
+        'city', 
+        schemata='Kontakt',
+        searchable=1,
+        widget = StringWidget(
+            label=_(u'label_city', default="City"),
+            description=_(
+                u'help_city',
+                default="Enter the name of the city"))),
+
+    StringField(
+        'phone_office',
+        schemata='Kontakt',
+        searchable = 1,
+        widget = StringWidget(
+            label=_(u'label_phone_office', default="Phone number (office)"),
+            description=_(
+                u'help_phone_office',
+                default="Enter the phone number"))),
+                
+    StringField(
+        'phone_mobile',
+        schemata='Kontakt',
+        searchable = 1,
+        widget = StringWidget(
+            label=_(u'label_phone_mobile', default='Mobile number'),
+            description=_(
+                u'help_phone_mobile',
+                default="Enter the mobile number"))),
+
+    StringField(
+        'fax',
+        schemata='Kontakt',
+        searchable = 1,
+        widget = StringWidget(
+            label=_(u'label_fax', default="Fax number"),
+            description=_(u'help_fax', default="Enter the fax number"))),
+
+    StringField(
+        'email',
+        schemata='Kontakt',
+        widget=StringWidget(
+            label=_(u'label_email', default='E-Mail'),
+            description=_(
+                u'help_email',
+                default='Please enter e-Mail address'))),
+
+    StringField(
+        'www',
         schemata='Kontakt',
         validators=('isURL',),
-        widget=StringWidget(label=_(u'label_www', default='WWW'),
-                            description=_(u'help_www', default='Please enter a website URL'),
-                            ),
-    ),
+        widget=StringWidget(
+            label=_(u'label_www', default='WWW'),
+            description=_(
+                u'help_www',
+                default='Please enter a website URL'))),
 ),
 )
 
@@ -161,7 +164,7 @@ member_schema['excludeFromNav'].default = True
 finalizeATCTSchema(member_schema)
 member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
 member_schema['title'].required = 0
-member_schema['title'].widget.visible = {'edit': 'invisible', 'view': 'invisible'}
+member_schema['title'].widget.visible = {'edit': 'visible', 'view': 'visible'}
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
@@ -174,24 +177,6 @@ class Member(base.ATCTContent):
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 
     schema = member_schema
-
-    # Methods
-
-    security.declareProtected(View, 'Title')
-    def Title(self, **kwargs):
-        """We have to override Title here to handle arbitrary
-        arguments since PortalFolder defines it."""
-        org = ''
-        try:
-            org = self.getOrganization().Title()
-        except:
-            pass
-        if self.getContact():
-          contact = self.getContact()
-          if contact and contact.getLastname() or contact.getFirstname():
-            return '%s %s, %s %s' % (contact.getLastname(),contact.getFirstname(), self.getFunction(), org)
-        else:
-          return ''
         
     def getImageAltText(self):
         mtool = getToolByName(self, "portal_membership")
