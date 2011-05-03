@@ -236,6 +236,16 @@ schema = Schema((
         widget = RichWidget(
             label = _(u'label_text', default=u'Text'),
             rows = 25,)),
+
+    StringField(
+        'tel_private',
+        searchable = 1,
+        schemata = "Privatanschrift",
+        widget = StringWidget(
+            label=_(u'label_private_tel', default='Telefon private'),
+            description=_(
+                u'help_private_tel',
+                default=''))),
     
     TextField(
         'address_private',
@@ -247,8 +257,7 @@ schema = Schema((
             description = _(
                 u'help_address_private',
                 default=u'Enter the address'),
-            rows = 2,
-            i18n_domain = 'teamraum')),
+            rows = 2)),
 
     StringField(
         'zip_private',

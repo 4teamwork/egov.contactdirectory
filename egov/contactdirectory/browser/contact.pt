@@ -18,30 +18,30 @@
            <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <div tal:define="beschreibung here/getDescription | nothing;
-        				  bio here/getText | nothing;"
-        	  class="contact_view">
-        				  
+                          bio here/getText | nothing;"
+              class="contact_view">
+                          
             <div class="rightFloat" tal:define="portrait here/getImage | nothing">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${here/getFirstname}, ${here/getLastname}" />
             </div>
             <h2><span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
-	        <p>
+            <p>
 
-		    	<span tal:replace="beschreibung" />
-		    	<span tal:replace="here/getFunction | nothing" /><br /><br />
-		    	
-		    	<span tal:replace="context/getOrganization|nothing"/><br />
-	            <span tal:replace="context/getDepartment|nothing"/><br />
-		    	<span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
-		    	<span tal:replace="here/getZip | nothing" />
-		    	<span tal:replace="here/getCity | nothing" /><br /><br />
-		    	<tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_phone_office">Phone number (office)</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
-		    	<tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_phone_mobile">Mobile number</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
-		    	<tal:block tal:condition="here/getFax"><span i18n:translate="label_fax">Fax number</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
-		    	<span tal:condition="here/getEmail">
-			        <a tal:replace="structure python:context.spamProtect(mailaddress=here.getEmail())"/><br />
+                <span tal:replace="beschreibung" />
+                <span tal:replace="here/getFunction | nothing" /><br /><br />
+                
+                <span tal:replace="context/getOrganization|nothing"/><br />
+                <span tal:replace="context/getDepartment|nothing"/><br />
+                <span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
+                <span tal:replace="here/getZip | nothing" />
+                <span tal:replace="here/getCity | nothing" /><br /><br />
+                <tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_phone_office">Phone number (office)</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
+                <tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_phone_mobile">Mobile number</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
+                <tal:block tal:condition="here/getFax"><span i18n:translate="label_fax">Fax number</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
+                <span tal:condition="here/getEmail">
+                    <a tal:replace="structure python:context.spamProtect(mailaddress=here.getEmail())"/><br />
                 </span>
                 <a tal:define="url here/getWww;
                                ishttps python:url.find('https') != -1;
@@ -53,22 +53,39 @@
                    tal:attributes="href here/getWww"
                    title="externer Link (&ouml;ffnet neuem Fenster)"
                    target="_blank" />
-			</p>	        	
+            </p>
+            <tal:private define="private_address view/private_address" condition="private_address">
+                <h3 i18n:translate="label_private_address">
+                Privateaddress
+                </h3>
+                <p> 
+                    <span tal:replace="structure private_address">Address</span>
+                    
+                <tal:telp condition="context/getTel_private | nothing">
+                    <br />
+                    <span tal:omit-tag="" 
+                          i18n:translate="label_telephon_private">Tel. p:</span>
+                    <span tal:replace="context/getTel_private | nothing">tel</span>
+                </tal:telp>
+                    
+                </p>
+            </tal:private>
+
             <metal:block tal:define="memberships here/getMemberships" tal:condition="memberships">
             <h3 i18n:translate="label_memberships">
             Memberships
             </h3>
 
-    <ul>
-        <tal:items tal:repeat="obj memberships">
-      	<li>
-      	  <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
-      	</li>
-      </tal:items>
-    </ul>
-    </metal:block>
-		<div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
-	  </div>
+            <ul>
+                <tal:items tal:repeat="obj memberships">
+                  <li>
+                    <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
+                  </li>
+              </tal:items>
+            </ul>
+            </metal:block>
+                <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
+              </div>
 
 <dl id="map" class="collapsible"
              tal:define="view context/@@maps_googlemaps_view | nothing;
@@ -79,8 +96,8 @@ XXX: mit "collapsedOnLoad" als weitere klasse wird die karte zusammengeklappt ge
 -->
 <script type="text/javascript">
 jq(document).ready(function() {
-	hideMap = function() {jq("dl#map dt.collapsibleHeader").click();};
-	window.setTimeout("hideMap()", 1000);
+    hideMap = function() {jq("dl#map dt.collapsibleHeader").click();};
+    window.setTimeout("hideMap()", 1000);
 });
 </script>
 <dt class="collapsibleHeader">Karte</dt>

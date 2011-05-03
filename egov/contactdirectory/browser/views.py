@@ -46,8 +46,20 @@ class ContactFolderView(BrowserView):
         return results
 
 class ContactView(BrowserView):
+    """Contact view for egov
     """
-    """
+    def private_address(self):
+        address = ""
+        if self.context.getAddress_private():
+            address += self.context.getAddress_private() \
+                .replace('\n', '<br/>') + '<br />'
+        
+        if self.context.getAddress_private():
+            address += self.context.getZip_private()
+        if self.context.getAddress_private():
+            address += self.context.getCity_private()
+        return address
+            
 
 class MemberView(BrowserView):
     """

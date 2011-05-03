@@ -4,8 +4,10 @@ Changelog
 
 1.1.6
 -----
+* Added private phone number / display private address on contact view.
+  [03.05.2011, mathias.leimgruber]
 
-* Code cleanup (contact.py) / translations
+* Code cleanup (contact.py member.py) / translations
   [28.04.2011, mathias.leimgruber]
 
 * Slightly changed contact detail view according to ruetis requirements
