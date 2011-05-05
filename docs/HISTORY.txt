@@ -2,6 +2,10 @@ Changelog
 =========
 
 
+1.1.7
+-----
+
+
 1.1.6
 -----
 * Added private phone number / display private address on contact view.
