@@ -57,7 +57,7 @@ class ContactView(BrowserView):
         if self.context.getAddress_private():
             address += self.context.getZip_private()
         if self.context.getAddress_private():
-            address += self.context.getCity_private()
+            address += ' ' + self.context.getCity_private()
         return address
             
 

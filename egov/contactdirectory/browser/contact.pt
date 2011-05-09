@@ -30,13 +30,23 @@
             <p>
 
                 <span tal:replace="beschreibung" />
-                <span tal:replace="here/getFunction | nothing" /><br /><br />
+                <tal:func condition="here/getFunction | nothing">
+                    <span tal:replace="here/getFunction | nothing" /><br /><br />
+                </tal:func>
                 
-                <span tal:replace="context/getOrganization|nothing"/><br />
-                <span tal:replace="context/getDepartment|nothing"/><br />
-                <span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
-                <span tal:replace="here/getZip | nothing" />
-                <span tal:replace="here/getCity | nothing" /><br /><br />
+                <tal:org condition="context/getOrganization|nothing">
+                    <span tal:replace="context/getOrganization|nothing"/><br />
+                </tal:org>
+
+                <tal:dep condition="context/getDepartment|nothing">
+                    <span tal:replace="context/getDepartment|nothing"/><br />
+                </tal:dep>
+
+                <tal:addr condition="context/getDepartment|here/getZip|getCity">
+                    <span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
+                    <span tal:replace="here/getZip | nothing" />
+                    <span tal:replace="here/getCity | nothing" /><br /><br />
+                </tal:addr>
                 <tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_phone_office">Phone number (office)</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
                 <tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_phone_mobile">Mobile number</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
                 <tal:block tal:condition="here/getFax"><span i18n:translate="label_fax">Fax number</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
@@ -59,7 +69,7 @@
                 Privateaddress
                 </h3>
                 <p> 
-                    <span tal:replace="structure private_address">Address</span>
+                    <span tal:replace="structure private_address | context/getTel_private">Address</span>
                     
                 <tal:telp condition="context/getTel_private | nothing">
                     <br />
