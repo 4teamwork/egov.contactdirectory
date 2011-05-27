@@ -11,14 +11,15 @@
     <tal:main-macro metal:define-macro="main"
            tal:define="kssClassesView context/@@kss_field_decorator_view;
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                       templateId template/getId">
+                       templateId template/getId;
+                       contact here/getContact | nothing">
 
 <div tal:replace="structure provider:plone.abovecontenttitle" />
-<h1 class="documentFirstHeading" tal:content="context/pretty_title_or_id">Title or id</h1>
+<h1 class="documentFirstHeading" 
+    tal:content="python: context.Title() != '' and context.Title() or contact.Title()">Title or id</h1>
 <div tal:replace="structure provider:plone.belowcontenttitle" />    	  
 
         <div tal:define="beschreibung here/getDescription | nothing;
-                          contact here/getContact | nothing;
                           firstname contact/getFirstname | nothing;
                           lastname contact/getLastname | nothing;
         				  bio here/getText | nothing;"
@@ -32,7 +33,10 @@
                              alt string:${firstname}, ${lastname}" />
             </div>
         	<div class="zugMitglied-details">
-                <h2><span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
+                <h2>
+                    <span tal:condition="contact/getAcademic_title | nothing"
+                          tal:replace="contact/getAcademic_title">Dr.</span>
+                    <span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
 	        	<p>
 		        	<span tal:replace="beschreibung" />
 		        	<span tal:replace="here/getFunction | nothing" /><br />

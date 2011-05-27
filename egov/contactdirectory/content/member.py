@@ -10,12 +10,9 @@ from Products.Archetypes.atapi import *
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.interfaces import IMember
-
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
-
-from Products.CMFCore.permissions import View
 from Products.CMFCore.utils import getToolByName
 
 
@@ -177,7 +174,7 @@ class Member(base.ATCTContent):
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 
     schema = member_schema
-        
+
     def getImageAltText(self):
         mtool = getToolByName(self, "portal_membership")
         mitglied = self.getContact() 

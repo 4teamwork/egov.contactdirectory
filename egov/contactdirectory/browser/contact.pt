@@ -26,7 +26,10 @@
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
                              alt string:${here/getFirstname}, ${here/getLastname}" />
             </div>
-            <h2><span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
+            <h2>
+                <span tal:condition="here/getAcademic_title | nothing"
+                      tal:replace="here/getAcademic_title">Dr.</span>
+                <span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
             <p>
 
                 <span tal:replace="beschreibung" />
