@@ -37,7 +37,7 @@
            <p>    
                <tal:fn tal:content="here/getFunction"></tal:fn><br/>
                <tal:addr tal:condition="here/getShow_address">
-                    <span tal:content="here/getAddress"/><br/>
+                    <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
                     <span tal:content="here/getZip"/>
                     <span tal:content="here/getCity"/><br />
                </tal:addr>
