@@ -2,6 +2,10 @@ Changelog
 =========
 
 
+1.2
+---
+
+
 1.1.9
 -----
 * Show URL in folder_contacts_listing
