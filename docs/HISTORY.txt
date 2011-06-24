@@ -4,7 +4,8 @@ Changelog
 
 1.1.9
 -----
-
+* Show URL in folder_contacts_listing
+  [24.06.2011, mathias.leimgruber]
 
 1.1.8
 -----

@@ -110,7 +110,7 @@
                                 <div><span i18n:translate="label_short_mail">Email</span>: 
                                     <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" /></div>
                                 <div><span i18n:translate="label_short_www">Website</span>: 
-                                    <span tal:define="url obj/getUrl|nothing" 
+                                    <span tal:define="url obj/getWww|nothing" 
 	                                                 tal:condition="url"><a tal:content="url" tal:attributes="href url"/></span></div>
                                 </div>
 
