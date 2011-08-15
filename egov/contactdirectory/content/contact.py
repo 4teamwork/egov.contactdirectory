@@ -6,7 +6,8 @@ from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IContact
 
-from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, registerType
+from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, \
+                                      BooleanField, BooleanWidget, registerType
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
 from Products.Archetypes.atapi import TextField
 from Products.Archetypes.atapi import StringWidget, ImageWidget
@@ -25,15 +26,14 @@ from zope.component import adapts
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 
-# try:
-#     from Products.Maps.content.Location import Location
-#     from Products.Maps.content.Location import LocationSchema
-#     from Products.Maps.interfaces import ILocation
-#     MAPS_PACKAGE_PRESENT = True
-# except:
-#     MAPS_PACKAGE_PRESENT = False
-#     class Location:
-#         pass
+try:
+    from Products.Maps.content.Location import Location
+    from Products.Maps.content.Location import LocationSchema
+    MAPS_PACKAGE_PRESENT = True
+except:
+    MAPS_PACKAGE_PRESENT = False
+    class Location:
+        pass
 
 
 schema = Schema((
@@ -67,7 +67,7 @@ schema = Schema((
             description=_(
                 u'help_lastname',
                 default='Please enter last name'))),
-            
+
     StringField(
         'firstname',
         required=0,
@@ -119,6 +119,15 @@ schema = Schema((
                 u'help_city',
                 default="Enter the name of the city"))),
 
+    BooleanField(
+        'showPlacemark',
+        default=1,
+        widget=BooleanWidget(
+            label=_(u'label_showplacemark', default=u'Show on map'),
+            description=_(u'help_showplacemark',
+                          default=u'Show address on map'),
+        ),
+    ),
     StringField(
         'country',
         required = True,
@@ -246,7 +255,7 @@ schema = Schema((
             description=_(
                 u'help_private_tel',
                 default=''))),
-    
+
     TextField(
         'address_private',
         default='',
@@ -278,12 +287,11 @@ schema = Schema((
             description=_(
                 u'help_private_city',
                 default="Enter the name of the city"))),
-    ),
-)
+))
 
 
-#if MAPS_PACKAGE_PRESENT:
-#    schema = Schema((LocationSchema.get("geolocation").copy(), LocationSchema.get("markerIcon").copy())) + maps_configuration_schema + schema
+if MAPS_PACKAGE_PRESENT:
+    schema = Schema((LocationSchema.get("geolocation").copy(), LocationSchema.get("markerIcon").copy())) + schema
 
 contact_schema = ATContentTypeSchema.copy() + \
     schema.copy()# + textSchema.copy()
@@ -319,14 +327,13 @@ contact_schema['language'].write_permission = permissions.ManagePortal
 contact_schema['location'].write_permission = permissions.ManagePortal
 
 
-# #if MAPS_PACKAGE_PRESENT:
-#    # Hide the geolocation and markerIcon fields since we automatically calculate the location from the address
-#    contact_schema['geolocation'].widget.visible = {'edit': 'invisible'}
-#    contact_schema['markerIcon'].widget.visible = {'edit': 'invisible'}
+if MAPS_PACKAGE_PRESENT:
+    # Hide the geolocation and markerIcon fields since we automatically calculate the location from the address
+    contact_schema['geolocation'].widget.visible = {'edit': 'invisible'}
+    contact_schema['markerIcon'].widget.visible = {'edit': 'invisible'}
 
 
-#class Contact(QuantifiedSearchableTextMixin,  ATCTContent, Location):
-class Contact(ATCTContent):
+class Contact(ATCTContent, Location):
     """
     """
     implements(IContact)
@@ -387,7 +394,6 @@ class Contact(ATCTContent):
             phone = member.getPhone_office()
             roles.append(dict(orgunit=orgunit, link=link, function=function, phone=phone))
         return roles
-
 
     def SearchableText(self):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])

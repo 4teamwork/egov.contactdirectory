@@ -5,6 +5,10 @@ Changelog
 1.2
 ---
 
+* Issue #509 Googlemap aktivieren bei Detailansicht des Kontaktes
+  https://extranet.4teamwork.ch/intranet/10-interne-projekte/4teamwork-egov/tracker-4teamwork-egov/509
+  enabled google maps on contact.
+  [24.06.2011, jinfanger]
 
 1.1.9
 -----
