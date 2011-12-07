@@ -2,49 +2,50 @@ Changelog
 =========
 
 
-1.2
----
+1.2 (unreleased)
+----------------
 
-* Issue #509 Googlemap aktivieren bei Detailansicht des Kontaktes
+- Issue #509 Googlemap aktivieren bei Detailansicht des Kontaktes
   https://extranet.4teamwork.ch/intranet/10-interne-projekte/4teamwork-egov/tracker-4teamwork-egov/509
   enabled google maps on contact.
   [24.06.2011, jinfanger]
 
-1.1.9
------
-* Show URL in folder_contacts_listing
+1.1.9 (30.12.2011)
+------------------
+
+- Show URL in folder_contacts_listing
   [24.06.2011, mathias.leimgruber]
 
 1.1.8
 -----
-* Few improvements in memberblock_view, memberview and contact_view
+- Few improvements in memberblock_view, memberview and contact_view
   [31.05.2011, mathias.leimgruber]
 
 1.1.7
 -----
 
-* Translations / Improve contact view.
+- Translations / Improve contact view.
   [09.05.2011, mathias.leimgruber]
 
 1.1.6
 -----
-* Added private phone number / display private address on contact view.
+- Added private phone number / display private address on contact view.
   [03.05.2011, mathias.leimgruber]
 
-* Code cleanup (contact.py member.py) / translations
+- Code cleanup (contact.py member.py) / translations
   [28.04.2011, mathias.leimgruber]
 
-* Slightly changed contact detail view according to ruetis requirements
+- Slightly changed contact detail view according to ruetis requirements
   [20.04.2011, florian.sprenger]
 
 1.1.5
 -----
-* Bugfix: Check for contact reference. 
+- Bugfix: Check for contact reference. 
   [17.02.2011, mathias.leimgruber]
 
 1.1.4
 -----
-* Fix problem with organization getter - what's the reason for this method
+- Fix problem with organization getter - what's the reason for this method
   [22.12.2010, mathias.leimgruber]
 
 1.1.3
@@ -53,24 +54,24 @@ Changelog
 
 1.1.2
 -----
-* Added possibility to configure the contact listing with plone.registry
+- Added possibility to configure the contact listing with plone.registry
   [23.11.2010, mathias.leimgruber]
 
-* First implementation of mixed contact listing in tabbedview
+- First implementation of mixed contact listing in tabbedview
   [23.11.2010, mathias.leimgruber]
 
 1.1.1
 -----
-* added Icon
+- added Icon
   [16.11.2010, mathias.leimgruber]
 
 1.1
 ---
-* fix/add translations
+- fix/add translations
   [01.11.2010, mathias.leimgruber]
 
 0.1 - Unreleased
 ----------------
 
-* Initial release
+- Initial release
 
