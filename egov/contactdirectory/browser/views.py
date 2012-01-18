@@ -94,6 +94,9 @@ class ContactTab(listing.ListingView):
     sort_on = 'name'
     sort_order = 'reverse'
 
+    show_selects = False
+    show_menu = False
+
     columns = (
                {'column' : 'icon',
                 'column_title' : _(u'Type', default=u'Type'),
