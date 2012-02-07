@@ -20,7 +20,7 @@
         <div tal:define="beschreibung here/getDescription | nothing;
                           bio here/getText | nothing;"
               class="contact_view">
-                          
+
             <div class="rightFloat" tal:define="portrait here/getImage | nothing">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
@@ -36,7 +36,7 @@
                 <tal:func condition="here/getFunction | nothing">
                     <span tal:replace="here/getFunction | nothing" /><br /><br />
                 </tal:func>
-                
+
                 <tal:org condition="context/getOrganization|nothing">
                     <span tal:replace="context/getOrganization|nothing"/><br />
                 </tal:org>
@@ -61,7 +61,7 @@
                                ishttp python:url.find('http') != -1;
                                formatted_url python:ishttps and url.replace('https://','') or url;
                                formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
-                   tal:condition="here/getWww" 
+                   tal:condition="here/getWww"
                    tal:content="formatted_url"
                    tal:attributes="href here/getWww"
                    title="externer Link (&ouml;ffnet neuem Fenster)"
@@ -71,16 +71,16 @@
                 <h3 i18n:translate="label_private_address">
                 Privateaddress
                 </h3>
-                <p> 
+                <p>
                     <span tal:replace="structure private_address | context/getTel_private">Address</span>
-                    
+
                 <tal:telp condition="context/getTel_private | nothing">
                     <br />
-                    <span tal:omit-tag="" 
+                    <span tal:omit-tag=""
                           i18n:translate="label_telephon_private">Tel. p:</span>
                     <span tal:replace="context/getTel_private | nothing">tel</span>
                 </tal:telp>
-                    
+
                 </p>
             </tal:private>
 
@@ -165,7 +165,7 @@ jq(document).ready(function() {
           </tal:markers>
           </dl>
         </div>
-        
+
 
 
 </dd> </dl>
@@ -173,7 +173,7 @@ jq(document).ready(function() {
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
         </div>
-    
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
