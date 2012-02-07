@@ -45,7 +45,7 @@
                     <span tal:replace="context/getDepartment|nothing"/><br />
                 </tal:dep>
 
-                <tal:addr condition="context/getDepartment|here/getZip|getCity">
+                <tal:addr condition="python: context.getZip() and context.getCity() and context.getAddress()">
                     <span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
                     <span tal:replace="here/getZip | nothing" />
                     <span tal:replace="here/getCity | nothing" /><br /><br />
