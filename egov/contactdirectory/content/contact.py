@@ -96,6 +96,9 @@ schema = Schema((
     TextField(
         'address',
         searchable = 1,
+        default_input_type = 'text/plain',
+        default_output_type = 'text/plain',
+        allowable_content_types = ('text/plain', ),
         widget=TextAreaWidget(
             label=_(u'label_address', default='Address'),
             description=_(u'help_address', default='Please enter address'),
@@ -234,7 +237,7 @@ schema = Schema((
             description = _(
                 u'help_salutation',
                 default=u'Enter the salutation'))),
-    
+
     TextField(
         'text',
         required=False,
@@ -261,6 +264,9 @@ schema = Schema((
         default='',
         searchable=1,
         schemata = "Privatanschrift",
+        default_input_type = 'text/plain',
+        default_output_type = 'text/plain',
+        allowable_content_types = ('text/plain', ),
         widget = TextAreaWidget(
             label = _(u'label_address', default=u'Address'),
             description = _(
