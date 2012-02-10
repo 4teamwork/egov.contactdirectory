@@ -4,6 +4,8 @@ Changelog
 
 1.3 (unreleased)
 ----------------
+- Wrap icon class around contacts icon in tab.
+  [Julian Infanger]
 
 - Set default allowed type for textareas to text/plain.
   [mathias.leimgruber]

@@ -128,6 +128,7 @@ class ContactTableSource(BaseTableSource):
         context = self.config.context
         registry = getUtility(IRegistry)
         acl_users = getToolByName(context, 'acl_users')
+        plone_utils = getToolByName(context, 'plone_utils')
         results = []
         
         
@@ -155,6 +156,8 @@ class ContactTableSource(BaseTableSource):
             path='/'.join(context.getPhysicalPath()),)
         for brain in context.portal_catalog(query):
             obj = brain.getObject()
+            img_class = plone_utils.normalizeString(
+                'contenttype-%s' % obj.portal_type)
             results.append(
                 dict(
                     user_id = obj.id,
@@ -162,7 +165,8 @@ class ContactTableSource(BaseTableSource):
                     phone = obj.getPhone_office(),
                     email = obj.getEmail(),
                     url = obj.absolute_url(),
-                    icon = '<img src="%s/%s" />' % (context.portal_url(), brain.getIcon),
+                    icon = '<span class="typeIcon %s"><img src="%s/%s" /></span>' % (
+                        img_class, context.portal_url(), brain.getIcon),
             ))
         return results
 
