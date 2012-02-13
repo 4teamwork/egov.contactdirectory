@@ -104,7 +104,7 @@
 <dl id="map" class="collapsible"
              tal:define="view context/@@maps_googlemaps_view | nothing;
                          showPlacemark context/getShowPlacemark | nothing"
-             tal:condition="python: view and showPlacemark">
+             tal:condition="python: view and showPlacemark and (context.getZip() or context.getCity())">
 
 <!--
 XXX: mit "collapsedOnLoad" als weitere klasse wird die karte zusammengeklappt geladen. das führt aber dazu, dass die karte nicht richtig angezeigt wird. Deshalb ein workaround:
