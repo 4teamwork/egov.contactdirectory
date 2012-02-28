@@ -10,6 +10,7 @@ from egov.contactdirectory.interfaces import IContactFolderView
 from ftw.table.interfaces import ITableSourceConfig, ITableSource
 from egov.contactdirectory import contactdirectoryMessageFactory as _
 
+
 def linked(item, value):
     url = '#'
     if 'url' in item:
@@ -17,6 +18,17 @@ def linked(item, value):
 
     value = value.decode('utf-8')
     link = u'<a href="%s">%s</a>' % (url, value)
+    wrapper = u'<span class="linkWrapper">%s</span>' % link
+    return wrapper
+
+
+def linked_icon(item, value):
+    url = '#'
+    if 'url' in item:
+        url = item['url']
+
+    value = value.decode('utf-8')
+    link = u'<a href="%s" class="%s">%s</a>' % (url, item['type_class'], value)
     wrapper = u'<span class="linkWrapper">%s</span>' % link
     return wrapper
 
@@ -100,7 +112,7 @@ class ContactTab(listing.ListingView):
     columns = (
                {'column' : 'icon',
                 'column_title' : _(u'Type', default=u'Type'),
-                'transform' : linked},
+                'transform' : linked_icon},
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
@@ -126,9 +138,9 @@ class ContactTableSource(BaseTableSource):
 
     def validate_base_query(self, query):
         context = self.config.context
+        plone_utils = getToolByName(context, 'plone_utils')
         registry = getUtility(IRegistry)
         acl_users = getToolByName(context, 'acl_users')
-        plone_utils = getToolByName(context, 'plone_utils')
         results = []
         
         
@@ -146,6 +158,7 @@ class ContactTableSource(BaseTableSource):
                             name = name,
                             phone = user.getProperty('phone', ''),
                             email = user.getProperty('email',''),
+                            type_class = '',
                             icon = '',
                             url = '%s/author/%s' % (
                                 context.portal_url(),
@@ -156,8 +169,8 @@ class ContactTableSource(BaseTableSource):
             path='/'.join(context.getPhysicalPath()),)
         for brain in context.portal_catalog(query):
             obj = brain.getObject()
-            img_class = plone_utils.normalizeString(
-                'contenttype-%s' % obj.portal_type)
+            type_class = 'contenttype-' + \
+                          plone_utils.normalizeString(obj.portal_type)
             results.append(
                 dict(
                     user_id = obj.id,
@@ -165,8 +178,8 @@ class ContactTableSource(BaseTableSource):
                     phone = obj.getPhone_office(),
                     email = obj.getEmail(),
                     url = obj.absolute_url(),
-                    icon = '<span class="typeIcon %s"><img src="%s/%s" /></span>' % (
-                        img_class, context.portal_url(), brain.getIcon),
+                    type_class = type_class,
+                    icon = '<img src="%s/%s" />' % (context.portal_url(), brain.getIcon),
             ))
         return results
 
