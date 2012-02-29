@@ -171,6 +171,10 @@ class ContactTableSource(BaseTableSource):
             obj = brain.getObject()
             type_class = 'contenttype-' + \
                           plone_utils.normalizeString(obj.portal_type)
+            icon = ''
+            if brain.getIcon:
+                icon = '<img src="%s/%s" />' % (context.portal_url(),
+                                                brain.getIcon)
             results.append(
                 dict(
                     user_id = obj.id,
@@ -179,7 +183,7 @@ class ContactTableSource(BaseTableSource):
                     email = obj.getEmail(),
                     url = obj.absolute_url(),
                     type_class = type_class,
-                    icon = '<img src="%s/%s" />' % (context.portal_url(), brain.getIcon),
+                    icon = icon,
             ))
         return results
 

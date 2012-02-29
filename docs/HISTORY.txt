@@ -6,6 +6,7 @@ Changelog
 ----------------
 
 - Show contenttype class in contact tab if there is no icon.
+  Icon helper should not return a image if no icon is defined for this type.
   [Julian Infanger]
 
 - Do show map only if ZIP and city are set
