@@ -12,6 +12,12 @@ Changelog
 - Do show map only if ZIP and city are set
   [mathias.leimgruber]
 
+- Wrap icon class around contacts icon in tab.
+  [Julian Infanger]
+
+- fix default allowed types 
+  [mathias.leimgruber]
+
 - Set default allowed type for textareas to text/plain.
   [mathias.leimgruber]
 
