@@ -94,6 +94,7 @@
                                     Item Title
                                 </a>
                                 </h3>
+                                <div tal:condition="obj/getFunction | nothing"><span tal:replace="obj/getFunction | nothing" /><br/><br/></div>
                                 <tal:block tal:condition="obj/getOrganization">
                                     <span tal:replace="string: ${obj/getOrganization | nothing}" />
                                 </tal:block>
@@ -109,9 +110,9 @@
                                     <span tal:content="obj/getPhone_mobile" /></div>
                                 <div><span i18n:translate="label_short_mail">Email</span>: 
                                     <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" /></div>
-                                <div><span i18n:translate="label_short_www">Website</span>: 
-                                    <span tal:define="url obj/getWww|nothing" 
-	                                                 tal:condition="url"><a tal:content="url" tal:attributes="href url"/></span></div>
+                                <div tal:define="url obj/getWww|nothing" tal:condition="url">
+                                    <span i18n:translate="label_short_www">Website</span>: 
+                                    <span><a tal:content="url" tal:attributes="href url"/></span></div>
                                 </div>
 
 
