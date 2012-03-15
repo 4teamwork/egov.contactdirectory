@@ -12,24 +12,14 @@
            tal:define="kssClassesView context/@@kss_field_decorator_view;
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                        templateId template/getId;
-							   Batch python:modules['Products.CMFPlone'].Batch;
-					           b_size python:20;
-					           b_size request/b_size | b_size;
-					           b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
-					           b_start python:0;b_start request/b_start | b_start;
-					           b_range python: b_start==0 and 5 or 3;
-					           batch python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
+                           Batch python:modules['Products.CMFPlone'].Batch;
+                           b_size python:20;
+                           b_size request/b_size | b_size;
+                           b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
+                           b_start python:0;b_start request/b_start | b_start;
+                           b_range python: b_start==0 and 5 or 3;
+                           batch python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
 ">
-<!--
-			   Batch python:modules['Products.CMFPlone'].Batch;
-	           b_size python:1;
-	           b_size request/b_size | b_size;
-	           b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
-	           b_start python:0;b_start request/b_start | b_start;
-	           b_range python: b_start==0 and 5 or 3;
-	           contacts python:Batch(view.list_contacts(), int(b_size), int(b_start),
-	orphan=1,pagerange=int(b_range));	
--->
 	<h1 tal:content="here/Title"></h1>
 	<style>
 	.contact-list th{
@@ -80,7 +70,7 @@
 				</td>
 				<td tal:define="roles python: contact.getObject().get_orgunits()">
 					<tal:b repeat="role roles">
-						<a 	tal:content="role/orgunit" 
+						<a tal:content="role/orgunit"
 							tal:attributes="href role/link" /> (<tal:b content="role/function"></tal:b>)
 							<tal:b tal:condition="not: repeat/role/end">
 							<tal:b content="role/phone" />

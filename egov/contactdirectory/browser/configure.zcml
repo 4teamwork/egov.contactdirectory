@@ -3,9 +3,9 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="egov.contactdirectory">
-    
+
     <include package=".viewlets" />
-    
+
     <browser:resourceDirectory
         name='egov-contactdirectory-resources'
         directory="resources"
@@ -18,7 +18,7 @@
         permission="zope2.View"
         template="folder_contacts_listing.pt"
     />
-      
+
     <browser:menuItem
         for="Products.ATContentTypes.interface.IATFolder"
         menu="plone_displayviews"
@@ -34,15 +34,15 @@
         permission="zope2.View"
         template="contact.pt"
     />
-    
+
     <browser:menuItem
         for="egov.contactdirectory.interfaces.IContact"
         menu="plone_displayviews"
         title="Kontaktansicht"
         action="@@contact_view"
         description="View for a single contact"
-    />    
-      
+    />
+
     <browser:page
         for="*"
         name="member_view"
@@ -56,7 +56,7 @@
         name="block_view"
         class=".views.MemberBlockView"
         template="member_block.pt"
-        permission="zope2.View" 
+        permission="zope2.View"
     />
 
     <browser:page

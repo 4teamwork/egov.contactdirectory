@@ -7,8 +7,9 @@ Changelog
 
 - Hide Website lable in contactlisting if there's no website.
   [mathias.leimgruber]
-  
--
+
+- Show function on contactlisting.
+  [mathias.leimgruber]
 
 
 1.3 (2012-03-05)
