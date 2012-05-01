@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="egov.contactdirectory">
 <body>
 
@@ -13,78 +13,109 @@
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                        templateId template/getId">
 
-           <div tal:replace="structure provider:plone.abovecontenttitle" />
-           <h1 class="documentFirstHeading" tal:content="context/pretty_title_or_id">Title or id</h1>
-           <div tal:replace="structure provider:plone.belowcontenttitle" />
+            <div tal:replace="structure provider:plone.abovecontenttitle" />
+            <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
+            <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-        <div tal:define="beschreibung here/getDescription | nothing;
-                          bio here/getText | nothing;"
+        <div tal:define="beschreibung context/getDescription | nothing;
+                          bio context/getText | nothing;"
               class="contact_view">
 
-            <div class="rightFloat" tal:define="portrait here/getImage | nothing">
+            <div class="rightFloat" tal:define="portrait context/getImage | nothing">
               <img tal:condition="portrait" class="floatRight"
                    tal:attributes="src string:${portrait/absolute_url}_thumbnail;
-                             alt string:${here/getFirstname}, ${here/getLastname}" />
+                             alt string:${context/getFirstname}, ${context/getLastname}" />
             </div>
-            <h2>
-                <span tal:condition="here/getAcademic_title | nothing"
-                      tal:replace="here/getAcademic_title">Dr.</span>
-                <span tal:replace="string: ${here/getFirstname | nothing} ${here/getLastname | nothing} ">Name</span></h2>
             <p>
-
                 <span tal:replace="beschreibung" />
-                <tal:func condition="here/getFunction | nothing">
-                    <span tal:replace="here/getFunction | nothing" /><br /><br />
-                </tal:func>
-
-                <tal:org condition="context/getOrganization|nothing">
-                    <span tal:replace="context/getOrganization|nothing"/><br />
-                </tal:org>
-
-                <tal:dep condition="context/getDepartment|nothing">
-                    <span tal:replace="context/getDepartment|nothing"/><br />
-                </tal:dep>
-
-                <tal:addr condition="python: context.getZip() and context.getCity() and context.getAddress()">
-                    <span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br />
-                    <span tal:replace="here/getZip | nothing" />
-                    <span tal:replace="here/getCity | nothing" /><br /><br />
-                </tal:addr>
-                <tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_phone_office">Phone number (office)</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
-                <tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_phone_mobile">Mobile number</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
-                <tal:block tal:condition="here/getFax"><span i18n:translate="label_fax">Fax number</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
-                <span tal:condition="here/getEmail">
-                    <a tal:replace="structure python:context.spamProtect(mailaddress=here.getEmail())"/><br />
-                </span>
-                <a tal:define="url here/getWww;
-                               ishttps python:url.find('https') != -1;
-                               ishttp python:url.find('http') != -1;
-                               formatted_url python:ishttps and url.replace('https://','') or url;
-                               formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
-                   tal:condition="here/getWww"
-                   tal:content="formatted_url"
-                   tal:attributes="href here/getWww"
-                   title="externer Link (&ouml;ffnet neuem Fenster)"
-                   target="_blank" />
             </p>
+
+
+            <table class="vertical listing">
+                <tr tal:condition="python: context.getFirstname() and context.getLastname()">
+                    <th i18n:translate="label_name">Name</th>
+                    <td>
+                        <tal:title tal:condition="context/getAcademic_title"
+                                   tal:replace="context/getAcademic_title">
+                            Dr.
+                        </tal:title>
+                        <tal:name tal:replace="string:${context/getFirstname} ${context/getLastname}">
+                            Hugo Boss
+                        </tal:name>
+                    </td>
+                </tr>
+                <tr tal:condition="context/getFunction">
+                    <th i18n:translate="label_function">Function</th>
+                    <td tal:content="context/getFunction">Boss</td>
+                </tr>
+                <tr tal:condition="context/getOrganization">
+                    <th i18n:translate="label_organization">Organization</th>
+                    <td tal:content="context/getOrganization">XYZ GmbH</td>
+                </tr>
+                <tr tal:condition="context/getDepartment">
+                    <th i18n:translate="label_department">Department</th>
+                    <td tal:content="context/getDepartment">Department A</td>
+                </tr>
+                <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
+                    <th i18n:translate="label_address">Address</th>
+                    <td>
+                        <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
+                        <span tal:replace="context/getZip | nothing" />
+                        <span tal:replace="context/getCity | nothing" />
+                    </td>
+                </tr>
+                <tr tal:condition="context/getPhone_office">
+                    <th i18n:translate="label_phone_office">Phone number (office)</th>
+                    <td tal:content="context/getPhone_office | nothing">031 000 00 00</td>
+                </tr>
+                <tr tal:condition="context/getPhone_mobile">
+                    <th i18n:translate="label_phone_mobile">Mobile number</th>
+                    <td tal:content="context/getPhone_mobile | nothing">079 000 00 00</td>
+                </tr>
+                <tr tal:condition="context/getFax">
+                    <th i18n:translate="label_fax">Fax number</th>
+                    <td tal:content="context/getFax | nothing">031 123 45 67</td>
+                </tr>
+                <tr tal:condition="context/getEmail">
+                    <th i18n:translate="label_email">E-Mail</th>
+                    <td>
+                        <a tal:attributes="href string:mailto:${context/getEmail}"
+                        tal:content="context/getEmail | nothing">info@mail.com</a>
+                    </td>
+                </tr>
+                <tr tal:condition="context/getWww">
+                    <th i18n:translate="label_www">WWW</th>
+                    <td>
+                        <a tal:define="url context/getWww;
+                                       ishttps python:url.find('https') != -1;
+                                       ishttp python:url.find('http') != -1;
+                                       formatted_url python:ishttps and url.replace('https://','') or url;
+                                       formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
+                           tal:condition="context/getWww"
+                           tal:content="formatted_url"
+                           tal:attributes="href context/getWww"
+                           target="_blank">
+                            www.google.ch
+                        </a>
+                    </td>
+                </tr>
+            </table>
             <tal:private define="private_address view/private_address" condition="private_address">
-                <h3 i18n:translate="label_private_address">
-                Privateaddress
-                </h3>
-                <p>
-                    <span tal:replace="structure private_address | context/getTel_private">Address</span>
-
-                <tal:telp condition="context/getTel_private | nothing">
-                    <br />
-                    <span tal:omit-tag=""
-                          i18n:translate="label_telephon_private">Tel. p:</span>
-                    <span tal:replace="context/getTel_private | nothing">tel</span>
-                </tal:telp>
-
-                </p>
+                <h2 i18n:translate="label_private_address">Privateaddress</h2>
+                <table class="vertical listing">
+                    <tr>
+                        <th i18n:translate="label_address">Address</th>
+                        <td tal:content="structure private_address | nothing">
+                            Address
+                        </td>
+                    </tr>
+                    <tr tal:condition="context/getTel_private | nothing">
+                        <th i18n:translate="label_telephon_private">Tel. p:</th>
+                        <td tal:content="context/getTel_private">031 000 00 00</td>
+                    </tr>
+                </table>
             </tal:private>
-
-            <metal:block tal:define="memberships here/getMemberships" tal:condition="memberships">
+            <metal:block tal:define="memberships context/getMemberships" tal:condition="memberships">
             <h3 i18n:translate="label_memberships">
             Memberships
             </h3>
@@ -170,7 +201,7 @@ jq(document).ready(function() {
 
 </dd> </dl>
 
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+        <div metal:use-macro="context/document_relateditems/macros/relatedItems">
             show related items if they exist
         </div>
 

@@ -5,7 +5,8 @@ Changelog
 1.3.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve contact view. Use tables to display the contact informations.
+  [Julian Infanger]
 
 
 1.3.1 (2012-03-19)

@@ -321,7 +321,7 @@ msgstr "Organisation"
 #. Default: "Organization"
 #: ./egov/contactdirectory/content/contact.py:44
 msgid "label_organization"
-msgstr "Organisation"
+msgstr "Firma"
 
 #. Default: "Phone"
 #: ./egov/contactdirectory/browser/contactfolder.pt:73
