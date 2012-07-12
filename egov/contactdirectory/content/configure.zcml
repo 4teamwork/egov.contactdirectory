@@ -5,11 +5,9 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="egov.contactdirectory">
 
-    <five:implements
-        class=".member.Member"
-        interface="simplelayout.base.interfaces.ISimpleLayoutBlock"
-        />
-
+    <class class=".member.Member">
+        <implements interface="simplelayout.base.interfaces.ISimpleLayoutBlock" />
+    </class>
 
     <!-- VocabularyFactory for listing all OrgUnits a Contact is Member of -->
     <utility
