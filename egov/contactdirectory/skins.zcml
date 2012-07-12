@@ -2,8 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf">
 
-   <!-- File System Directory Views registration -->
-   <cmf:registerDirectory
-       name="egov_contactdirectory"/>
+    <!-- File System Directory Views registration -->
+    <cmf:registerDirectory
+        name="egov_contactdirectory"/>
 
 </configure>

@@ -12,7 +12,7 @@
         permission="zope2.View"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
-    
+
     <browser:viewlet
         for="Products.ATContentTypes.interface.IATFolder"
         name="egov.contactdirectory.alphabeticalsearchviewlet"
@@ -20,6 +20,6 @@
         class=".viewlets.ContactsAlphabeticalSearchViewlet"
         permission="zope2.View"
         view="egov.contactdirectory.interfaces.IContactFolderView"
-    />
+        />
 
 </configure>

@@ -4,30 +4,27 @@
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
-      name="default"
-      title="egov.contactdirectory"
-      directory="profiles/default"
-      description="Directory for Egov GemeindePortal"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+        name="default"
+        title="egov.contactdirectory"
+        directory="profiles/default"
+        description="Directory for Egov GemeindePortal"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
 
-  <!-- Register the import step -->
-  <genericsetup:importStep
-      name="egov.contactdirectory"
-      title="egov.contactdirectory special import handlers"
-      description=""
-      handler="egov.contactdirectory.setuphandlers.import_various" />
+    <!-- Register the import step -->
+    <genericsetup:importStep
+        name="egov.contactdirectory"
+        title="egov.contactdirectory special import handlers"
+        description=""
+        handler="egov.contactdirectory.setuphandlers.import_various" />
 
-  <!-- Register the upgrade step -->
-  <genericsetup:upgradeStep
-      title="Add catalog indexes"
-      description=""
-      source="1000"
-      destination="1001"
-      handler="egov.contactdirectory.setuphandlers.add_catalog_indexes"
-      profile="egov.contactdirectory:default" />
+    <!-- Register the upgrade step -->
+    <genericsetup:upgradeStep
+        title="Add catalog indexes"
+        description=""
+        source="1000"
+        destination="1001"
+        handler="egov.contactdirectory.setuphandlers.add_catalog_indexes"
+        profile="egov.contactdirectory:default" />
 
 </configure>
-
-
-

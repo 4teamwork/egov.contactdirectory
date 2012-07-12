@@ -9,7 +9,7 @@
     <browser:resourceDirectory
         name='egov-contactdirectory-resources'
         directory="resources"
-    />
+        />
 
     <browser:page
         for="*"
@@ -17,7 +17,7 @@
         class=".views.ContactFolderView"
         permission="zope2.View"
         template="folder_contacts_listing.pt"
-    />
+        />
 
     <browser:menuItem
         for="Products.ATContentTypes.interface.IATFolder"
@@ -25,7 +25,7 @@
         title="Kontakverzeichnis"
         action="@@contacts_view"
         description="List contents of a contacts folder"
-    />
+        />
 
     <browser:page
         for="*"
@@ -33,7 +33,7 @@
         class=".views.ContactView"
         permission="zope2.View"
         template="contact.pt"
-    />
+        />
 
     <browser:menuItem
         for="egov.contactdirectory.interfaces.IContact"
@@ -41,7 +41,7 @@
         title="Kontaktansicht"
         action="@@contact_view"
         description="View for a single contact"
-    />
+        />
 
     <browser:page
         for="*"
@@ -49,7 +49,7 @@
         class=".views.MemberView"
         permission="zope2.View"
         template="member_view.pt"
-    />
+        />
 
     <browser:page
         for="egov.contactdirectory.interfaces.IMember"
@@ -57,7 +57,7 @@
         class=".views.MemberBlockView"
         template="member_block.pt"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="Products.CMFCore.interfaces._content.IFolderish"
