@@ -1,11 +1,11 @@
-from zope.i18nmessageid import MessageFactory
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
-from Products.CMFCore.permissions import setDefaultRoles
+from config import PROJECTNAME, ADD_PERMISSIONS
+from zope.i18nmessageid import MessageFactory
 
-from Products.PlacelessTranslationService.utility import PTSTranslationDomain
-from config import PROJECTNAME, product_globals, ADD_PERMISSIONS
+
 contactdirectoryMessageFactory = MessageFactory('egov.contactdirectory')
+
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""

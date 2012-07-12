@@ -5,6 +5,9 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
+- Remedy PTSTranslationDomain deprecation warning.
+  [jone]
+
 - Remedy five:implements deprecation warning.
   [jone]
 
