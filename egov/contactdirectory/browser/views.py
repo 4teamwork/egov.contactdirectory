@@ -4,7 +4,7 @@ from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from ftw.table.basesource import BaseTableSource
-from simplelayout.types.common.browser.views import BlockView 
+from simplelayout.types.common.browser.views import BlockView
 from ftw.tabbedview.browser import listing
 from egov.contactdirectory.interfaces import IContactFolderView
 from ftw.table.interfaces import ITableSourceConfig, ITableSource
@@ -37,7 +37,7 @@ class ContactFolderView(BrowserView):
     """
     """
     implements(IContactFolderView)
-    
+
     def list_contacts(self):
         catalog = getToolByName(self, 'portal_catalog')
 
@@ -53,7 +53,7 @@ class ContactFolderView(BrowserView):
             kwargs['alphabetical_title'] = value + '*'
         else:
             kwargs['SearchableText'] = ""
-        
+
         results = catalog(sort_on='sortable_title',path={'query':'/'.join(self.context.getPhysicalPath()), 'depth':1}, **kwargs)
         return results
 
@@ -65,13 +65,13 @@ class ContactView(BrowserView):
         if self.context.getAddress_private():
             address += self.context.getAddress_private() \
                 .replace('\n', '<br/>') + '<br />'
-        
+
         if self.context.getAddress_private():
             address += self.context.getZip_private()
         if self.context.getAddress_private():
             address += ' ' + self.context.getCity_private()
         return address
-            
+
 
 class MemberView(BrowserView):
     """
@@ -80,7 +80,7 @@ class MemberView(BrowserView):
 class MemberBlockView(BlockView):
     """
     """
-    
+
     @property
     def has_contact(self):
         return bool(self.context.getContact())
@@ -100,9 +100,9 @@ class IContactSourceConfig(ITableSourceConfig):
 
 class ContactTab(listing.ListingView):
     """Special tab for contacts - lists brains and real members."""
-    
+
     implements(IContactSourceConfig)
-    
+
     sort_on = 'name'
     sort_order = 'reverse'
 
@@ -124,12 +124,12 @@ class ContactTab(listing.ListingView):
                 'column_title' : _(u'Email', default=u'Email'),
                 'sort_index' : 'email',},
                )
-    
+
     def get_base_query(self):
         return None
 
 #    template = ViewPageTemplateFile('contacttab.pt')
-    
+
 
 class ContactTableSource(BaseTableSource):
     implements(ITableSource)
@@ -142,8 +142,8 @@ class ContactTableSource(BaseTableSource):
         registry = getUtility(IRegistry)
         acl_users = getToolByName(context, 'acl_users')
         results = []
-        
-        
+
+
         # Get members
         if registry['ftw.contactdirectory.showlocalroles']:
             for user_id in dict(context.get_local_roles()).keys():
@@ -162,7 +162,7 @@ class ContactTableSource(BaseTableSource):
                             icon = '',
                             url = '%s/author/%s' % (
                                 context.portal_url(),
-                                user._id),))        
+                                user._id),))
         # Get contacts
         query = dict(
             portal_type='Contact',
@@ -226,4 +226,3 @@ class ContactTableSource(BaseTableSource):
 
     def search_results(self, results):
         return results
-
