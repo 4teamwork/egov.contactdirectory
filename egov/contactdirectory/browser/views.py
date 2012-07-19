@@ -107,22 +107,29 @@ class ContactTab(listing.ListingView):
     sort_order = 'reverse'
 
     show_selects = False
-    show_menu = False
+    enabled_actions = major_actions = ['reset_tableconfiguration']
 
     columns = (
                {'column' : 'icon',
                 'column_title' : _(u'Type', default=u'Type'),
-                'transform' : linked_icon},
+                'transform' : linked_icon,
+                'width': 30},
+
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
-                'transform' : linked}, 
+                'transform' : linked,
+                'width': 300},
+
               {'column' : 'phone',
                'column_title' : _(u'Phone', default=u'Phone'),
-               'sort_index' : 'phone',},
+               'sort_index' : 'phone',
+                'width': 120},
+
                {'column' : 'email',
                 'column_title' : _(u'Email', default=u'Email'),
-                'sort_index' : 'email',},
+                'sort_index' : 'email',
+                'width': 200},
                )
 
     def get_base_query(self):
