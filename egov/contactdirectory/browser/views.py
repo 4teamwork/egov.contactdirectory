@@ -113,7 +113,7 @@ class ContactTab(listing.ListingView):
                {'column' : 'icon',
                 'column_title' : _(u'Type', default=u'Type'),
                 'transform' : linked_icon,
-                'width': 30},
+                'width': 35},
 
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
