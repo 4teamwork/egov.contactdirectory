@@ -5,6 +5,9 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
+- Cleanup schemas: remove field description which are not really helpful.
+  [jone]
+
 - Remedy PTSTranslationDomain deprecation warning.
   [jone]
 

@@ -7,7 +7,7 @@ from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IContact
 
 from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, \
-                                      BooleanField, BooleanWidget, registerType
+    BooleanField, BooleanWidget, registerType
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
 from Products.Archetypes.atapi import TextField
 from Products.Archetypes.atapi import StringWidget, ImageWidget
@@ -37,263 +37,202 @@ except:
 
 
 schema = Schema((
-    StringField(
-        'organization',
-        searchable = 1,
-        widget = StringWidget(
-            label = _(u'label_organization', default=u'Organization'),
-            description = _(u'description_organization',
-                            u'Enter the name of the organization'))),
+        StringField(
+            name='organization',
+            searchable = 1,
+            widget = StringWidget(
+                label = _(u'label_organization', default=u'Organization'))),
 
-    StringField(
-        'gender',
-        default = 'm',
-        vocabulary=DisplayList((
-            ('m',_(u'male')),
-            ('f',_(u'female')),
-            ('','-'))),
-        widget = SelectionWidget(
-            label = _(u'label_gender', default=u'Gender'),
-            description = _(u'description_gender',
-                            default=u'Enter the gender'))),
+        StringField(
+            name='gender',
+            default='m',
+            vocabulary=DisplayList((
+                    ('m', _(u'male')),
+                    ('f', _(u'female')),
+                    ('', '-'))),
+            widget=SelectionWidget(
+                label=_(u'label_gender', default=u'Gender'))),
 
-    StringField(
-        'lastname',
-        required=0,
-        searchable=1,
-        index = ('TextIndex'),
-        widget=StringWidget(
-            label=_(u'label_lastname', default="Lastname"),
-            description=_(
-                u'help_lastname',
-                default='Please enter last name'))),
+        StringField(
+            name='lastname',
+            required=0,
+            searchable=1,
+            index=('TextIndex'),
+            widget=StringWidget(
+                label=_(u'label_lastname', default="Lastname"))),
 
-    StringField(
-        'firstname',
-        required=0,
-        searchable=1,
-        widget=StringWidget(
-            label=_(u'label_firstname', default='Firstname'),
-            description_=_(
-                u'help_firstname',
-                default='Please enter first name'))),
+        StringField(
+            name='firstname',
+            required=0,
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_firstname', default='Firstname'))),
 
-    ComputedField(
-        'searchableMemberships',
-        expression='context.getSearchableMembershipText()',
-        searchable=1,
-        widget = ComputedWidget(
-            label=_(u'label_membership', default="Membership"))),
+        ComputedField(
+            name='searchableMemberships',
+            expression='context.getSearchableMembershipText()',
+            searchable=1,
+            widget=ComputedWidget(
+                label=_(u'label_membership', default="Membership"))),
 
-    ComputedField(
-        'memberships',
-        expression='context.getMemberships()',
-        widget = ComputedWidget(
-            label=_('label_memberships', default="Memberships"),
-            description=_(u"help_memberships", default=""),
-            macro="contact_memberships")),
+        ComputedField(
+            name='memberships',
+            expression='context.getMemberships()',
+            widget=ComputedWidget(
+                label=_('label_memberships', default="Memberships"),
+                macro="contact_memberships")),
 
-    TextField(
-        'address',
-        searchable = 1,
-        default_input_type = 'text/plain',
-        default_output_type = 'text/plain',
-        allowable_content_types = ('text/plain', ),
-        widget=TextAreaWidget(
-            label=_(u'label_address', default='Address'),
-            description=_(u'help_address', default='Please enter address'),
-            rows = 2,
-        ),
-    ),
+        TextField(
+            name='address',
+            searchable = 1,
+            default_input_type='text/plain',
+            default_output_type='text/plain',
+            allowable_content_types=('text/plain', ),
+            widget=TextAreaWidget(
+                label=_(u'label_address', default='Address'),
+                rows = 2)),
 
-    StringField(
-        'zip',
-        searchable = 1,
-        widget = StringWidget(
-            label=_(u'label_zip', default='Postal code'),
-            description=_(u'help_zip', default='Enter the postal code'))),
+        StringField(
+            name='zip',
+            searchable = 1,
+            widget = StringWidget(
+                label=_(u'label_zip', default='Postal code'))),
 
-    StringField(
-        'city',
-        searchable=1,
-        widget = StringWidget(
-            label=_(u'label_city', default='City'),
-            description=_(
-                u'help_city',
-                default="Enter the name of the city"))),
+        StringField(
+            name='city',
+            searchable=1,
+            widget = StringWidget(
+                label=_(u'label_city', default='City'))),
 
-    BooleanField(
-        'showPlacemark',
-        default=1,
-        widget=BooleanWidget(
-            label=_(u'label_showplacemark', default=u'Show on map'),
-            description=_(u'help_showplacemark',
-                          default=u'Show address on map'),
-        ),
-    ),
-    StringField(
-        'country',
-        required = True,
-        searchable = False,
-        languageIndependent = False,
-        default = 'Schweiz',
-        storage = AnnotationStorage(),
-        widget = StringWidget(
-            label=_(u'label_country', default='Country'),
-            description=_(
-                u'help_country',
-                default="Enter the name of the country"))),
+        BooleanField(
+            name='showPlacemark',
+            default=1,
+            widget=BooleanWidget(
+                label=_(u'label_showplacemark', default=u'Show on map'))),
 
-    StringField(
-        'email',
-        searchable = 1,
-        validators=('isEmail',),
-        widget=StringWidget(
-            label=_(u'label_email', default='E-Mail'),
-            description=_(
-                u'help_email',
-                default='Please enter e-Mail address'))),
+        StringField(
+            name='country',
+            required=True,
+            searchable=False,
+            languageIndependent=False,
+            default='Schweiz',
+            storage=AnnotationStorage(),
+            widget=StringWidget(
+                label=_(u'label_country', default='Country'))),
 
-    StringField(
-        'phone_office',
-        searchable = 1,
-        widget = StringWidget(
-            label=_(u'label_phone_office', default='Phone number (office)'),
-            description=_(
-                u'help_phone_office',
-                default='Enter the phone number'))),
+        StringField(
+            name='email',
+            searchable=1,
+            validators=('isEmail',),
+            widget=StringWidget(
+                label=_(u'label_email', default='E-Mail'))),
 
-    StringField(
-        'phone_mobile',
-        searchable = 1,
-        widget = StringWidget(
-            label=_(u'label_phone_mobile', default='Mobile number'),
-            description=_(
-                u'help_phone_mobile',
-                default='Enter the mobile number'))),
+        StringField(
+            name='phone_office',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_phone_office',
+                        default='Phone number (office)'))),
 
-    StringField(
-        'fax',
-        searchable = 1,
-        widget = StringWidget(
-            label=_(u'label_fax', default='Fax number'),
-            description=_(
-                u'help_fax',
-                default='Enter the fax number'))),
+        StringField(
+            name='phone_mobile',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_phone_mobile', default='Mobile number'))),
 
-    StringField(
-        'www',
-        validators=('isURL',),
-        widget=StringWidget(
-            label=_(u'label_www', default='WWW'),
-            description=_(
-                u'help_www',
-                default='Please enter a website URL'))),
+        StringField(
+            name='fax',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_fax', default='Fax number'))),
 
-    ImageField(
-        'image',
-        schemata='Erweitert',
-        sizes={'thumbnail': (175,999),},
-        widget=ImageWidget(
-            label=_(u'label_image', default='Image'),
-            description=_(
-                u'help_image',
-                default='Please supply an image'))),
+        StringField(
+            name='www',
+            validators=('isURL',),
+            widget=StringWidget(
+                label=_(u'label_www', default='WWW'))),
 
-    StringField(
-        'academic_title',
-        schemata='Erweitert',
-        searchable = 0,
-        widget = StringWidget(
-            label = _(u'label_academic_title', default=u'Academic title'),
-            description = _(
-                u'help_academic_title',
-                u'Enter the academic title'))),
+        ImageField(
+            name='image',
+            schemata='Erweitert',
+            sizes={'thumbnail': (175,999),},
+            widget=ImageWidget(
+                label=_(u'label_image', default='Image'))),
 
-    StringField(
-        'function',
-        schemata='Erweitert',
-        searchable = 1,
-        widget = StringWidget(
-            label = _(u'label_function', default=u'Function'),
-            description = _(
-                u'help_function',
-                default=u'Enter the function'))),
+        StringField(
+            name='academic_title',
+            schemata='Erweitert',
+            searchable = 0,
+            widget=StringWidget(
+                label = _(u'label_academic_title',
+                          default=u'Academic title'))),
 
-    StringField(
-        'department',
-        schemata='Erweitert',
-        searchable = 1,
-        widget = StringWidget(
-            label = _(u'label_department', default=u'Department'),
-            description = _(u'help_department', u'Enter the department'))),
+        StringField(
+            name='function',
+            schemata='Erweitert',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_function', default=u'Function'))),
 
-    StringField(
-        'salutation',
-        schemata='Erweitert',
-        searchable = 1,
-        widget = StringWidget(
-            label = _(u'label_salutation', default=u'Salutation'),
-            description = _(
-                u'help_salutation',
-                default=u'Enter the salutation'))),
+        StringField(
+            name='department',
+            schemata='Erweitert',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_department', default=u'Department'))),
 
-    TextField(
-        'text',
-        required=False,
-        searchable=True,
-        schemata = "Erweitert",
-        default_input_type = 'text/html',
-        default_output_type = 'text/html',
-        widget = RichWidget(
-            label = _(u'label_text', default=u'Text'),
-            rows = 25,)),
+        StringField(
+            name='salutation',
+            schemata='Erweitert',
+            searchable=1,
+            widget=StringWidget(
+                label=_(u'label_salutation', default=u'Salutation'))),
 
-    StringField(
-        'tel_private',
-        searchable = 1,
-        schemata = "Privatanschrift",
-        widget = StringWidget(
-            label=_(u'label_private_tel', default='Telefon private'),
-            description=_(
-                u'help_private_tel',
-                default=''))),
+        TextField(
+            name='text',
+            required=False,
+            searchable=True,
+            schemata="Erweitert",
+            default_input_type='text/html',
+            default_output_type='text/html',
+            widget=RichWidget(
+                label=_(u'label_text', default=u'Text'),
+                rows=25)),
 
-    TextField(
-        'address_private',
-        default='',
-        searchable=1,
-        schemata = "Privatanschrift",
-        default_input_type = 'text/plain',
-        default_output_type = 'text/plain',
-        allowable_content_types = ('text/plain', ),
-        widget = TextAreaWidget(
-            label = _(u'label_address', default=u'Address'),
-            description = _(
-                u'help_address_private',
-                default=u'Enter the address'),
-            rows = 2)),
+        StringField(
+            name='tel_private',
+            searchable=1,
+            schemata="Privatanschrift",
+            widget=StringWidget(
+                label=_(u'label_private_tel', default='Telefon private'))),
 
-    StringField(
-        'zip_private',
-        searchable = 1,
-        schemata = "Privatanschrift",
-        widget = StringWidget(
-            label=_(u'label_private_zip', default='Postal code'),
-            description=_(
-                u'help_private_zip',
-                default='Enter the postal code'))),
+        TextField(
+            name='address_private',
+            default='',
+            searchable=1,
+            schemata="Privatanschrift",
+            default_input_type='text/plain',
+            default_output_type='text/plain',
+            allowable_content_types=('text/plain', ),
+            widget=TextAreaWidget(
+                label = _(u'label_address', default=u'Address'),
+                rows = 2)),
 
-    StringField(
-        'city_private',
-        searchable=1,
-        schemata = "Privatanschrift",
-        widget = StringWidget(
-            label=_(u'label_private_city', default='City'),
-            description=_(
-                u'help_private_city',
-                default="Enter the name of the city"))),
-))
+        StringField(
+            name='zip_private',
+            searchable=1,
+            schemata="Privatanschrift",
+            widget=StringWidget(
+                label=_(u'label_private_zip', default='Postal code'))),
+
+        StringField(
+            name='city_private',
+            searchable=1,
+            schemata="Privatanschrift",
+            widget=StringWidget(
+                label=_(u'label_private_city', default='City'))),
+
+        ))
 
 
 if MAPS_PACKAGE_PRESENT:
@@ -313,19 +252,19 @@ contact_schema['country'].widget.visible = {'view' : 'hidden', 'edit': 'hidden'}
 
 # Hide settings schemata for non-managers
 settings_fields = [contact_schema[key] for key in contact_schema.keys()
-                        if contact_schema[key].schemata == 'settings']
+                   if contact_schema[key].schemata == 'settings']
 for field in settings_fields:
     field.write_permission = permissions.ManagePortal
 
 # Hide ownership schemata for non-managers
 ownership_fields = [contact_schema[key] for key in contact_schema.keys()
-                        if contact_schema[key].schemata == 'ownership']
+                    if contact_schema[key].schemata == 'ownership']
 for field in ownership_fields:
     field.write_permission = permissions.ManagePortal
 
 # Hide date schemata for non-managers
 dates_fields = [contact_schema[key] for key in contact_schema.keys()
-                        if contact_schema[key].schemata == 'dates']
+                if contact_schema[key].schemata == 'dates']
 for field in dates_fields:
     field.write_permission = permissions.ManagePortal
 
@@ -414,7 +353,9 @@ class ValidateOrganizationOrFullname(object):
     implements(IObjectPostValidation)
     adapts(IContact)
 
-    msg = _(u"Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an")
+    msg = _(u'validation_error_organisation_or_name_required',
+            default=u'Either the name of the organisation or first- '
+            u'and lastname of the person is required.')
 
     def __init__(self, context):
         self.context = context
@@ -427,8 +368,8 @@ class ValidateOrganizationOrFullname(object):
             return None
         else:
             return {'organization': self.msg,
-            'firstname': self.msg,
-            'lastname': self.msg}
+                    'firstname': self.msg,
+                    'lastname': self.msg}
 # Returning None means no error
 
 
@@ -448,6 +389,6 @@ def OrgUnitsVocabularyFactory(context):
     # This turns a list of title->id pairs into a Zope 3 style vocabulary
     items = [(o.Title(), o.UID()) for o in available_org_units]
     return SimpleVocabulary.fromItems([('<Keine>', '')] + items)
-    directlyProvides(OrgUnitsVocabularyFactory, IVocabularyFactory)
+directlyProvides(OrgUnitsVocabularyFactory, IVocabularyFactory)
 
 registerType(Contact, PROJECTNAME)
