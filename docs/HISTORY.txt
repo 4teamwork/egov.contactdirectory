@@ -5,6 +5,9 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
+- Add English translations.
+  [jone]
+
 - Cleanup schemas: remove field description which are not really helpful.
   [jone]
 
