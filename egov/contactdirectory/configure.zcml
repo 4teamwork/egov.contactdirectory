@@ -10,6 +10,7 @@
 
     <include package=".browser" />
     <include package=".content" />
+    <include package=".upgrades" />
 
     <include file="skins.zcml" />
     <include file="profiles.zcml" />

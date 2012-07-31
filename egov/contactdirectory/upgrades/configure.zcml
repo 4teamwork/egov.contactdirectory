@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="egov.contactdirectory">
+
+    <!-- 1001 -> 1301 -->
+    <genericsetup:upgradeStep
+        title="Remove base_view from allowed Contact views."
+        description=""
+        source="1001"
+        destination="1301"
+        handler="egov.contactdirectory.upgrades.to1301.UpdateContactFTI"
+        profile="egov.contactdirectory:default"
+        />
+
+    <genericsetup:registerProfile
+        name="1301"
+        title="egov.contactdirectory.upgrades.13013: Remove base_view from allowed Contact views."
+        description=""
+        directory="profiles/1301"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+</configure>

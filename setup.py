@@ -26,7 +26,8 @@ setup(name='egov.contactdirectory',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'simplelayout.types.common'
+          'simplelayout.types.common',
+          'ftw.upgrade',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
