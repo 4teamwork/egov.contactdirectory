@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 import os
 
-version = open('egov/contactdirectory/version.txt').read().strip()
-maintainer = 'Victor Baumann'
+version = '1.3.3.dev0'
+maintainer = 'Mathias Leimgruber'
 
 setup(name='egov.contactdirectory',
       version=version,
