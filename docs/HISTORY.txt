@@ -5,6 +5,9 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
+- Removed some wrong CSS.
+  [tschanzt]
+
 - Remove base_view from allowed Contact views.
   [jone]
 
