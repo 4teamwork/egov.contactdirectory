@@ -24,7 +24,7 @@ def add_catalog_indexes(context, logger=None):
     # columns.  We could instead add <depends name="catalog"/> to
     # the registration of our import step in zcml, but doing it in
     # code makes this method usable as upgrade step as well.  Note that
-    # this silently does nothing when there is no catalog.xml, so it                                                                                  
+    # this silently does nothing when there is no catalog.xml, so it
     # is quite safe.
     setup = getToolByName(context, 'portal_setup')
     setup.runImportStepFromProfile(PROFILE_ID, 'catalog')
@@ -41,7 +41,7 @@ def add_catalog_indexes(context, logger=None):
     # Specify the indexes you want, with ('index_name', 'index_type', extras)
     wanted = (('alphabetical_title', 'ZCTextIndex', title_extras),
               )
-              
+
     indexables = []
     for name, meta_type, extras in wanted:
         if name not in indexes:
