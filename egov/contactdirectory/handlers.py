@@ -16,6 +16,12 @@ def objectModifiedHandler(obj, event):
 def geocodeAddress(obj):
     """Retrieves Geocode from an Address by querying GoogleMaps' geocoder and saves it
     """
+    config = getMultiAdapter((obj, obj.REQUEST), name = "maps_configuration")
+
+    api_key = config.googlemaps_key
+    # do nothing if there is no api_key
+    if not api_key:
+        return
 
     #call event on object explcit! 
     obj = aq_inner(obj).aq_explicit
@@ -32,9 +38,6 @@ def geocodeAddress(obj):
         city = obj.getCity()
 
         if city or zip:
-            config = getMultiAdapter((obj, obj.REQUEST), name = "maps_configuration")
-
-            api_key = config.googlemaps_key
             gmgeocoder = geocoders.Google(api_key)
 
             try:
