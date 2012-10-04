@@ -5,6 +5,9 @@ Changelog
 1.3.4 (unreleased)
 ------------------
 
+- Temporary remove maps from contact view.
+  [mathias.leimgruber]
+
 - Added missing dependency.
   [phgross]
 
