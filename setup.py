@@ -28,6 +28,7 @@ setup(name='egov.contactdirectory',
           'setuptools',
           'simplelayout.types.common',
           'ftw.table',
+          'ftw.tabbedview',
           'ftw.upgrade',
           # -*- Extra requirements: -*-
       ],
