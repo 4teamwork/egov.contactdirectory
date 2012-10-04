@@ -9,8 +9,7 @@ from ftw.tabbedview.browser import listing
 from egov.contactdirectory.interfaces import IContactFolderView
 from ftw.table.interfaces import ITableSourceConfig, ITableSource
 from egov.contactdirectory import contactdirectoryMessageFactory as _
-
-
+from egov.contactdirectory.browser.helper import icon
 def linked(item, value):
     url = '#'
     if 'url' in item:
@@ -113,7 +112,7 @@ class ContactTab(listing.ListingView):
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
-                'transform' : linked,
+                'transform' : icon,
                 'width': 300},
 
               {'column' : 'phone',
