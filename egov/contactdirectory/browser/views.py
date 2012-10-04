@@ -110,11 +110,6 @@ class ContactTab(listing.ListingView):
     show_menu = False
 
     columns = (
-               {'column' : 'icon',
-                'column_title' : _(u'Type', default=u'Type'),
-                'transform' : linked_icon,
-                'width': 35},
-
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
