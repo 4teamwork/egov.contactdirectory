@@ -13,3 +13,8 @@ class IconTestCase(TestCase):
         item = {'url':'http://blubb.ch', 'icon':'hans_peter'}
         html = icon(item, 'h\xc3\xa4ns m\xc3\xbcster')
         self.assertEqual(html, u'<a href="http://blubb.ch">hans_peterh\xe4ns m\xfcster</a>')
+
+    def test_unicode(self):
+        item = {'url':'http://blubb.ch', 'icon':'hans_peter'}
+        html = icon(item, 'h\xc3\xa4ns m\xc3\xbcster'.decode('utf-8'))
+        self.assertEqual(html, u'<a href="http://blubb.ch">hans_peterh\xe4ns m\xfcster</a>')
