@@ -3,11 +3,12 @@ from egov.contactdirectory.browser.helper import icon
 
 
 class IconTestCase(TestCase):
+
     def test_noumlauts(self):
         item = {'url':'http://blubb.ch', 'icon':'hans_peter'}
-        import pdb; pdb.set_trace()
         html = icon(item, 'hans muster')
         self.assertEqual(html, u'<a href="http://blubb.ch">hans_peterhans muster</a>')
+
     def test_umlauts(self):
         item = {'url':'http://blubb.ch', 'icon':'hans_peter'}
         html = icon(item, 'h\xc3\xa4ns m\xc3\xbcster')
