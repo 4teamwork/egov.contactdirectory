@@ -26,15 +26,6 @@ from zope.component import adapts
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 
-try:
-    from Products.Maps.content.Location import Location
-    from Products.Maps.content.Location import LocationSchema
-    MAPS_PACKAGE_PRESENT = True
-except:
-    MAPS_PACKAGE_PRESENT = False
-    class Location:
-        pass
-
 
 schema = Schema((
         StringField(
@@ -235,9 +226,6 @@ schema = Schema((
         ))
 
 
-if MAPS_PACKAGE_PRESENT:
-    schema = Schema((LocationSchema.get("geolocation").copy(), LocationSchema.get("markerIcon").copy())) + schema
-
 contact_schema = ATContentTypeSchema.copy() + \
     schema.copy()# + textSchema.copy()
 
@@ -272,13 +260,7 @@ contact_schema['language'].write_permission = permissions.ManagePortal
 contact_schema['location'].write_permission = permissions.ManagePortal
 
 
-if MAPS_PACKAGE_PRESENT:
-    # Hide the geolocation and markerIcon fields since we automatically calculate the location from the address
-    contact_schema['geolocation'].widget.visible = {'edit': 'invisible'}
-    contact_schema['markerIcon'].widget.visible = {'edit': 'invisible'}
-
-
-class Contact(ATCTContent, Location):
+class Contact(ATCTContent):
     """
     """
     implements(IContact)

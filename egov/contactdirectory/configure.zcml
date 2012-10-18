@@ -18,12 +18,6 @@
 
     <i18n:registerTranslations directory="locales" />
 
-    <subscriber
-        zcml:condition="installed Products.Maps"
-        for="Products.Maps.interfaces.content.ILocation
-             zope.lifecycleevent.IObjectModifiedEvent"
-        handler=".handlers.objectModifiedHandler" />
-
     <five:registerPackage package="." initialize=".initialize" />
 
 
