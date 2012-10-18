@@ -17,6 +17,8 @@
             <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
             <div tal:replace="structure provider:plone.belowcontenttitle" />
 
+            <div tal:replace="structure provider:plone.abovecontentbody" />
+
         <div tal:define="beschreibung context/getDescription | nothing;
                           bio context/getText | nothing;"
               class="contact_view">
