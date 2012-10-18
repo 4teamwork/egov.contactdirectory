@@ -131,7 +131,6 @@
                 <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
               </div>
 
-
         <div metal:use-macro="context/document_relateditems/macros/relatedItems">
             show related items if they exist
         </div>

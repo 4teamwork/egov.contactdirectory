@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3.4 (unreleased)
+1.3.5 (unreleased)
 ------------------
 
 - Added collective.geo.* integration
@@ -10,6 +10,22 @@ Changelog
 
 - Removed Products.Maps
   [lgraf]
+
+
+1.3.4 (2012-10-10)
+------------------
+
+- Added conditions in contacts view. Only display labels of fields which are not empty.
+  [Julian Infanger]
+
+- Temporary remove maps from contact view.
+  [mathias.leimgruber]
+
+- Added missing dependency.
+  [phgross]
+
+- Do not lookup geocordinates if no api_key is defined.
+  [Julian Infanger]
 
 
 1.3.3 (2012-08-20)

@@ -1,9 +1,14 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.4.dev0'
+version = '1.3.5.dev0'
 maintainer = 'Mathias Leimgruber'
 
+tests_require = ['plone.app.testing',]
+
+extras_require = {
+    'tests': tests_require,
+    }
 setup(name='egov.contactdirectory',
       version=version,
       description="",
@@ -27,9 +32,15 @@ setup(name='egov.contactdirectory',
       install_requires=[
           'setuptools',
           'simplelayout.types.common',
+          'ftw.table',
+          'ftw.tabbedview',
           'ftw.upgrade',
           # -*- Extra requirements: -*-
       ],
+
+      tests_require=tests_require,
+      extras_require=extras_require,
+
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]

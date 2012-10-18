@@ -9,28 +9,7 @@ from ftw.tabbedview.browser import listing
 from egov.contactdirectory.interfaces import IContactFolderView
 from ftw.table.interfaces import ITableSourceConfig, ITableSource
 from egov.contactdirectory import contactdirectoryMessageFactory as _
-
-
-def linked(item, value):
-    url = '#'
-    if 'url' in item:
-        url = item['url']
-
-    value = value.decode('utf-8')
-    link = u'<a href="%s">%s</a>' % (url, value)
-    wrapper = u'<span class="linkWrapper">%s</span>' % link
-    return wrapper
-
-
-def linked_icon(item, value):
-    url = '#'
-    if 'url' in item:
-        url = item['url']
-
-    value = value.decode('utf-8')
-    link = u'<a href="%s" class="%s">%s</a>' % (url, item['type_class'], value)
-    wrapper = u'<span class="linkWrapper">%s</span>' % link
-    return wrapper
+from egov.contactdirectory.browser.helper import icon
 
 
 class ContactFolderView(BrowserView):
@@ -110,15 +89,10 @@ class ContactTab(listing.ListingView):
     show_menu = False
 
     columns = (
-               {'column' : 'icon',
-                'column_title' : _(u'Type', default=u'Type'),
-                'transform' : linked_icon,
-                'width': 35},
-
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
-                'transform' : linked,
+                'transform' : icon,
                 'width': 300},
 
               {'column' : 'phone',

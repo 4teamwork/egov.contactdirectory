@@ -99,6 +99,7 @@ schema = Schema((
             name='showPlacemark',
             default=1,
             widget=BooleanWidget(
+                visible = -1, # prevent data loss
                 label=_(u'label_showplacemark', default=u'Show on map'))),
 
         StringField(
