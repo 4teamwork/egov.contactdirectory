@@ -1,5 +1,10 @@
-import logging
+from collective.geo.settings.interfaces import IGeoSettings
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
+from zope.component import getUtility
+import logging
+
+
 # The profile id of your package:
 PROFILE_ID = 'profile-egov.contactdirectory:default'
 
@@ -53,6 +58,20 @@ def add_catalog_indexes(context, logger=None):
         catalog.manage_reindexIndex(ids=indexables)
 
 
+def georef_settings(context):
+    """Import step to set up Contact as georeferenceable type in
+    collective.geo.settings.
+
+    This just adds a registry entry, but it can't be done through registry.xml
+    because at that point the Contact type hasn't been registered yet.
+    """
+
+    registry = getUtility(IRegistry)
+    geo_content_types = registry.forInterface(IGeoSettings).geo_content_types
+    if not 'Contact' in geo_content_types:
+        geo_content_types.append('Contact')
+
+
 def import_various(context):
     """Import step for configuration that is not handled in xml files.
     """
@@ -62,3 +81,4 @@ def import_various(context):
     logger = context.getLogger('egov.contactdirectory')
     site = context.getSite()
     add_catalog_indexes(site, logger)
+    georef_settings(site)
