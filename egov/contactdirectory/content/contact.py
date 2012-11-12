@@ -6,6 +6,8 @@ from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IContact
 
+from ftw.geo.interfaces import IGeocodableLocation
+
 from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, \
     BooleanField, BooleanWidget, registerType
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
@@ -327,6 +329,41 @@ class Contact(ATCTContent):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])
         return '%s %s' % (ATCTContent.SearchableText(self),orgunitinfo)
 
+
+class ContactLocationAdapter(object):
+    """Adapter that is able to represent the location of Contact in
+    a geocodable string form.
+    """
+    implements(IGeocodableLocation)
+    adapts(IContact)
+
+    def __init__(self, context):
+        self.context = context
+
+    def getLocationString(self):
+        """Build a geocodable location string from the Contact address
+        related fields.
+        """
+        street = ' '.join(self.context.getAddress().strip().split())
+        # Remove Postfach from street, otherwise Google geocoder API will
+        # return wrong results
+        street = street.replace('Postfach', '').replace('\r','').strip()
+        zip_code = self.context.getZip()
+        city = self.context.getCity()
+        country = self.context.getCountry()
+
+        # We need at least something other than country to be defined,
+        # otherwise we can't do a meaningful geocode lookup
+        if not (street or zip_code or city):
+            return ''
+
+        # Concatenate only the fields with a value into the location string
+        location = country
+        for field in [city, zip_code, street]:
+            if field.strip():
+                location = "%s, %s" % (city, field.strip())
+
+        return location
 
 
 class ValidateOrganizationOrFullname(object):

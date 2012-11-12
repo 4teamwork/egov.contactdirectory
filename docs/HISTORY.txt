@@ -5,6 +5,9 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
+- Enbaled automatic geocoding for Contact objects.
+  [lgraf]
+
 - Added 'abovecontentbody' viewlet to contact template (needed for cg.geo map).
   [lgraf]
 

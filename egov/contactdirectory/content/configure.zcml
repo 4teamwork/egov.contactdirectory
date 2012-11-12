@@ -18,4 +18,10 @@
 
     <subscriber provides="Products.Archetypes.interfaces.IObjectPostValidation"
                 factory=".contact.ValidateOrganizationOrFullname" />
+
+    <!-- Adapter to make OrgUnits automatically geocodable -->
+    <adapter
+        factory=".contact.ContactLocationAdapter"
+        />
+
 </configure>
