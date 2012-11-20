@@ -41,7 +41,7 @@
                                    tal:replace="context/getAcademic_title">
                             Dr.
                         </tal:title>
-                        <tal:name tal:replace="string:${context/getFirstname} ${context/getLastname}">
+                        <tal:name tal:replace="string:${context/getLastname} ${context/getFirstname}">
                             Hugo Boss
                         </tal:name>
                     </td>
