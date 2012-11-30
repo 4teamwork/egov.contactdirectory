@@ -5,6 +5,9 @@ Changelog
 1.3.7 (unreleased)
 ------------------
 
+- Added upgrade step to migrate Contact objects from P.Maps to c.geo.
+  [lgraf]
+
 - Moved map viewlet to plone.belowcontentbody.
   [lgraf]
 

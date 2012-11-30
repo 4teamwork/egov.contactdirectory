@@ -13,6 +13,16 @@
         profile="egov.contactdirectory:default"
         />
 
+    <!-- 1301 -> 1302 -->
+    <genericsetup:upgradeStep
+        title="Migrate Contact coordinates from P.Maps Location schema to c.geo"
+        description=""
+        source="1301"
+        destination="1302"
+        handler="egov.contactdirectory.upgrades.to1302.MigrateContactLocations"
+        profile="egov.contactdirectory:default"
+        />
+
     <genericsetup:registerProfile
         name="1301"
         title="egov.contactdirectory.upgrades.13013: Remove base_view from allowed Contact views."
