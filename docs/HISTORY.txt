@@ -5,7 +5,10 @@ Changelog
 1.3.7 (unreleased)
 ------------------
 
-- Enbaled automatic geocoding for Contact objects.
+- Moved map viewlet to plone.belowcontentbody.
+  [lgraf]
+
+- Enabled automatic geocoding for Contact objects.
   [lgraf]
 
 - Added 'abovecontentbody' viewlet to contact template (needed for cg.geo map).
