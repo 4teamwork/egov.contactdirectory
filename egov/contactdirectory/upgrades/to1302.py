@@ -2,9 +2,10 @@ from collective.geo.contentlocations.interfaces import IGeoManager
 from collective.geo.contentlocations.interfaces import IGeoMarkerUtility
 from egov.contactdirectory.handlers import initializeCustomFeatureStyles
 from egov.contactdirectory.setuphandlers import georef_settings
+from ftw.upgrade import ProgressLogger
 from ftw.upgrade import UpgradeStep
-from zope.component import queryAdapter
 from zope.component import getUtility
+from zope.component import queryAdapter
 import logging
 
 
@@ -36,18 +37,20 @@ class MigrateContactLocations(UpgradeStep):
         query = {'portal_type': 'Contact'}
         contacts = self.catalog_unrestricted_search(query, full_objects=True)
 
-        for obj in contacts:
-            # Set up custom feature styles so the map gets displayed
-            # in the plone.belowcontentbody viewlet
-            initializeCustomFeatureStyles(obj, None)
+        with ProgressLogger('Migrate Contact coordinates', contacts) as step:
+            for obj in contacts:
+                # Set up custom feature styles so the map gets displayed
+                # in the plone.belowcontentbody viewlet
+                initializeCustomFeatureStyles(obj, None)
 
-            # Migrate coordinates from Products.Maps to collective.geo.*
-            try:
-                coords = obj.geolocation
-            except AttributeError:
-                coords = None
-                log.info("No previous location found for %s." % obj)
-            if coords:
-                lat, lng = coords
-                geo_manager = queryAdapter(obj, IGeoManager)
-                geo_manager.setCoordinates('Point', (lng, lat))
+                # Migrate coordinates from Products.Maps to collective.geo.*
+                try:
+                    coords = obj.geolocation
+                except AttributeError:
+                    coords = None
+                    log.info("No previous location found for %s." % obj)
+                if coords:
+                    lat, lng = coords
+                    geo_manager = queryAdapter(obj, IGeoManager)
+                    geo_manager.setCoordinates('Point', (lng, lat))
+                step()
