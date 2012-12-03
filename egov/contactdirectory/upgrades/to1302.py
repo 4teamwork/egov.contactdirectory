@@ -1,6 +1,7 @@
 from collective.geo.contentlocations.interfaces import IGeoManager
 from collective.geo.contentlocations.interfaces import IGeoMarkerUtility
 from egov.contactdirectory.handlers import initializeCustomFeatureStyles
+from egov.contactdirectory.setuphandlers import georef_settings
 from ftw.upgrade import UpgradeStep
 from zope.component import queryAdapter
 from zope.component import queryUtility
@@ -19,7 +20,10 @@ class MigrateContactLocations(UpgradeStep):
     """
 
     def __call__(self):
-        self.setup_install_profile('profile-egov.contactdirectory:default')
+        self.setup_install_profile('profile-ftw.geo:default')
+
+        # Add portal_type 'Contact' to georeferenceable types if necessary
+        georef_settings(self.portal)
 
         geo_marker = queryUtility(IGeoMarkerUtility)
         if not geo_marker:
