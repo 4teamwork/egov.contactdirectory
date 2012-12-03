@@ -13,6 +13,15 @@
         profile="egov.contactdirectory:default"
         />
 
+    <genericsetup:registerProfile
+        name="1301"
+        title="egov.contactdirectory.upgrades.13013: Remove base_view from allowed Contact views."
+        description=""
+        directory="profiles/1301"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
     <!-- 1301 -> 1302 -->
     <genericsetup:upgradeStep
         title="Migrate Contact coordinates from P.Maps Location schema to c.geo"
@@ -21,15 +30,6 @@
         destination="1302"
         handler="egov.contactdirectory.upgrades.to1302.MigrateContactLocations"
         profile="egov.contactdirectory:default"
-        />
-
-    <genericsetup:registerProfile
-        name="1301"
-        title="egov.contactdirectory.upgrades.13013: Remove base_view from allowed Contact views."
-        description=""
-        directory="profiles/1301"
-        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
 </configure>
