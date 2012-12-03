@@ -4,7 +4,7 @@ from egov.contactdirectory.handlers import initializeCustomFeatureStyles
 from egov.contactdirectory.setuphandlers import georef_settings
 from ftw.upgrade import UpgradeStep
 from zope.component import queryAdapter
-from zope.component import queryUtility
+from zope.component import getUtility
 import logging
 
 
@@ -25,11 +25,8 @@ class MigrateContactLocations(UpgradeStep):
         # Add portal_type 'Contact' to georeferenceable types if necessary
         georef_settings(self.portal)
 
-        geo_marker = queryUtility(IGeoMarkerUtility)
-        if not geo_marker:
-            return
-
         # Make all Contacts IGeoreferenceable
+        geo_marker = getUtility(IGeoMarkerUtility)
         nb_items, bad_items = geo_marker.update(self.portal, ['Contact'], [])
         msg = u'%d objects updated, %d updates failed. %s' % (
             nb_items, len(bad_items), ','.join(bad_items))
