@@ -6,6 +6,8 @@ from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IContact
 
+from ftw.geo.interfaces import IGeocodableLocation
+
 from Products.Archetypes.atapi import Schema, AnnotationStorage, BaseContent, \
     BooleanField, BooleanWidget, registerType
 from Products.Archetypes.atapi import StringField, ImageField, ComputedField
@@ -25,15 +27,6 @@ from zope.interface import implements, directlyProvides
 from zope.component import adapts
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
-
-try:
-    from Products.Maps.content.Location import Location
-    from Products.Maps.content.Location import LocationSchema
-    MAPS_PACKAGE_PRESENT = True
-except:
-    MAPS_PACKAGE_PRESENT = False
-    class Location:
-        pass
 
 
 schema = Schema((
@@ -236,9 +229,6 @@ schema = Schema((
         ))
 
 
-if MAPS_PACKAGE_PRESENT:
-    schema = Schema((LocationSchema.get("geolocation").copy(), LocationSchema.get("markerIcon").copy())) + schema
-
 contact_schema = ATContentTypeSchema.copy() + \
     schema.copy()# + textSchema.copy()
 
@@ -273,13 +263,7 @@ contact_schema['language'].write_permission = permissions.ManagePortal
 contact_schema['location'].write_permission = permissions.ManagePortal
 
 
-if MAPS_PACKAGE_PRESENT:
-    # Hide the geolocation and markerIcon fields since we automatically calculate the location from the address
-    contact_schema['geolocation'].widget.visible = {'edit': 'invisible'}
-    contact_schema['markerIcon'].widget.visible = {'edit': 'invisible'}
-
-
-class Contact(ATCTContent, Location):
+class Contact(ATCTContent):
     """
     """
     implements(IContact)
@@ -345,6 +329,41 @@ class Contact(ATCTContent, Location):
         orgunitinfo = ' '.join(['%s %s' % (_d['orgunit'],_d['function']) for _d in self.get_orgunits()])
         return '%s %s' % (ATCTContent.SearchableText(self),orgunitinfo)
 
+
+class ContactLocationAdapter(object):
+    """Adapter that is able to represent the location of Contact in
+    a geocodable string form.
+    """
+    implements(IGeocodableLocation)
+    adapts(IContact)
+
+    def __init__(self, context):
+        self.context = context
+
+    def getLocationString(self):
+        """Build a geocodable location string from the Contact address
+        related fields.
+        """
+        street = ' '.join(self.context.getAddress().strip().split())
+        # Remove Postfach from street, otherwise Google geocoder API will
+        # return wrong results
+        street = street.replace('Postfach', '').replace('\r','').strip()
+        zip_code = self.context.getZip()
+        city = self.context.getCity()
+        country = self.context.getCountry()
+
+        # We need at least something other than country to be defined,
+        # otherwise we can't do a meaningful geocode lookup
+        if not (street or zip_code or city):
+            return ''
+
+        # Concatenate only the fields with a value into the location string
+        location = country
+        for field in [city, zip_code, street]:
+            if field.strip():
+                location = "%s, %s" % (city, field.strip())
+
+        return location
 
 
 class ValidateOrganizationOrFullname(object):

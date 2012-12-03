@@ -35,6 +35,7 @@ setup(name='egov.contactdirectory',
           'ftw.table',
           'ftw.tabbedview',
           'ftw.upgrade',
+          'ftw.geo',
           # -*- Extra requirements: -*-
       ],
 

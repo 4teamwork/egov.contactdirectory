@@ -18,13 +18,14 @@
 
     <i18n:registerTranslations directory="locales" />
 
-    <subscriber
-        zcml:condition="installed Products.Maps"
-        for="Products.Maps.interfaces.content.ILocation
-             zope.lifecycleevent.IObjectModifiedEvent"
-        handler=".handlers.objectModifiedHandler" />
-
     <five:registerPackage package="." initialize=".initialize" />
 
+    <!-- Set up custom feature styles in order to display map in
+    plone.belowcontentbody viewlet -->
+    <subscriber
+        for="egov.contactdirectory.interfaces.IContact
+             Products.Archetypes.interfaces.IObjectInitializedEvent"
+        handler=".handlers.initializeCustomFeatureStyles"
+        />
 
 </configure>
