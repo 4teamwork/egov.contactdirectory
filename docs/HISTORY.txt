@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.3.7 (unreleased)
-------------------
+1.4 (2013-01-25)
+----------------
 
 - Fix TAL expression in folder contacts listing template.
   [jone]
