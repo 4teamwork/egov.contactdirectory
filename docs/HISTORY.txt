@@ -5,6 +5,12 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Fix several template issues.
+  [mathias.leimgruber]
+
+- Use content-core macro on member view.
+  [mathias.leimgruber]
+
 - Use content-core macro on contact view.
   [mathias.leimgruber]
 
