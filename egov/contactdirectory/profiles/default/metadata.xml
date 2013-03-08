@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>1302</version>
+  <version>1500</version>
   <dependencies>
       <dependency>profile-ftw.geo:default</dependency>
   </dependencies>

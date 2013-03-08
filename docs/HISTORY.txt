@@ -5,6 +5,9 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Migrate simplelayout actions.
+  [mathias.leimgruber]
+
 - Fix several template issues.
   [mathias.leimgruber]
 
