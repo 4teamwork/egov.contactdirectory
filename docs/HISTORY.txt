@@ -5,8 +5,8 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Use content-core macro on contact view.
+  [mathias.leimgruber]
 
 1.4 (2013-01-25)
 ----------------
