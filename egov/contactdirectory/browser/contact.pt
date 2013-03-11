@@ -1,146 +1,131 @@
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="context/main_template/macros/master"
-      i18n:domain="egov.contactdirectory">
-<body>
+<html lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  i18n:domain="egov.contactdirectory">
 
-<metal:main fill-slot="main">
-    <tal:main-macro metal:define-macro="main"
-           tal:define="kssClassesView context/@@kss_field_decorator_view;
-                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                       templateId template/getId">
-
-            <div tal:replace="structure provider:plone.abovecontenttitle" />
-            <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
-            <div tal:replace="structure provider:plone.belowcontenttitle" />
-
-            <div tal:replace="structure provider:plone.abovecontentbody" />
+  <body>
+    <div metal:fill-slot="content-core">
+      <metal:main-macro define-macro="content-core">
 
         <div tal:define="beschreibung context/getDescription | nothing;
-                          bio context/getText | nothing;"
-              class="contact_view">
+          bio context/getText | nothing;"
+          class="contact_view">
 
-            <div class="rightFloat" tal:define="portrait context/getImage | nothing">
-              <img tal:condition="portrait" class="floatRight"
-                   tal:attributes="src string:${portrait/absolute_url}_thumbnail;
-                             alt string:${context/getFirstname}, ${context/getLastname}" />
-            </div>
-            <p>
-                <span tal:replace="beschreibung" />
-            </p>
+          <div class="rightFloat" tal:define="portrait context/getImage | nothing">
+            <img tal:condition="portrait" class="floatRight"
+             tal:attributes="src string:${portrait/absolute_url}_thumbnail;
+             alt string:${context/getFirstname}, ${context/getLastname}" />
+           </div>
+           <p>
+            <span tal:replace="beschreibung" />
+          </p>
 
 
-            <table class="vertical listing">
-                <tr tal:condition="python: context.getFirstname() and context.getLastname()">
-                    <th i18n:translate="label_name">Name</th>
-                    <td>
-                        <tal:title tal:condition="context/getAcademic_title"
-                                   tal:replace="context/getAcademic_title">
-                            Dr.
-                        </tal:title>
-                        <tal:name tal:replace="string:${context/getLastname} ${context/getFirstname}">
-                            Hugo Boss
-                        </tal:name>
-                    </td>
-                </tr>
-                <tr tal:condition="context/getFunction">
-                    <th i18n:translate="label_function">Function</th>
-                    <td tal:content="context/getFunction">Boss</td>
-                </tr>
-                <tr tal:condition="context/getOrganization">
-                    <th i18n:translate="label_organization">Organization</th>
-                    <td tal:content="context/getOrganization">XYZ GmbH</td>
-                </tr>
-                <tr tal:condition="context/getDepartment">
-                    <th i18n:translate="label_department">Department</th>
-                    <td tal:content="context/getDepartment">Department A</td>
-                </tr>
-                <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
-                    <th i18n:translate="label_address">Address</th>
-                    <td>
-                        <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
-                        <span tal:replace="context/getZip | nothing" />
-                        <span tal:replace="context/getCity | nothing" />
-                    </td>
-                </tr>
-                <tr tal:condition="context/getPhone_office">
-                    <th i18n:translate="label_phone_office">Phone number (office)</th>
-                    <td tal:content="context/getPhone_office | nothing">031 000 00 00</td>
-                </tr>
-                <tr tal:condition="context/getPhone_mobile">
-                    <th i18n:translate="label_phone_mobile">Mobile number</th>
-                    <td tal:content="context/getPhone_mobile | nothing">079 000 00 00</td>
-                </tr>
-                <tr tal:condition="context/getFax">
-                    <th i18n:translate="label_fax">Fax number</th>
-                    <td tal:content="context/getFax | nothing">031 123 45 67</td>
-                </tr>
-                <tr tal:condition="context/getEmail">
-                    <th i18n:translate="label_email">E-Mail</th>
-                    <td>
-                        <a tal:attributes="href string:mailto:${context/getEmail}"
-                        tal:content="context/getEmail | nothing">info@mail.com</a>
-                    </td>
-                </tr>
-                <tr tal:condition="context/getWww">
-                    <th i18n:translate="label_www">WWW</th>
-                    <td>
-                        <a tal:define="url context/getWww;
-                                       ishttps python:url.find('https') != -1;
-                                       ishttp python:url.find('http') != -1;
-                                       formatted_url python:ishttps and url.replace('https://','') or url;
-                                       formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
-                           tal:condition="context/getWww"
-                           tal:content="formatted_url"
-                           tal:attributes="href context/getWww"
-                           target="_blank">
-                            www.google.ch
-                        </a>
-                    </td>
-                </tr>
-            </table>
-            <tal:private define="private_address view/private_address" condition="private_address">
-                <h2 i18n:translate="label_private_address">Privateaddress</h2>
-                <table class="vertical listing">
-                    <tr>
-                        <th i18n:translate="label_address">Address</th>
-                        <td tal:content="structure private_address | nothing">
-                            Address
-                        </td>
-                    </tr>
-                    <tr tal:condition="context/getTel_private | nothing">
-                        <th i18n:translate="label_telephon_private">Tel. p:</th>
-                        <td tal:content="context/getTel_private">031 000 00 00</td>
-                    </tr>
-                </table>
-            </tal:private>
-            <metal:block tal:define="memberships context/getMemberships" tal:condition="memberships">
-            <h3 i18n:translate="label_memberships">
+          <table class="vertical listing">
+            <tr tal:condition="python: context.getFirstname() and context.getLastname()">
+              <th i18n:translate="label_name">Name</th>
+              <td>
+                <tal:title tal:condition="context/getAcademic_title"
+                 tal:replace="context/getAcademic_title">
+                 Dr.
+               </tal:title>
+               <tal:name tal:replace="string:${context/getLastname} ${context/getFirstname}">
+                Hugo Boss
+              </tal:name>
+            </td>
+          </tr>
+          <tr tal:condition="context/getFunction">
+            <th i18n:translate="label_function">Function</th>
+            <td tal:content="context/getFunction">Boss</td>
+          </tr>
+          <tr tal:condition="context/getOrganization">
+            <th i18n:translate="label_organization">Organization</th>
+            <td tal:content="context/getOrganization">XYZ GmbH</td>
+          </tr>
+          <tr tal:condition="context/getDepartment">
+            <th i18n:translate="label_department">Department</th>
+            <td tal:content="context/getDepartment">Department A</td>
+          </tr>
+          <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
+            <th i18n:translate="label_address">Address</th>
+            <td>
+              <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
+              <span tal:replace="context/getZip | nothing" />
+              <span tal:replace="context/getCity | nothing" />
+            </td>
+          </tr>
+          <tr tal:condition="context/getPhone_office">
+            <th i18n:translate="label_phone_office">Phone number (office)</th>
+            <td tal:content="context/getPhone_office | nothing">031 000 00 00</td>
+          </tr>
+          <tr tal:condition="context/getPhone_mobile">
+            <th i18n:translate="label_phone_mobile">Mobile number</th>
+            <td tal:content="context/getPhone_mobile | nothing">079 000 00 00</td>
+          </tr>
+          <tr tal:condition="context/getFax">
+            <th i18n:translate="label_fax">Fax number</th>
+            <td tal:content="context/getFax | nothing">031 123 45 67</td>
+          </tr>
+          <tr tal:condition="context/getEmail">
+            <th i18n:translate="label_email">E-Mail</th>
+            <td>
+              <a tal:attributes="href string:mailto:${context/getEmail}"
+                tal:content="context/getEmail | nothing">info@mail.com</a>
+              </td>
+            </tr>
+            <tr tal:condition="context/getWww">
+              <th i18n:translate="label_www">WWW</th>
+              <td>
+                <a tal:define="url context/getWww;
+                 ishttps python:url.find('https') != -1;
+                 ishttp python:url.find('http') != -1;
+                 formatted_url python:ishttps and url.replace('https://','') or url;
+                 formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
+                 tal:condition="context/getWww"
+                 tal:content="formatted_url"
+                 tal:attributes="href context/getWww"
+                 target="_blank">
+                 www.google.ch
+               </a>
+             </td>
+           </tr>
+         </table>
+         <tal:private define="private_address view/private_address" condition="private_address">
+          <h2 i18n:translate="label_private_address">Privateaddress</h2>
+          <table class="vertical listing">
+            <tr>
+              <th i18n:translate="label_address">Address</th>
+              <td tal:content="structure private_address | nothing">
+                Address
+              </td>
+            </tr>
+            <tr tal:condition="context/getTel_private | nothing">
+              <th i18n:translate="label_telephon_private">Tel. p:</th>
+              <td tal:content="context/getTel_private">031 000 00 00</td>
+            </tr>
+          </table>
+        </tal:private>
+        <metal:block tal:define="memberships context/getMemberships" tal:condition="memberships">
+          <h3 i18n:translate="label_memberships">
             Memberships
-            </h3>
+          </h3>
 
-            <ul>
-                <tal:items tal:repeat="obj memberships">
-                  <li>
-                    <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
-                  </li>
-              </tal:items>
-            </ul>
-            </metal:block>
-                <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
-              </div>
+          <ul>
+            <tal:items tal:repeat="obj memberships">
+              <li>
+                <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
+              </li>
+            </tal:items>
+          </ul>
+        </metal:block>
+        <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
+      </div>
 
-        <div metal:use-macro="context/document_relateditems/macros/relatedItems">
-            show related items if they exist
-        </div>
-
-        <div tal:replace="structure provider:plone.belowcontentbody" />
-
-    </tal:main-macro>
-</metal:main>
+    </metal:main-macro>
+  </div>
 
 </body>
 </html>

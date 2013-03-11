@@ -1,82 +1,68 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="here/main_template/macros/master"
-      i18n:domain="egov.contactdirectory">
-<body>
+<html lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  i18n:domain="egov.contactdirectory">
 
-<metal:main fill-slot="main">
-    <tal:main-macro metal:define-macro="main"
-           tal:define="kssClassesView context/@@kss_field_decorator_view;
-                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                       templateId template/getId;
-                       contact here/getContact | nothing">
+  <body>
+    <div metal:fill-slot="content-core">
+      <metal:main-macro define-macro="content-core">
 
-<div tal:replace="structure provider:plone.abovecontenttitle" />
-<h1 class="documentFirstHeading" 
-    tal:content="python: context.Title() != '' and context.Title() or contact.Title()">Title or id</h1>
-<div tal:replace="structure provider:plone.belowcontenttitle" />    	  
+        <div tal:define="contact here/getContact | nothing;
+         beschreibung here/getDescription | nothing;
+         firstname contact/getFirstname | nothing;
+         lastname contact/getLastname | nothing;
+         bio here/getText | nothing;"
+         class="zugMitglied-body">
 
-        <div tal:define="beschreibung here/getDescription | nothing;
-                          firstname contact/getFirstname | nothing;
-                          lastname contact/getLastname | nothing;
-        				  bio here/getText | nothing;"
-        	  class="zugMitglied-body">
-        	  
 
-        				  
-            <div class="rightFloat" tal:define="portrait contact/getImage | nothing" tal:condition="here/getShow_image">
-              <img tal:condition="portrait" class="floatRight"
-                   tal:attributes="src string:${portrait/absolute_url}_thumbnail;
-                             alt string:${firstname}, ${lastname}" />
-            </div>
-        	<div class="zugMitglied-details">
-                <h2>
-                    <span tal:condition="contact/getAcademic_title | nothing"
-                          tal:replace="contact/getAcademic_title">Dr.</span>
-                    <span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
-	        	<p>
-		        	<span tal:replace="beschreibung" />
-		        	<span tal:replace="here/getFunction | nothing" /><br />
-                    <tal:block>
-		        	<tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
-		        	<tal:block tal:condition="here/getZip"><span tal:replace="here/getZip | nothing" /></tal:block>
-		        	<tal:block tal:condition="here/getCity"><span tal:replace="here/getCity | nothing" /><br /><br /></tal:block>
-                    </tal:block>
-		        	<tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_short_office">Office</span><span  tal:replace="string:: ${here/getPhone_office | nothing}" /><br /></tal:block>
-		        	<tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_short_mobile">Mobile</span><span  tal:replace="string:: ${here/getPhone_mobile | nothing}" /><br /></tal:block>
-		        	<tal:block tal:condition="here/getFax"><span i18n:translate="label_short_fax">Fax</span><span  tal:replace="string:: ${here/getFax | nothing}" /><br /></tal:block>
-  					<span tal:define="email here/getEmail | nothing" tal:condition="email">
-						<a tal:replace="structure python:context.spamProtect(mailaddress=email)"/>
-  					</span>
-                    <a tal:define="url here/getWww;
-                                   ishttps python:url.find('https') != -1;
-                                   ishttp python:url.find('http') != -1;
-                                   formatted_url python:ishttps and url.replace('https://','') or url;
-                                   formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
-                       tal:condition="here/getWww" 
-                       tal:content="formatted_url"
-                       tal:attributes="href here/getWww"
-                       title="externer Link (&ouml;ffnet neuem Fenster)"
-                       target="_blank" />
-				</p>	        	
-                <h3 i18n:translate="label_contact_more">Contact</h3>
-                <a tal:condition="nocall:contact" tal:content="contact/Title" href="" tal:attributes="href contact/absolute_url"></a>
 
-              </div>
-			<div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
-		  </div>
-          
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-            show related items if they exist
-        </div>
-    
-        <!--div tal:replace="structure provider:plone.belowcontentbody" / XXX: produziert fehler -->
+         <div class="rightFloat" tal:define="portrait contact/getImage | nothing" tal:condition="here/getShow_image">
+          <img tal:condition="portrait" class="floatRight"
+           tal:attributes="src string:${portrait/absolute_url}_thumbnail;
+           alt string:${firstname}, ${lastname}" />
+         </div>
+         <div class="zugMitglied-details">
+          <h2>
+            <span tal:condition="contact/getAcademic_title | nothing"
+              tal:replace="contact/getAcademic_title">Dr.</span>
+              <span tal:replace="string: ${firstname} ${lastname}">Name</span></h2>
+              <p>
+               <span tal:replace="beschreibung" />
+               <span tal:replace="here/getFunction | nothing" /><br />
+               <tal:block>
+                 <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
+                 <tal:block tal:condition="here/getZip"><span tal:replace="here/getZip | nothing" /></tal:block>
+                 <tal:block tal:condition="here/getCity"><span tal:replace="here/getCity | nothing" /><br /><br /></tal:block>
+               </tal:block>
+               <tal:block tal:condition="here/getPhone_office"><span i18n:translate="label_short_office">Office</span><span  tal:replace="string: ${here/getPhone_office}" /><br /></tal:block>
+               <tal:block tal:condition="here/getPhone_mobile"><span i18n:translate="label_short_mobile">Mobile</span><span  tal:replace="string: ${here/getPhone_mobile}" /><br /></tal:block>
+               <tal:block tal:condition="here/getFax"><span i18n:translate="label_short_fax">Fax</span><span  tal:replace="string: ${here/getFax}" /><br /></tal:block>
+               <span tal:define="email here/getEmail | nothing" tal:condition="email">
+                <a tal:replace="structure python:context.spamProtect(mailaddress=email)"/>
+              </span>
+              <a tal:define="url here/getWww;
+               ishttps python:url.find('https') != -1;
+               ishttp python:url.find('http') != -1;
+               formatted_url python:ishttps and url.replace('https://','') or url;
+               formatted_url python:(ishttp and not ishttps) and url.replace('http://','') or formatted_url"
+               tal:condition="here/getWww"
+               tal:content="formatted_url"
+               tal:attributes="href here/getWww"
+               title="externer Link (&ouml;ffnet neuem Fenster)"
+               target="_blank" />
+             </p>
+             <h3 i18n:translate="label_contact_more">Contact</h3>
+             <a tal:condition="nocall:contact" tal:content="contact/Title" href="" tal:attributes="href contact/absolute_url"></a>
 
-    </tal:main-macro>
-</metal:main>
+           </div>
+           <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
+         </div>
 
-</body>
-</html>
+       </metal:main-macro>
+     </div>
+
+   </body>
+ </html>

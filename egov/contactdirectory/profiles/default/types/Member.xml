@@ -17,7 +17,7 @@
  <property name="view_methods">
   <element value="member_view"/>
   <element value="base_view"/>
- </property> 
+ </property>
  <property name="default_view_fallback">False</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="base_edit"/>
@@ -33,11 +33,11 @@
     url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
- <action title="Edit" icon_expr="string:edit.gif" action_id="sl-edit" category="sl-actions"
+ <action title="Edit" icon_expr="" action_id="sl-edit" category="sl-actions"
     condition_expr="" url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
- <action title="Delete" icon_expr="string:delete_icon.gif" action_id="sl-delete" category="sl-actions"
+ <action title="Delete" icon_expr="" action_id="sl-delete" category="sl-actions"
     condition_expr=""
     url_expr="string:${here/absolute_url}/delete_confirmation" visible="True">
   <permission value="Modify portal content"/>

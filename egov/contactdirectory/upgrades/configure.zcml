@@ -32,4 +32,24 @@
         profile="egov.contactdirectory:default"
         />
 
+    <!-- 1302 -> 1500 -->
+    <genericsetup:upgradeStep
+        title="Remove icon expression from simplelayout edit actions"
+        description=""
+        source="1302"
+        destination="1500"
+        handler="egov.contactdirectory.upgrades.to1500.MigrateSimplelayoutActions"
+        profile="egov.contactdirectory:default"
+        />
+
+    <genericsetup:registerProfile
+        name="1500"
+        title="egov.contactdirectory.upgrades.to1500"
+        description=""
+        directory="profiles/1500"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+
 </configure>
