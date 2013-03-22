@@ -361,7 +361,7 @@ class ContactLocationAdapter(object):
         location = country
         for field in [city, zip_code, street]:
             if field.strip():
-                location = "%s, %s" % (city, field.strip())
+                location = "%s, %s" % (field.strip(), location)
 
         return location
 

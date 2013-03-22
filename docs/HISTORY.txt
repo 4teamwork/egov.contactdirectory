@@ -5,6 +5,9 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Fixed concatenation of address fields for GeocodableLocation string.
+  [lgraf]
+
 - Migrate simplelayout actions.
   [mathias.leimgruber]
 
