@@ -15,6 +15,7 @@
     <include file="skins.zcml" />
     <include file="profiles.zcml" />
 
+    <include zcml:condition="installed ftw.lawgiver" file="lawgiver.zcml" />
 
     <i18n:registerTranslations directory="locales" />
 
