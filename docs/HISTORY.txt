@@ -5,6 +5,9 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Fix address in listing (lastname, firstname).
+  [mathias.leimgruber]
+
 - Lawgiver support: map permissions.
   [jone]
 

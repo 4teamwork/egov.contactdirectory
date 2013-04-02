@@ -98,7 +98,7 @@
                                 <tal:block tal:condition="obj/getOrganization">
                                     <span tal:replace="obj/getOrganization|nothing" />
                                 </tal:block>
-                                <div><span tal:content="obj/getFirstname|nothing" /> <span tal:content="obj/getLastname|nothing" /></div>
+                                <div><span tal:content="obj/getLastname|nothing" /><span tal:content="obj/getFirstname|nothing" /></div>
                                 <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>
                                 <div><span tal:content="obj/getZip | nothing" /> <span tal:content="obj/getCity" /></div>
 
