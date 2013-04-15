@@ -31,7 +31,7 @@
 
     <div class="sl-text-wrapper">
            <strong>
-               <a tal:attributes="href context/absolute_url" 
+               <a tal:attributes="href python: context.getContact().absolute_url()" 
                   tal:content="python: context.getContact().Title()"></a>
            </strong>
            <p>    
