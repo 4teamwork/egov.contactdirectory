@@ -21,120 +21,119 @@ from zope.interface import implements
 
 
 schema = Schema((
-        BooleanField(
-            name='showTitle',
-            schemata='default',
-            default=0,
-            widget=BooleanWidget(
-                label=_(u'label_show_title', default='Show title'),
-                description=_(u'help_show_title',
-                              default='Show Title of member contact'))),
+    BooleanField(
+        name='showTitle',
+        schemata='default',
+        default=0,
+        widget=BooleanWidget(
+            label=_(u'label_show_title', default='Show title'),
+            description=_(u'help_show_title',
+                          default='Show Title of member contact'))),
 
-        ReferenceField(
-            name='contact',
-            required=True,
-            allowed_types=('Contact',),
-            multiValued=0,
-            relationship='member_to_contact',
-            vocabulary_display_path_bound = 999999,
-            widget = ReferenceWidget(
-                label=_(u'label_contact_reference',
-                        default='Contact reference'))),
+    ReferenceField(
+        name='contact',
+        required=True,
+        allowed_types=('Contact',),
+        multiValued=0,
+        relationship='member_to_contact',
+        vocabulary_display_path_bound=999999,
+        widget=ReferenceWidget(
+            label=_(u'label_contact_reference',
+                    default='Contact reference'))),
 
-        StringField(
-            name='function',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_function', default='Function'))),
+    StringField(
+        name='function',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_function', default='Function'))),
 
-        BooleanField(
-            name='show_address',
-            schemata='default',
-            default=0,
-            widget=BooleanWidget(
-                label=_(u'label_show_address', default='Show address'),
-                description=_(
-                    u'help_show_address',
-                    default=u'Also show address on membership page of the '
-                    u'organisation unit'))),
+    BooleanField(
+        name='show_address',
+        schemata='default',
+        default=0,
+        widget=BooleanWidget(
+            label=_(u'label_show_address', default='Show address'),
+            description=_(
+                u'help_show_address',
+                default=u'Also show address on membership page of the '
+                u'organisation unit'))),
 
-        BooleanField(
-            name='show_image',
-            schemata='Kontakt',
-            default=1,
-            widget=BooleanWidget(
-                label=_(u'label_show_image',
-                        default='Show Image'),
-                description=_(
-                    u'help_show_image',
-                    default=u'Also show image on membership page of the '
-                    u'organisation unit'))),
+    BooleanField(
+        name='show_image',
+        schemata='Kontakt',
+        default=1,
+        widget=BooleanWidget(
+            label=_(u'label_show_image',
+                    default='Show Image'),
+            description=_(
+                u'help_show_image',
+                default=u'Also show image on membership page of the '
+                u'organisation unit'))),
 
-        BooleanField(
-            name='acquireAddress',
-            schemata='Kontakt',
-            default=0,
-            widget=BooleanWidget(
-                label=_(u'label_acquire_address', default='Acquire address'),
-                helper_js = ('member_block_control.js', ))),
+    BooleanField(
+        name='acquireAddress',
+        schemata='Kontakt',
+        default=0,
+        widget=BooleanWidget(
+            label=_(u'label_acquire_address', default='Acquire address'),
+            helper_js=('member_block_control.js', ))),
 
-        TextField(
-            name='address',
-            schemata='Kontakt',
-            widget=TextAreaWidget(
-                label=_(u'label_address', default='Address'))),
+    TextField(
+        name='address',
+        schemata='Kontakt',
+        widget=TextAreaWidget(
+            label=_(u'label_address', default='Address'))),
 
-        StringField(
-            name='zip',
-            schemata='Kontakt',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_zip', default='Postal code'))),
+    StringField(
+        name='zip',
+        schemata='Kontakt',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_zip', default='Postal code'))),
 
-        StringField(
-            name='city',
-            schemata='Kontakt',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_city', default="City"))),
+    StringField(
+        name='city',
+        schemata='Kontakt',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_city', default="City"))),
 
-        StringField(
-            name='phone_office',
-            schemata='Kontakt',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_phone_office',
-                        default="Phone number (office)"))),
+    StringField(
+        name='phone_office',
+        schemata='Kontakt',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_phone_office',
+                    default="Phone number (office)"))),
 
-        StringField(
-            name='phone_mobile',
-            schemata='Kontakt',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_phone_mobile', default='Mobile number'))),
+    StringField(
+        name='phone_mobile',
+        schemata='Kontakt',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_phone_mobile', default='Mobile number'))),
 
-        StringField(
-            name='fax',
-            schemata='Kontakt',
-            searchable=1,
-            widget=StringWidget(
-                label=_(u'label_fax', default="Fax number"))),
+    StringField(
+        name='fax',
+        schemata='Kontakt',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_fax', default="Fax number"))),
 
-        StringField(
-            name='email',
-            schemata='Kontakt',
-            widget=StringWidget(
-                label=_(u'label_email', default='E-Mail'))),
+    StringField(
+        name='email',
+        schemata='Kontakt',
+        widget=StringWidget(
+            label=_(u'label_email', default='E-Mail'))),
 
-        StringField(
-            name='www',
-            schemata='Kontakt',
-            validators=('isURL',),
-            widget=StringWidget(
-                label=_(u'label_www', default='WWW'))),
+    StringField(
+        name='www',
+        schemata='Kontakt',
+        validators=('isURL',),
+        widget=StringWidget(
+            label=_(u'label_www', default='WWW'))),
 
-        ))
-
+))
 
 member_schema = ATContentTypeSchema.copy() + schema.copy()
 member_schema['excludeFromNav'].default = True
@@ -147,12 +146,13 @@ member_schema['title'].widget.visible = {'edit': 'visible', 'view': 'visible'}
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
+
 class Member(base.ATCTContent):
     """
     """
     implements(IMember)
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(BaseContent, '__implements__', ()),)
 
     schema = member_schema
 
