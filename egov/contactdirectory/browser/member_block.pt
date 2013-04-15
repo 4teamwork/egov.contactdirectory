@@ -34,9 +34,9 @@
                <a tal:attributes="href python: context.getContact().absolute_url()" 
                   tal:content="python: context.getContact().Title(format='natural')"></a>
            </strong>
+           <div class="member_function" tal:content="here/getFunction"></div>
+           <div class="member_description" tal:content="here/Description"></div>
            <p>
-               <tal:fn tal:content="here/getFunction"></tal:fn><br/>
-               <tal:desc tal:content="here/Description"></tal:desc><br/>
                <tal:addr tal:condition="here/getShow_address">
                     <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
                     <span tal:content="here/getZip"/>
