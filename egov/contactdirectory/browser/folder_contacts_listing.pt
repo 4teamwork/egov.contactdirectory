@@ -21,9 +21,11 @@
            tal:condition="here/Description">
             Description
         </p>
-<form id="contactSearch" method="post">
-<input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
-</form>
+        <div id="contactSearchContainer">
+            <form id="contactSearch" method="post">
+                <input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
+            </form>
+        </div>
 
 
 <form name="folderContentsForm"
