@@ -49,6 +49,10 @@
             <th i18n:translate="label_department">Department</th>
             <td tal:content="context/getDepartment">Department A</td>
           </tr>
+          <tr tal:condition="context/getPolitical_party">
+            <th i18n:translate="label_political_party">Party</th>
+            <td tal:content="context/getPolitical_party">Party Z</td>
+          </tr>
           <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
             <th i18n:translate="label_address">Address</th>
             <td>

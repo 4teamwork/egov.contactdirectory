@@ -182,6 +182,13 @@ schema = Schema((
         widget=StringWidget(
             label=_(u'label_salutation', default=u'Salutation'))),
 
+    StringField(
+        name='political_party',
+        schemata='Erweitert',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_political_party', default=u'Party'))),
+
     TextField(
         name='text',
         required=False,

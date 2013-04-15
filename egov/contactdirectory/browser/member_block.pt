@@ -35,7 +35,12 @@
                   tal:content="python: context.getContact().Title(format='natural')"></a>
            </strong>
            <div class="member_function" tal:content="here/getFunction"></div>
-           <div class="member_description" tal:content="here/Description"></div>
+           <div tal:condition="python: here.getContact().getPolitical_party()" 
+                class="member_political_party">
+                <span i18n:translate="label_political_party">Party</span>: 
+                <span tal:content="python: here.getContact().getPolitical_party()"></span>
+           </div>
+           <div tal:condition="here/Description" class="member_description" tal:content="here/Description"></div>
            <p>
                <tal:addr tal:condition="here/getShow_address">
                     <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>

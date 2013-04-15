@@ -116,6 +116,9 @@ msgstr "Land"
 msgid "label_department"
 msgstr "Abteilung"
 
+msgid "label_political_party"
+msgstr "Partei"
+
 #. Default: "Description"
 #: ./egov/contactdirectory/browser/contact.pt:161
 msgid "label_description"
