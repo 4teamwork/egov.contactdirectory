@@ -21,6 +21,7 @@ from zope.interface import implements
 
 
 schema = Schema((
+
     BooleanField(
         name='showTitle',
         schemata='default',
@@ -139,7 +140,7 @@ member_schema = ATContentTypeSchema.copy() + schema.copy()
 member_schema['excludeFromNav'].default = True
 
 finalizeATCTSchema(member_schema)
-member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
+member_schema['description'].widget.description = u''
 member_schema['title'].required = 0
 member_schema['title'].widget.visible = {'edit': 'visible', 'view': 'visible'}
 
