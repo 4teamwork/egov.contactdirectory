@@ -299,7 +299,7 @@ class Contact(ATCTContent):
                 return '...'
             else:
                 return self.getOrganization()
-        format = kwargs.get('format', 'natural')
+        format = kwargs.get('format', None)
         if format == 'natural':
             full_name = '%s %s' % (self.getFirstname(), self.getLastname())
         else:
