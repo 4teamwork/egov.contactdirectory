@@ -217,9 +217,9 @@ class Member(base.ATCTContent):
     def getOrganization(self):
         try:
             parent = self.aq_parent
-            while parent.portal_type not in ['OrgUnit', "Plone Site"]:
+            while parent.portal_type not in ['OrgUnit', 'Plone Site', 'ContentPage']:
                 parent = parent.aq_parent
-            if parent.portal_type == 'OrgUnit':
+            if parent.portal_type in ['OrgUnit', 'ContentPage']:
                 return parent.Title()
         except:
             return ""

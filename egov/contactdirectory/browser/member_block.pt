@@ -31,8 +31,8 @@
 
     <div class="sl-text-wrapper">
            <strong>
-               <a tal:attributes="href context/absolute_url" 
-                  tal:content="python: context.getContact().Title()"></a>
+               <a tal:attributes="href python: context.getContact().absolute_url()" 
+                  tal:content="python: context.getContact().Title(format='natural')"></a>
            </strong>
            <p>    
                <tal:fn tal:content="here/getFunction"></tal:fn><br/>
