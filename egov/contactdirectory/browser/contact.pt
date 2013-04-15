@@ -116,7 +116,7 @@
           <ul>
             <tal:items tal:repeat="obj memberships">
               <li>
-                <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
+                <a href="" tal:attributes="href python: obj.aq_parent.absolute_url()"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
               </li>
             </tal:items>
           </ul>
