@@ -37,7 +37,6 @@
            <div class="member_function" tal:content="here/getFunction"></div>
            <div tal:condition="python: here.getContact().getPolitical_party()" 
                 class="member_political_party">
-                <span i18n:translate="label_political_party">Party</span>: 
                 <span tal:content="python: here.getContact().getPolitical_party()"></span>
            </div>
            <div tal:condition="here/Description" class="member_description" tal:content="here/Description"></div>
