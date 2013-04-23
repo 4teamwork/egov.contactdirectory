@@ -105,7 +105,7 @@
 
                                 <div>
                                     <div tal:condition="obj/getPhone_office">
-                                      <span i18n:translate="label_short_phone_office">Phone W</span>:
+                                      <span i18n:translate="label_short_phone">Phone</span>:
                                       <span tal:content="obj/getPhone_office" />
                                     </div>
                                     <div tal:condition="obj/getPhone_mobile">
