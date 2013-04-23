@@ -103,8 +103,6 @@
                                 <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>
                                 <div><span tal:content="obj/getZip | nothing" /> <span tal:content="obj/getCity" /></div>
 
-
-                                <h3><span class="visualIconPadding">&nbsp;</span></h3>
                                 <div>
                                     <div tal:condition="obj/getPhone_office">
                                       <span i18n:translate="label_short_phone_office">Phone W</span>:
