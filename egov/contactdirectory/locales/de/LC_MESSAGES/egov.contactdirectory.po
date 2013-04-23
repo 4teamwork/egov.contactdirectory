@@ -265,6 +265,9 @@ msgstr "Mobil"
 msgid "label_short_office"
 msgstr "Geschäft"
 
+msgid "label_short_phone"
+msgstr "Telefon"
+
 #. Default: "Phone M"
 #: ./egov/contactdirectory/browser/folder_contacts_listing.pt:109
 msgid "label_short_phone_mobile"

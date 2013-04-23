@@ -48,7 +48,7 @@
                     <span tal:content="here/getCity"/><br />
                </tal:addr>
                <tal:phone tal:condition="python:context.getPhone_office() != ''">
-                    <span i18n:translate="label_short_office">Office</span>: 
+                    <span i18n:translate="label_short_phone">Phone</span>: 
                     <span tal:content="here/getPhone_office"/><br/>
                </tal:phone>
                <tal:mobile tal:condition="python:context.getPhone_mobile() != ''">

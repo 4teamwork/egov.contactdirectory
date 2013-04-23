@@ -62,7 +62,7 @@
             </td>
           </tr>
           <tr tal:condition="context/getPhone_office">
-            <th i18n:translate="label_phone_office">Phone number (office)</th>
+            <th i18n:translate="label_short_phone">Phone number</th>
             <td tal:content="context/getPhone_office | nothing">031 000 00 00</td>
           </tr>
           <tr tal:condition="context/getPhone_mobile">
