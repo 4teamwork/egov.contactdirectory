@@ -222,7 +222,7 @@ msgstr "Ort"
 #. Default: "Telefon private"
 #: ./egov/contactdirectory/content/contact.py:207
 msgid "label_private_tel"
-msgstr ""
+msgstr "Telefon"
 
 #. Default: "Postal code"
 #: ./egov/contactdirectory/content/contact.py:226
