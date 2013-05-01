@@ -220,6 +220,8 @@ class Member(base.ATCTContent):
             parent = self.aq_parent
             while parent.portal_type not in ['OrgUnit', 'Plone Site', 'ContentPage']:
                 parent = parent.aq_parent
+            if parent.id == 'team':
+                parent = parent.aq_parent
             if parent.portal_type in ['OrgUnit', 'ContentPage']:
                 return parent.Title()
         except:
