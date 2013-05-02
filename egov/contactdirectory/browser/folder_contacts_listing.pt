@@ -5,22 +5,18 @@
 
 <body>
 
-    <div metal:fill-slot="main">
-    <metal:main-macro define-macro="main">
+	<metal:fill-description fill-slot="content-description">
+	    <metal:content-description define-macro="content-description">
+            <div tal:replace="structure provider:egov.contactdirectory.alphabeticalsearch" />
+            <div class="documentDescription"
+                 tal:content="context/Description"
+                 />
+	    </metal:content-description>
+	</metal:fill-description>
 
-       <div tal:replace="structure provider:plone.abovecontenttitle" />
-          <h1 class="documentFirstHeading" tal:content="title_string | here/title_or_id">
-          </h1>
-       <div tal:replace="structure provider:plone.belowcontenttitle" />
+	<metal:content-core fill-slot="content-core">
+	    <metal:main_macro define-macro="content-core">
 
-       <div tal:replace="structure provider:egov.contactdirectory.alphabeticalsearch" />
-
-
-        <p class="documentDescription"
-           tal:content="here/Description"
-           tal:condition="here/Description">
-            Description
-        </p>
 <form id="contactSearch" method="post">
 <input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
 </form>
@@ -150,8 +146,8 @@
         </metal:listingmacro>
 
 </form>
-    </metal:main-macro>
-    </div>
+    </metal:main_macro>
+    </metal:content-core>
 
 </body>
 </html>
