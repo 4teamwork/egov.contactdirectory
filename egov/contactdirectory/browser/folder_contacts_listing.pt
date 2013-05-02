@@ -3,65 +3,65 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="egov.contactdirectory">
 
-<body>
+  <body>
 
-	<metal:fill-description fill-slot="content-description">
-	    <metal:content-description define-macro="content-description">
-            <div tal:replace="structure provider:egov.contactdirectory.alphabeticalsearch" />
-            <div class="documentDescription"
-                 tal:content="context/Description"
-                 />
-	    </metal:content-description>
-	</metal:fill-description>
+    <metal:fill-description fill-slot="content-description">
+      <metal:content-description define-macro="content-description">
+        <div tal:replace="structure provider:egov.contactdirectory.alphabeticalsearch" />
+        <div class="documentDescription"
+             tal:content="context/Description"
+             />
+      </metal:content-description>
+    </metal:fill-description>
 
-	<metal:content-core fill-slot="content-core">
-	    <metal:main_macro define-macro="content-core">
+    <metal:content-core fill-slot="content-core">
+      <metal:main_macro define-macro="content-core">
 
-<form id="contactSearch" method="post">
-<input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
-</form>
+        <form id="contactSearch" method="post">
+          <input id="contactSearchGadget" class="inputLabel inputLabelActive" type="text" name="SearchableText"  title="Search contacts" i18n:attributes="title"><input i18n:attributes="value" class="searchButton" type="submit" value="Search"/>
+        </form>
 
 
-<form name="folderContentsForm"
-            method="post"
-            action="folder_object"
-            tal:attributes="action here/absolute_url">
-        <metal:listingmacro define-macro="listing">
+        <form name="folderContentsForm"
+              method="post"
+              action="folder_object"
+              tal:attributes="action here/absolute_url">
+          <metal:listingmacro define-macro="listing">
 
-        <tal:foldercontents define="Batch python:modules['Products.CMFPlone'].Batch;
-                            more_url more_url|request/more_url|string:folder_contents;
-                            use_view_action site_properties/typesUseViewActionInListings|python:();
-                            show_about python:not context.portal_membership.isAnonymousUser() or site_properties.allowAnonymousViewAbout;
-                            b_size python:5;
-                            b_size request/b_size|request/limit_display|b_size;
-                            b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
-                            b_start python:0;b_start request/b_start | b_start;
-                            b_range python: b_start==0 and 5 or 3;
-                            folderContents python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
-                            batch folderContents">
-        <tal:listing condition="folderContents"
-                     define="toLocalizedTime nocall:here/toLocalizedTime;">
+            <tal:foldercontents define="Batch python:modules['Products.CMFPlone'].Batch;
+                                        more_url more_url|request/more_url|string:folder_contents;
+                                        use_view_action site_properties/typesUseViewActionInListings|python:();
+                                        show_about python:not context.portal_membership.isAnonymousUser() or site_properties.allowAnonymousViewAbout;
+                                        b_size python:5;
+                                        b_size request/b_size|request/limit_display|b_size;
+                                        b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
+                                        b_start python:0;b_start request/b_start | b_start;
+                                        b_range python: b_start==0 and 5 or 3;
+                                        folderContents python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
+                                        batch folderContents">
+              <tal:listing condition="folderContents"
+                           define="toLocalizedTime nocall:here/toLocalizedTime;">
 
-            <!-- Batch Navigation -->
-            <div metal:use-macro="here/batch_macros/macros/navigation" />
+                <!-- Batch Navigation -->
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
 
-            <table class="listing"
-                   summary="Content listing"
-                   i18n:attributes="summary summary_content_listing;"
-                   width="100%">
-                <thead>
+                <table class="listing"
+                       summary="Content listing"
+                       i18n:attributes="summary summary_content_listing;"
+                       width="100%">
+                  <thead>
                     <tr>
-                        <th class="nosort">&nbsp;</th>
-                        <th class="nosort">&nbsp;</th>
-                        <th class="nosort">&nbsp;</th>
+                      <th class="nosort">&nbsp;</th>
+                      <th class="nosort">&nbsp;</th>
+                      <th class="nosort">&nbsp;</th>
                     </tr>
-                </thead>
+                  </thead>
 
-                <tbody>
+                  <tbody>
                     <tal:items repeat="item folderContents">
-                    <tr metal:define-macro="listitem"
-                        tal:define="oddrow repeat/item/odd;"
-                        tal:attributes="class python:'odd' if oddrow else 'even'">
+                      <tr metal:define-macro="listitem"
+                          tal:define="oddrow repeat/item/odd;"
+                          tal:attributes="class python:'odd' if oddrow else 'even'">
 
                         <tal:defs define="normalizeString nocall: context/@@plone/normalizeString;
                                           item_url item/getURL|item/absolute_url;
@@ -80,74 +80,74 @@
                                           item_end item/end/ISO|item/EndDate|nothing;
                                           obj item/getObject|item;
                                           ">
-                            <td valign="top">
-                                <h3 tal:attributes="class item_type_class">
-                                <a href="#"
-                                   tal:attributes="href python:item_url+'/' if item_type in use_view_action else item_url+'/view';
-                                                   class string:$item_wf_state_class visualIconPadding;
-                                                   title item_description;"
-                                   tal:content="item_title_or_id">
-                                    Item Title
-                                </a>
-                                </h3>
-                                <div tal:condition="obj/getFunction | nothing"><span tal:replace="obj/getFunction | nothing" /><br/><br/></div>
-                                <tal:block tal:condition="obj/getOrganization">
-                                    <span tal:replace="obj/getOrganization|nothing" />
-                                </tal:block>
-                                <div><span tal:content="obj/getLastname|nothing" /> <span tal:content="obj/getFirstname|nothing" /></div>
-                                <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>
-                                <div><span tal:content="obj/getZip | nothing" /> <span tal:content="obj/getCity" /></div>
+                          <td valign="top">
+                            <h3 tal:attributes="class item_type_class">
+                              <a href="#"
+                                 tal:attributes="href python:item_url+'/' if item_type in use_view_action else item_url+'/view';
+                                                 class string:$item_wf_state_class visualIconPadding;
+                                                 title item_description;"
+                                 tal:content="item_title_or_id">
+                                Item Title
+                              </a>
+                            </h3>
+                            <div tal:condition="obj/getFunction | nothing"><span tal:replace="obj/getFunction | nothing" /><br/><br/></div>
+                            <tal:block tal:condition="obj/getOrganization">
+                              <span tal:replace="obj/getOrganization|nothing" />
+                            </tal:block>
+                            <div><span tal:content="obj/getLastname|nothing" /> <span tal:content="obj/getFirstname|nothing" /></div>
+                            <div tal:condition="obj/getAddress | nothing" tal:content="obj/getAddress"></div>
+                            <div><span tal:content="obj/getZip | nothing" /> <span tal:content="obj/getCity" /></div>
 
 
-                                <h3><span class="visualIconPadding">&nbsp;</span></h3><div>
-                                <div tal:condition="obj/getPhone_office">
-                                  <span i18n:translate="label_short_phone_office">Phone W</span>:
-                                  <span tal:content="obj/getPhone_office" />
-                                </div>
-                                <div tal:condition="obj/getPhone_mobile">
-                                  <span i18n:translate="label_short_phone_mobile">Phone M</span>:
-                                  <span tal:content="obj/getPhone_mobile" />
-                                </div>
-                                <div tal:condition="obj/getEmail">
-                                  <span i18n:translate="label_short_mail">Email</span>:
-                                  <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" />
-                                </div>
-                                <div tal:define="url obj/getWww|nothing" tal:condition="url">
-                                    <span i18n:translate="label_short_www">Website</span>:
-                                    <span><a tal:content="url" tal:attributes="href url"/></span></div>
-                                </div>
+                            <h3><span class="visualIconPadding">&nbsp;</span></h3><div>
+                            <div tal:condition="obj/getPhone_office">
+                              <span i18n:translate="label_short_phone_office">Phone W</span>:
+                              <span tal:content="obj/getPhone_office" />
+                            </div>
+                            <div tal:condition="obj/getPhone_mobile">
+                              <span i18n:translate="label_short_phone_mobile">Phone M</span>:
+                              <span tal:content="obj/getPhone_mobile" />
+                            </div>
+                            <div tal:condition="obj/getEmail">
+                              <span i18n:translate="label_short_mail">Email</span>:
+                              <span tal:define="email obj/getEmail|nothing" tal:condition="email" tal:content="structure python:context.spamProtect(email)" />
+                            </div>
+                            <div tal:define="url obj/getWww|nothing" tal:condition="url">
+                              <span i18n:translate="label_short_www">Website</span>:
+                            <span><a tal:content="url" tal:attributes="href url"/></span></div>
+                          </div>
 
 
-                            </td>
-                            <td tal:define="img obj/getImage|nothing">
-                                <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumbnail"
-                                     class="image-right"/>
-                            </td>
+                          </td>
+                          <td tal:define="img obj/getImage|nothing">
+                            <img tal:condition="img" tal:attributes="src string:${img/absolute_url}_thumbnail"
+                                 class="image-right"/>
+                          </td>
                         </tal:defs>
-                    </tr>
+                      </tr>
                     </tal:items>
-                </tbody>
-            </table>
+                  </tbody>
+                </table>
 
-            <!-- Batch Navigation -->
-            <div metal:use-macro="here/batch_macros/macros/navigation" />
+                <!-- Batch Navigation -->
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
 
-        </tal:listing>
+              </tal:listing>
 
-        <metal:empty metal:define-slot="no_items_in_listing">
-            <p class="discreet"
-               tal:condition="not: folderContents"
-               i18n:translate="description_no_items_in_folder">
-                There are currently no items in this folder.
-            </p>
-        </metal:empty>
+              <metal:empty metal:define-slot="no_items_in_listing">
+                <p class="discreet"
+                   tal:condition="not: folderContents"
+                   i18n:translate="description_no_items_in_folder">
+                  There are currently no items in this folder.
+                </p>
+              </metal:empty>
 
-        </tal:foldercontents>
-        </metal:listingmacro>
+            </tal:foldercontents>
+          </metal:listingmacro>
 
-</form>
-    </metal:main_macro>
+        </form>
+      </metal:main_macro>
     </metal:content-core>
 
-</body>
+  </body>
 </html>
