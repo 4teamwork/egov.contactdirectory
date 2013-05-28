@@ -53,6 +53,10 @@
             <th i18n:translate="label_political_party">Party</th>
             <td tal:content="context/getPolitical_party">Party Z</td>
           </tr>
+          <tr tal:condition="context/getAttendance_time">
+            <th i18n:translate="label_attendance_time">Attendance time</th>
+            <td tal:content="context/getAttendance_time">Mo 10-12</td>
+          </tr>
           <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
             <th i18n:translate="label_address">Address</th>
             <td>

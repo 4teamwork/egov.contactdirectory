@@ -189,6 +189,13 @@ schema = Schema((
         widget=StringWidget(
             label=_(u'label_political_party', default=u'Party'))),
 
+    StringField(
+        name='attendance_time',
+        schemata='Erweitert',
+        searchable=1,
+        widget=StringWidget(
+            label=_(u'label_attendance_time', default=u'Attendance time'))),
+
     TextField(
         name='text',
         required=False,

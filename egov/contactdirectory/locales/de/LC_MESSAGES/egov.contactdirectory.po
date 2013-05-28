@@ -119,6 +119,9 @@ msgstr "Abteilung"
 msgid "label_political_party"
 msgstr "Partei"
 
+msgid "label_attendance_time"
+msgstr "Anwesenheit"
+
 #. Default: "Description"
 #: ./egov/contactdirectory/browser/contact.pt:161
 msgid "label_description"
