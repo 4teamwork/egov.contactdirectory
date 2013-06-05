@@ -23,8 +23,6 @@ function hide_fields() {
 
 $(document).ready(function(){
 
-    console.log($('#acquireAddress').attr('checked'));
-
     if($('#acquireAddress').attr('checked')) {
         hide_fields();
     }
