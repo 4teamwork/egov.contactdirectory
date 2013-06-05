@@ -74,7 +74,7 @@ schema = Schema((
     BooleanField(
         name='acquireAddress',
         schemata='Kontakt',
-        default=0,
+        default=1,
         widget=BooleanWidget(
             label=_(u'label_acquire_address', default='Acquire address'),
             helper_js=('member_block_control.js', ))),
