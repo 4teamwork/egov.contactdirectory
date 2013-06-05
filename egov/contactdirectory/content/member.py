@@ -83,7 +83,7 @@ schema = Schema((
         default=1,
         widget=BooleanWidget(
             label=_(u'label_acquire_address', default='Acquire address'),
-            helper_js=('member_block_control.js', ))),
+            helper_js=('acquire_address.js', ))),
 
     TextField(
         name='address',
