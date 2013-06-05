@@ -42,6 +42,12 @@ schema = Schema((
             label=_(u'label_contact_reference',
                     default='Contact reference'))),
 
+    BooleanField(
+        name='acquireFunction',
+        default=1,
+        widget=BooleanWidget(
+            label=_(u'label_acquire_function', default='Acquire function'))),
+
     StringField(
         name='function',
         searchable=1,
@@ -166,6 +172,12 @@ class Member(base.ATCTContent):
             return mitglied.Title()
 
     getImageCaption = getImageAltText
+
+    def getFunction(self):
+        if self.getAcquireFunction() and self.getContact():
+            return self.getContact().getFunction()
+        else:
+            return self.getField("function").get(self)
 
     def getAddress(self):
         if self.getAcquireAddress() and self.getContact():
