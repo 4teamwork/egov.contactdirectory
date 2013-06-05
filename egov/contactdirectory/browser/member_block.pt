@@ -40,7 +40,7 @@
                 <span tal:content="python: here.getContact().getPolitical_party()"></span>
            </div>
            <div tal:condition="here/Description" class="member_description" tal:content="here/Description"></div>
-           <p>
+           <p tal:condition="here/getShow_address">
                <tal:addr tal:condition="here/getShow_address">
                     <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
                     <span tal:content="here/getZip"/>
