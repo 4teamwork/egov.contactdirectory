@@ -31,6 +31,7 @@ setup(name='egov.contactdirectory',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'simplelayout.base',
           'simplelayout.types.common',
           'ftw.table',
           'ftw.tabbedview',
