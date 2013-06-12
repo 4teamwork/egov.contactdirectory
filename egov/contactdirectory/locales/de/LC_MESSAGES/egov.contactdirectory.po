@@ -147,6 +147,9 @@ msgstr "Fax"
 msgid "label_firstname"
 msgstr "Vorname"
 
+msgid "label_acquire_function"
+msgstr "Funktion von Stammdaten übernehmen"
+
 #. Default: "Function"
 #: egov/contactdirectory/browser/contact.pt:48
 #: egov/contactdirectory/content/contact.py:175

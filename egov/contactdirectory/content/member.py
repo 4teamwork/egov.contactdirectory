@@ -46,7 +46,8 @@ schema = Schema((
         name='acquireFunction',
         default=1,
         widget=BooleanWidget(
-            label=_(u'label_acquire_function', default='Acquire function'))),
+            label=_(u'label_acquire_function', default='Acquire function'),
+            helper_js=('acquire_function.js', ))),
 
     StringField(
         name='function',
@@ -83,7 +84,7 @@ schema = Schema((
         default=1,
         widget=BooleanWidget(
             label=_(u'label_acquire_address', default='Acquire address'),
-            helper_js=('member_block_control.js', ))),
+            helper_js=('acquire_address.js', ))),
 
     TextField(
         name='address',
