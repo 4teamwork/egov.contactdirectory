@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "POT-Creation-Date: 2012-07-25 08:20+0000\n"
-"PO-Revision-Date: 2013-06-12 08:33+0100\n"
+"PO-Revision-Date: 2013-07-08 13:53+0100\n"
 "Last-Translator: Fabian Reinhard <fabian.reinhard@seantis.ch>\n"
 "Language-Team: German <lukas.graf@4teamwork.ch>\n"
 "MIME-Version: 1.0\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: egov.contactdirectory\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: egov/contactdirectory/profiles/default/types/Contact.xml
 msgid "Contact"
@@ -210,7 +210,7 @@ msgstr "Telefon"
 #: egov/contactdirectory/content/contact.py:141
 #: egov/contactdirectory/content/member.py:114
 msgid "label_phone_mobile"
-msgstr "Telefon mobil"
+msgstr "Telefon Mobile"
 
 #. Default: "Phone number (office)"
 #: egov/contactdirectory/browser/contact.pt:68
