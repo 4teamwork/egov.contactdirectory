@@ -122,6 +122,11 @@
                                     </div>
                                 </div>
 
+                                <div tal:define="attendance obj/getAttendance_time | nothing" tal:condition="attendance">
+                                  <br/>
+                                  <span i18n:translate="label_attendance_time">Attendance time</span>:
+                                  <span tal:content="attendance"></span>
+                                </div>
 
                             </td>
                             <td tal:define="img obj/getImage|nothing">
