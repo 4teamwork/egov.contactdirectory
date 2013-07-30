@@ -109,17 +109,19 @@
           </table>
         </tal:private>
         <metal:block tal:define="memberships context/getMemberships" tal:condition="memberships">
-          <h3 i18n:translate="label_memberships">
-            Memberships
-          </h3>
+          <div class="memberships">
+            <h3 i18n:translate="label_memberships">
+              Memberships
+            </h3>
 
-          <ul>
-            <tal:items tal:repeat="obj memberships">
-              <li>
-                <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
-              </li>
-            </tal:items>
-          </ul>
+            <ul>
+              <tal:items tal:repeat="obj memberships">
+                <li>
+                  <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
+                </li>
+              </tal:items>
+            </ul>
+          </div>
         </metal:block>
         <div class="zugMitglied-bio" tal:content="structure bio | nothing">Text</div>
       </div>
