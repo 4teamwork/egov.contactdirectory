@@ -5,7 +5,8 @@ Changelog
 1.5.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Wrap div around memberships in contact view.
+  [Julian Infanger]
 
 
 1.5.3 (2013-05-24)
