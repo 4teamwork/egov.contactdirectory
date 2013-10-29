@@ -78,7 +78,7 @@ schema = Schema((
             default=0,
             widget=BooleanWidget(
                 label=_(u'label_acquire_address', default='Acquire address'),
-                helper_js = ('member_block_control.js', ))),
+                helper_js=('member_block_control.js', ))),
 
         TextField(
             name='address',
@@ -145,16 +145,16 @@ finalizeATCTSchema(member_schema)
 member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
 member_schema['title'].required = 0
 member_schema['title'].widget.visible = {'edit': 'visible', 'view': 'visible'}
-
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
+
 
 class Member(base.ATCTContent):
     """
     """
     implements(IMember)
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(BaseContent, '__implements__', ()),)
 
     schema = member_schema
 
@@ -219,7 +219,9 @@ class Member(base.ATCTContent):
     def getOrganization(self):
         try:
             parent = self.aq_parent
-            while parent.portal_type not in ['OrgUnit', 'Plone Site', 'ContentPage']:
+            while parent.portal_type not in ['OrgUnit',
+                                             'Plone Site',
+                                             'ContentPage']:
                 parent = parent.aq_parent
             if parent.portal_type in ['OrgUnit', 'ContentPage']:
                 return parent.Title()
