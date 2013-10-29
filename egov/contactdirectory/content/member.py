@@ -8,7 +8,7 @@ from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import BaseContent
 from Products.Archetypes.atapi import BooleanField, BooleanWidget
-from Products.Archetypes.atapi import ReferenceField, ReferenceWidget
+from Products.Archetypes.atapi import ReferenceField
 from Products.Archetypes.atapi import Schema
 from Products.Archetypes.atapi import StringField, StringWidget
 from Products.Archetypes.atapi import TextField, TextAreaWidget
@@ -18,6 +18,7 @@ from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IMember
 from zope.interface import implements
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 
 
 schema = Schema((
@@ -36,10 +37,11 @@ schema = Schema((
             allowed_types=('Contact',),
             multiValued=0,
             relationship='member_to_contact',
-            vocabulary_display_path_bound = 999999,
-            widget = ReferenceWidget(
+            vocabulary_display_path_bound=999999,
+            widget=ReferenceBrowserWidget(
                 label=_(u'label_contact_reference',
-                        default='Contact reference'))),
+                                        default='Contact reference'))
+            ),
 
         StringField(
             name='function',

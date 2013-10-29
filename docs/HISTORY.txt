@@ -5,7 +5,8 @@ Changelog
 1.5.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve Widget for Selection when there are multiple persons with the same name.
+  [tschanzt]
 
 - Use UID for searching References. IDs can be used multiple times.
   [tschanzt]
