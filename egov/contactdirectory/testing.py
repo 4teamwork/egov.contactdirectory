@@ -1,4 +1,3 @@
-from ftw.testing.layer import ComponentRegistryLayer
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
@@ -22,6 +21,27 @@ class EgovContactdirectoryLayer(PloneSandboxLayer):
 
         xmlconfig.file('configure.zcml', egov.contactdirectory,
                        context=configurationContext)
+
+        import ftw.geo
+        import collective.geo.settings
+        import collective.geo.openlayers
+        import collective.geo.geographer
+        import collective.geo.contentlocations
+        import collective.geo.kml
+
+        xmlconfig.file('configure.zcml', ftw.geo,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', collective.geo.settings,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', collective.geo.openlayers,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', collective.geo.geographer,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', collective.geo.contentlocations,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', collective.geo.kml,
+                       context=configurationContext)
+
         # installProduct() is *only* necessary for packages outside
         # the Products.* namespace which are also declared as Zope 2
         # products, using <five:registerPackage /> in ZCML.

@@ -8,7 +8,7 @@ from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import BaseContent
 from Products.Archetypes.atapi import BooleanField, BooleanWidget
-from Products.Archetypes.atapi import ReferenceField, ReferenceWidget
+from Products.Archetypes.atapi import ReferenceField
 from Products.Archetypes.atapi import Schema
 from Products.Archetypes.atapi import StringField, StringWidget
 from Products.Archetypes.atapi import TextField, TextAreaWidget
@@ -18,6 +18,7 @@ from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.config import PROJECTNAME
 from egov.contactdirectory.interfaces import IMember
 from zope.interface import implements
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 
 
 schema = Schema((
@@ -36,10 +37,11 @@ schema = Schema((
             allowed_types=('Contact',),
             multiValued=0,
             relationship='member_to_contact',
-            vocabulary_display_path_bound = 999999,
-            widget = ReferenceWidget(
+            vocabulary_display_path_bound=999999,
+            widget=ReferenceBrowserWidget(
                 label=_(u'label_contact_reference',
-                        default='Contact reference'))),
+                                        default='Contact reference'))
+            ),
 
         StringField(
             name='function',
@@ -76,7 +78,7 @@ schema = Schema((
             default=0,
             widget=BooleanWidget(
                 label=_(u'label_acquire_address', default='Acquire address'),
-                helper_js = ('member_block_control.js', ))),
+                helper_js=('member_block_control.js', ))),
 
         TextField(
             name='address',
@@ -143,16 +145,16 @@ finalizeATCTSchema(member_schema)
 member_schema['description'].widget.visible = {'edit': 0, 'view': 0}
 member_schema['title'].required = 0
 member_schema['title'].widget.visible = {'edit': 'visible', 'view': 'visible'}
-
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
+
 
 class Member(base.ATCTContent):
     """
     """
     implements(IMember)
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(BaseContent, '__implements__', ()),)
 
     schema = member_schema
 
@@ -217,7 +219,9 @@ class Member(base.ATCTContent):
     def getOrganization(self):
         try:
             parent = self.aq_parent
-            while parent.portal_type not in ['OrgUnit', 'Plone Site', 'ContentPage']:
+            while parent.portal_type not in ['OrgUnit',
+                                             'Plone Site',
+                                             'ContentPage']:
                 parent = parent.aq_parent
             if parent.portal_type in ['OrgUnit', 'ContentPage']:
                 return parent.Title()

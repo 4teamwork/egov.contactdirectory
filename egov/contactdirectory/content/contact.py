@@ -275,7 +275,7 @@ class Contact(ATCTContent):
     security.declareProtected(permissions.View, 'getMemberships')
     def getMemberships(self, **kwargs):
         cat, refcat = getToolByName(self, "portal_catalog"), getToolByName(self, "reference_catalog")
-        refs = refcat({"relationship": "member_to_contact", "targetId": self.id})
+        refs = refcat({"relationship": "member_to_contact", "targetUID": self.UID()})
         uids = [i.sourceUID for i in refs]
         memberships = [b.getObject() for b in cat({"UID": uids})]
         return memberships
