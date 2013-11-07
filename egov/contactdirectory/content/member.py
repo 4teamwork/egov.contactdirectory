@@ -164,7 +164,7 @@ class Member(base.ATCTContent):
         if not mtool.checkPermission('View', mitglied):
             return ''
         if mitglied:
-            return mitglied.Title()
+            return mitglied.Title(format='natural')
 
     getImageCaption = getImageAltText
 
