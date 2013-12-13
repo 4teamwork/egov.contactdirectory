@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.5.5 (unreleased)
-------------------
+1.6 (2013-12-13)
+----------------
 
 - Change image caption name format (memberblock).
   [mathias.leimgruber]
