@@ -259,7 +259,6 @@ dates_fields = [contact_schema[key] for key in contact_schema.keys()
 for field in dates_fields:
     field.write_permission = permissions.ManagePortal
 
-contact_schema['language'].write_permission = permissions.ManagePortal
 contact_schema['location'].write_permission = permissions.ManagePortal
 
 
