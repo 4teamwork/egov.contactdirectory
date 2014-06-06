@@ -56,6 +56,7 @@ class MemberView(BrowserView):
     """
     """
 
+
 class MemberBlockView(BlockView):
     """
     """
@@ -70,6 +71,15 @@ class MemberBlockView(BlockView):
         if contact:
             return bool(contact.getField('image').get(contact))
         return False
+
+    def get_image_width(self):
+        scale = self.get_image_scale()
+        return scale.width
+
+    def get_image_scale(self):
+        contact = self.context.getContact()
+        scaling = contact.restrictedTraverse('@@images')
+        return scaling.scale('image', scale="thumbnail")
 
 
 class IContactSourceConfig(ITableSourceConfig):

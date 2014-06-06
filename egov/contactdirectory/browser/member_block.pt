@@ -18,12 +18,10 @@
                                         "
                                         tal:omit-tag="not: here/getImageClickable|nothing"
                     >
-                    <img tal:define="contact python: context.getContact(); 
-                                     scale contact/@@images"
-                         tal:replace="structure python: scale.scale('image',
-                                      scale='thumbnail').tag(title=here.Title())" />
-                        <p tal:define="image_desc context/getImageCaption | context/Description" 
+                    <img tal:replace="structure python:view.get_image_scale().tag(title=here.Title())" />
+                        <p tal:define="image_desc context/getImageCaption | context/Description"
                            tal:condition="image_desc"
+                           tal:attributes="style string:width:${view/get_image_width}px;"
                            tal:content="context/getImageCaption">Caption</p>
                     </a>
     </div>
@@ -31,10 +29,10 @@
 
     <div class="sl-text-wrapper">
            <strong>
-               <a tal:attributes="href python: context.getContact().absolute_url()" 
+               <a tal:attributes="href python: context.getContact().absolute_url()"
                   tal:content="python: context.getContact().Title(format='natural')"></a>
            </strong>
-           <p>    
+           <p>
                <tal:fn tal:content="here/getFunction"></tal:fn><br/>
                <tal:addr tal:condition="here/getShow_address">
                     <tal:block><span tal:replace="structure python: here.getAddress() and str(here.getAddress()).replace('\n', '<br />') or ''" /><br /></tal:block>
@@ -42,30 +40,30 @@
                     <span tal:content="here/getCity"/><br />
                </tal:addr>
                <tal:phone tal:condition="python:context.getPhone_office() != ''">
-                    <span i18n:translate="label_short_office">Office</span>: 
+                    <span i18n:translate="label_short_office">Office</span>:
                     <span tal:content="here/getPhone_office"/><br/>
                </tal:phone>
                <tal:mobile tal:condition="python:context.getPhone_mobile() != ''">
-                    <span i18n:translate="label_short_mobile">Mobile</span>: 
+                    <span i18n:translate="label_short_mobile">Mobile</span>:
                     <span tal:content="here/getPhone_mobile"/><br/>
                </tal:mobile>
                <tal:fax tal:condition="python:context.getFax() != ''">
-                    <span i18n:translate="label_short_fax">Fax</span>: 
+                    <span i18n:translate="label_short_fax">Fax</span>:
                     <span tal:content="here/getFax"/><br/>
                </tal:fax>
                <tal:email tal:condition="python:context.getEmail() != ''">
-                    <a tal:attributes="href string:mailto:${here/getEmail}" 
+                    <a tal:attributes="href string:mailto:${here/getEmail}"
                        tal:content="here/getEmail"/>
                </tal:email>
            </p>
     </div>
-       
+
 
 </div>
 
 <div tal:condition="not: view/has_contact" class="simplelayout-block-wrapper">
     <p i18n:domain="egov.contactdirectory" i18:translate="text_contact_deleted">
-        Contact not found. 
+        Contact not found.
     </p>
 </div>
 
