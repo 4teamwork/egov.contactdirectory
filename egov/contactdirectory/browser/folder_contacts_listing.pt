@@ -37,7 +37,7 @@
                                         b_size python: type(b_size) == type([]) and b_size[-1] or b_size;
                                         b_start python:0;b_start request/b_start | b_start;
                                         b_range python: b_start==0 and 5 or 3;
-                                        folderContents python:Batch(view.list_contacts(), int(b_size), int(b_start), orphan=1,pagerange=int(b_range));
+                                        folderContents python:Batch(view.list_contacts(), int(b_size), int(b_start), pagerange=int(b_range));
                                         batch folderContents">
               <tal:listing condition="folderContents"
                            define="toLocalizedTime nocall:here/toLocalizedTime;">
