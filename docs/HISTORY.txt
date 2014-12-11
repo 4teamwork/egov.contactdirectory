@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.6.3 (unreleased)
+1.6.3 (2014-12-11)
 ------------------
 
 - Disable orphan feature.
