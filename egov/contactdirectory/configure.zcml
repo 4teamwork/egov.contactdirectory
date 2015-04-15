@@ -29,4 +29,8 @@
         handler=".handlers.initializeCustomFeatureStyles"
         />
 
+    <configure zcml:condition="installed ftw.zipexport">
+        <adapter factory=".export.ContactZipRepresentation" />
+    </configure>
+
 </configure>

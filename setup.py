@@ -4,7 +4,10 @@ import os
 version = '1.6.4.dev0'
 maintainer = 'Mathias Leimgruber'
 
-tests_require = ['plone.app.testing',]
+tests_require = ['plone.app.testing',
+                 'ftw.builder',
+                 'ftw.testbrowser',
+                 'ftw.zipexport']
 
 extras_require = {
     'tests': tests_require,
@@ -41,7 +44,8 @@ setup(name='egov.contactdirectory',
       ],
 
       tests_require=tests_require,
-      extras_require=extras_require,
+      extras_require=dict(tests=tests_require,
+                          zip_export=['ftw.zipexport']),
 
       entry_points="""
       # -*- Entry points: -*-
