@@ -41,7 +41,7 @@ def generateVCard(contact):
                                        contact.getFirstname(),
                                        contact.getSalutation()))
     addProp('FN', contact.Title())
-    addProp('GENDER', gender_map[contact.getGender()])
+    addProp('GENDER', gender_map.get(contact.getGender(), ''))
     addProp('ORG', contact.getOrganization())
     addProp('ADR;TYPE=WORK', ';;{0};{1};;{2};{3}'.format(
         contact.getAddress().replace('\n', '\\n').replace('\r', ''),
