@@ -10,7 +10,6 @@
 
     <include package=".browser" />
     <include package=".content" />
-    <include package=".upgrades" />
 
     <include file="skins.zcml" />
     <include file="profiles.zcml" />
@@ -21,6 +20,8 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+    <include package=".upgrades" />
+
     <!-- Set up custom feature styles in order to display map in
     plone.belowcontentbody viewlet -->
     <subscriber
@@ -30,7 +31,7 @@
         />
 
     <configure zcml:condition="installed ftw.zipexport">
-        <adapter factory=".export.ContactZipRepresentation" />
+        <adapter factory=".zipexport.ContactZipRepresentation" />
     </configure>
 
 </configure>

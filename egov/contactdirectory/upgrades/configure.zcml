@@ -1,7 +1,10 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     i18n_domain="egov.contactdirectory">
+
+    <include package="ftw.upgrade" file="meta.zcml" />
 
     <!-- 1001 -> 1301 -->
     <genericsetup:upgradeStep
@@ -51,5 +54,9 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <upgrade-step:directory
+        profile="egov.contactdirectory:default"
+        directory="."
+        />
 
 </configure>
