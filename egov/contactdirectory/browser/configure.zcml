@@ -44,6 +44,13 @@
         />
 
     <browser:page
+        for="egov.contactdirectory.interfaces.IContact"
+        name="download"
+        class=".views.DownloadVCardView"
+        permission="zope2.View"
+        />
+
+    <browser:page
         for="*"
         name="member_view"
         class=".views.MemberView"

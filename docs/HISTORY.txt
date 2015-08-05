@@ -5,7 +5,8 @@ Changelog
 1.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added vCard download.
+  [lknoepfel]
 
 
 1.7.0 (2015-05-26)

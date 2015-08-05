@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from egov.contactdirectory.testing import \
     EGOV_CONTACTDIRECTORY_FUNCTIONAL_TESTING
-from egov.contactdirectory.export import generateVCard
+from egov.contactdirectory.vcard import generateVCard
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.testbrowser import browsing

@@ -89,6 +89,11 @@
                                  tal:content="item_title_or_id">
                                 Item Title
                               </a>
+                              <a href="#"
+                                 title="vCard Download"
+                                 tal:attributes="href python:item_url+'/download'">
+                                 <img alt="vCard Download" src="++resource++egov-contactdirectory-resources/vcard.png" />
+                               </a>
                             </h3>
                             <div tal:condition="obj/getFunction | nothing"><span tal:replace="obj/getFunction | nothing" /><br/><br/></div>
                             <tal:block tal:condition="obj/getOrganization">

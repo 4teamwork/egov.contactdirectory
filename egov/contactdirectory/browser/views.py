@@ -1,15 +1,16 @@
-from zope.interface import implements, Interface
-from zope.component import adapts, getUtility
-from plone.registry.interfaces import IRegistry
-from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
-from ftw.table.basesource import BaseTableSource
-from simplelayout.types.common.browser.views import BlockView
-from ftw.tabbedview.browser import listing
-from egov.contactdirectory.interfaces import IContactFolderView
-from ftw.table.interfaces import ITableSourceConfig, ITableSource
 from egov.contactdirectory import contactdirectoryMessageFactory as _
 from egov.contactdirectory.browser.helper import icon
+from egov.contactdirectory.vcard import generateVCard
+from egov.contactdirectory.interfaces import IContactFolderView
+from ftw.tabbedview.browser import listing
+from ftw.table.basesource import BaseTableSource
+from ftw.table.interfaces import ITableSourceConfig, ITableSource
+from plone.registry.interfaces import IRegistry
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from simplelayout.types.common.browser.views import BlockView
+from zope.component import adapts, getUtility
+from zope.interface import implements, Interface
 
 
 class ContactFolderView(BrowserView):
@@ -51,6 +52,17 @@ class ContactView(BrowserView):
             address += ' ' + self.context.getCity_private()
         return address
 
+
+class DownloadVCardView(BrowserView):
+    """Download vCard of contact
+    """
+    def __call__(self):
+        response = self.request.response
+        response.setHeader("Content-type", "text/vcard")
+        filename = '%s.vcf' % self.context.Title()
+        response.setHeader("Content-Disposition",
+                           'inline; filename="%s"' % filename.encode('utf-8'))
+        return generateVCard(self.context).getvalue()
 
 class MemberView(BrowserView):
     """
