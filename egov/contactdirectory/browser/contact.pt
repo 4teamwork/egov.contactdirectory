@@ -28,10 +28,6 @@
             <tr tal:condition="python: context.getFirstname() and context.getLastname()">
               <th i18n:translate="label_name">Name</th>
               <td>
-                <tal:title tal:condition="context/getAcademic_title"
-                 tal:replace="context/getAcademic_title">
-                 Dr.
-               </tal:title>
                <tal:name tal:replace="string:${context/getLastname} ${context/getFirstname}">
                 Hugo Boss
               </tal:name>
@@ -41,6 +37,11 @@
             <th i18n:translate="label_function">Function</th>
             <td tal:content="context/getFunction">Boss</td>
           </tr>
+          <tr tal:condition="context/getAcademic_title">
+            <th i18n:translate="label_academic_title">Academic_title</th>
+            <td tal:content="context/getAcademic_title">Dr.</td>
+          </tr>
+
           <tr tal:condition="context/getOrganization">
             <th i18n:translate="label_organization">Organization</th>
             <td tal:content="context/getOrganization">XYZ GmbH</td>
@@ -52,30 +53,34 @@
           <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
             <th i18n:translate="label_address">Address</th>
             <td>
+               <span tal:content="context/getOrganization">XYZ GmbH</span><br />
+               <tal:block tal:condition="python: context.getFirstname() and context.getLastname()"><span tal:content="string:${context/getFirstname} ${context/getLastname}">
+                Hugo Boss
+              </span><br /></tal:block>
               <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
               <span tal:replace="context/getZip | nothing" />
               <span tal:replace="context/getCity | nothing" />
-            </td>
-          </tr>
-          <tr tal:condition="context/getPhone_office">
-            <th i18n:translate="label_phone_office">Phone number (office)</th>
-            <td tal:content="context/getPhone_office | nothing">031 000 00 00</td>
-          </tr>
-          <tr tal:condition="context/getPhone_mobile">
-            <th i18n:translate="label_phone_mobile">Mobile number</th>
-            <td tal:content="context/getPhone_mobile | nothing">079 000 00 00</td>
-          </tr>
-          <tr tal:condition="context/getFax">
-            <th i18n:translate="label_fax">Fax number</th>
-            <td tal:content="context/getFax | nothing">031 123 45 67</td>
-          </tr>
-          <tr tal:condition="context/getEmail">
-            <th i18n:translate="label_email">E-Mail</th>
-            <td>
+            <br /><br />
+            <tal:block tal:condition="context/getPhone_office">
+            <span 18n:translate="label_phone_office">Phone number (office)</span>
+            <span tal:content="context/getPhone_office | nothing">031 000 00 00</span><br />
+            </tal:block>
+            <tal:block tal:condition="context/getPhone_mobile">
+            <span i18n:translate="label_phone_mobile">Mobile number</span>
+            <span tal:content="context/getPhone_mobile | nothing">079 000 00 00</span><br />
+            </tal:block>
+            <tal:block tal:condition="context/getFax">
+            <span i18n:translate="label_fax">Mobile number</span>
+            <span tal:content="context/getFax | nothing">079 000 00 00</span><br />
+            </tal:block>
+
+            <tal:block tal:condition="context/getEmail">
               <a tal:attributes="href string:mailto:${context/getEmail}"
                 tal:content="context/getEmail | nothing">info@mail.com</a>
-              </td>
-            </tr>
+            </tal:block>
+
+            </td>
+          </tr>
             <tr tal:condition="context/getWww">
               <th i18n:translate="label_www">WWW</th>
               <td>
@@ -98,13 +103,21 @@
           <table class="vertical listing">
             <tr>
               <th i18n:translate="label_address">Address</th>
-              <td tal:content="structure private_address | nothing">
+              <td>
+               <tal:block tal:condition="python: context.getFirstname() and context.getLastname()">
+               <span tal:content="string:${context/getFirstname} ${context/getLastname}">
+                Hugo Boss
+              </span><br />
+                </tal:block>
+                <tal:block><div tal:content="structure private_address | nothing">
                 Address
+               </div>
+               </tal:block>
+              <tal:block tal:condition="context/getTel_private | nothing">
+              <span i18n:translate="label_telephon_private">Tel. p:</span>
+              <span tal:content="context/getTel_private">031 000 00 00</span>
+              </tal:block>
               </td>
-            </tr>
-            <tr tal:condition="context/getTel_private | nothing">
-              <th i18n:translate="label_telephon_private">Tel. p:</th>
-              <td tal:content="context/getTel_private">031 000 00 00</td>
             </tr>
           </table>
         </tal:private>
