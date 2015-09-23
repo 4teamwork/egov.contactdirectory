@@ -5,14 +5,12 @@ Changelog
 1.7.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make complete Address a single entry so it can be copied.
+  [tschanzt]
 
 
 1.7.1 (2015-08-11)
 ------------------
-
-- Make complete Address a single entry so it can be copied.
-  [tschanzt]
 
 - Added vCard download.
   [lknoepfel]
