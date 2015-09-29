@@ -7,7 +7,9 @@ maintainer = 'Mathias Leimgruber'
 tests_require = ['plone.app.testing',
                  'ftw.builder',
                  'ftw.testbrowser',
-                 'ftw.zipexport']
+                 'ftw.zipexport',
+                 'unittest2',
+                 ]
 
 extras_require = {
     'tests': tests_require,
