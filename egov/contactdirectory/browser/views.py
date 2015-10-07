@@ -8,7 +8,7 @@ from ftw.table.interfaces import ITableSourceConfig, ITableSource
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from simplelayout.types.common.browser.views import BlockView
+from ftw.contentpage.browser.textblock_view import TextBlockView
 from zope.component import adapts, getUtility
 from zope.interface import implements, Interface
 
@@ -69,7 +69,7 @@ class MemberView(BrowserView):
     """
 
 
-class MemberBlockView(BlockView):
+class MemberBlockView(TextBlockView):
     """
     """
 
