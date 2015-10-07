@@ -42,7 +42,7 @@ setup(name='egov.contactdirectory',
           'ftw.tabbedview',
           'ftw.upgrade',
           'ftw.geo',
-          # -*- Extra requirements: -*-
+          'Plone',
       ],
 
       tests_require=tests_require,
