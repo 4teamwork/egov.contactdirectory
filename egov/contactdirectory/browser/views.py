@@ -111,10 +111,25 @@ class ContactTab(listing.ListingView):
     show_menu = False
 
     columns = (
+               {'column' : 'organization',
+                'column_title' : _(u'Organization', default=u'Organization'),
+                'sort_index' : 'organization',
+                'transform' : icon,
+                'width': 300},
+
                {'column' : 'name',
                 'column_title' : _(u'Name', default=u'Name'),
                 'sort_index' : 'name',
                 'transform' : icon,
+                'width': 300},
+
+               {'column' : 'address',
+                'column_title' : _(u'Address', default=u'Address'),
+                'width': 300},
+
+               {'column' : 'city',
+                'column_title' : _(u'City', default=u'City'),
+                'sort_index' : 'city',
                 'width': 300},
 
               {'column' : 'phone',
@@ -169,7 +184,7 @@ class ContactTableSource(BaseTableSource):
         # Get contacts
         query = dict(
             portal_type='Contact',
-            path='/'.join(context.getPhysicalPath()),)
+            path='/'.join(context.getPhysicalPath()),sort_on='sortable_title')
         for brain in context.portal_catalog(query):
             obj = brain.getObject()
             type_class = 'contenttype-' + \
@@ -181,7 +196,10 @@ class ContactTableSource(BaseTableSource):
             results.append(
                 dict(
                     user_id = obj.id,
+                    organization = obj.getOrganization(),
                     name = obj.Title(),
+                    address = obj.getAddress(),
+                    city = '%s %s' % (obj.getZip(), obj.getCity()), 
                     phone = obj.getPhone_office(),
                     email = obj.getEmail(),
                     url = obj.absolute_url(),
@@ -219,6 +237,18 @@ class ContactTableSource(BaseTableSource):
 
             # phone
             if text.lower() in item.get('phone', '').lower():
+                return True
+
+            # city
+            if text.lower() in item.get('city', '').lower():
+                return True
+
+            # organization
+            if text.lower() in item.get('organization', '').lower():
+                return True
+
+            # address
+            if text.lower() in item.get('address', '').lower():
                 return True
 
             return False
