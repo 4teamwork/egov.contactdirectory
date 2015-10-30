@@ -20,6 +20,7 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
+    <include package=".sync"  zcml:condition="installed ldap" />
     <include package=".upgrades" />
 
     <!-- Set up custom feature styles in order to display map in

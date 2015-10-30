@@ -226,7 +226,18 @@ schema = Schema((
             widget=StringWidget(
                 label=_(u'label_private_city', default='City'))),
 
-        ))
+        StringField(
+            'ldap_dn',
+            required=False,
+            languageIndependent=True,
+            widget=StringWidget(
+                label=_(u"label_ldap_dn", default=u"LDAP DN"),
+                description=_(u"help_ldap_dn", default=u""),
+                visible={'edit': 'invisible', 'view': 'invisible'}
+            ),
+        ),
+
+))
 
 
 contact_schema = ATContentTypeSchema.copy() + \

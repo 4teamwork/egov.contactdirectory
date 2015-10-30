@@ -1,0 +1,21 @@
+version: 1
+
+dn:: Y249TcO8bGxlciBOaW5hLG91PVBheXJvbGwsZGM9ZG9tYWluLCBkYz1uZXQ=
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn:: TcO8bGxlciBOaW5h
+sn:: TcO8bGxlcg==
+displayName:: TmluYSBNw7xsbGVy
+facsimileTelephoneNumber: 033 265 11 71
+givenName: Nina
+l: Biel
+labeledURI: http://www.4teamwork.ch
+mail: n.mueller@4teamwork.ch
+mobile: 079 691 28 96
+o: 4teamwork AG
+postalCode: 1801
+street: Gerechtigkeitsgasse 62
+telephoneNumber: 031 644 94 38
+uid: nina.mueller

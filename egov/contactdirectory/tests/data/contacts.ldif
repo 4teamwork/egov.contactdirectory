@@ -1,0 +1,145 @@
+version: 1
+
+dn: cn=Katy Pamperin,ou=Payroll,dc=domain, dc=net
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Katy Pamperin
+sn: Pamperin
+description: This is Katy Pamperin's description
+facsimileTelephoneNumber: +1 804 771-5420
+l: San Francisco
+ou: Payroll
+postalAddress: Payroll$San Francisco
+telephoneNumber: +1 804 147-2530
+title: Junior Payroll Admin
+userPassword: Password1
+uid: PamperiK
+givenName: Katy
+mail: PamperiK@ns-mail2.com
+carLicense: MSIF9F
+departmentNumber: 6338
+employeeType: Contract
+homePhone: +1 804 670-2567
+initials: K. P.
+mobile: +1 804 180-1214
+pager: +1 804 927-3582
+roomNumber: 9952
+manager: cn=Lendon Beauchaine,ou=Product Development,dc=domain, dc=net
+
+dn: cn=Millo Sarbutt,ou=Product Development,dc=domain, dc=net
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Millo Sarbutt
+sn: Sarbutt
+description: This is Millo Sarbutt's description
+facsimileTelephoneNumber: +1 510 627-8689
+l: Alameda
+ou: Product Development
+postalAddress: Product Development$Alameda
+telephoneNumber: +1 510 299-4552
+title: Associate Product Development Vice President
+userPassword: Password1
+uid: SarbuttM
+givenName: Millo
+mail: SarbuttM@ns-mail4.com
+carLicense: 85ABXS
+departmentNumber: 2643
+employeeType: Normal
+homePhone: +1 510 741-2993
+initials: M. S.
+mobile: +1 510 555-8156
+pager: +1 510 992-9423
+roomNumber: 8624
+secretary: cn=Margariet Deek,ou=Janitorial,dc=domain, dc=net
+manager: cn=Lendon Beauchaine,ou=Product Development,dc=domain, dc=net
+
+dn: cn=Pierre-Andre Klaudinyi,ou=Payroll,dc=domain, dc=net
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Pierre-Andre Klaudinyi
+sn: Klaudinyi
+description: This is Pierre-Andre Klaudinyi's description
+facsimileTelephoneNumber: +1 818 136-6823
+l: San Mateo
+ou: Payroll
+postalAddress: Payroll$San Mateo
+telephoneNumber: +1 818 396-8957
+title: Chief Payroll Stooge
+userPassword: Password1
+uid: KlaudinP
+givenName: Pierre-Andre
+mail: KlaudinP@ns-mail9.com
+carLicense: 52OTQ7
+departmentNumber: 8796
+employeeType: Contract
+homePhone: +1 818 734-6290
+initials: P. K.
+mobile: +1 818 989-6711
+pager: +1 818 976-8690
+roomNumber: 9068
+manager: cn=Millo Sarbutt,ou=Product Development,dc=domain, dc=net
+secretary: cn=Jemie Borowiecki,ou=Administrative,dc=domain, dc=net
+
+dn: cn=Verlyn McLaren,ou=Payroll,dc=domain, dc=net
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Verlyn McLaren
+sn: McLaren
+description: This is Verlyn McLaren's description
+facsimileTelephoneNumber: +1 213 274-7860
+l: Cupertino
+ou: Payroll
+postalAddress: Payroll$Cupertino
+telephoneNumber: +1 213 954-2750
+title: Chief Payroll Mascot
+userPassword: Password1
+uid: McLarenV
+givenName: Verlyn
+mail: McLarenV@ns-mail6.com
+carLicense: A90POD
+departmentNumber: 3615
+employeeType: Employee
+homePhone: +1 213 253-5874
+initials: V. M.
+mobile: +1 213 314-7396
+pager: +1 213 103-4261
+roomNumber: 9531
+manager: cn=Millo Sarbutt,ou=Product Development,dc=domain, dc=net
+secretary: cn=Margariet Deek,ou=Janitorial,dc=domain, dc=net
+
+dn: cn=Esmaria Zork,ou=Janitorial,dc=domain, dc=net
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Esmaria Zork
+sn: Zork
+description: This is Esmaria Zork's description
+facsimileTelephoneNumber: +1 408 239-9575
+l: Sunnyvale
+ou: Janitorial
+postalAddress: Janitorial$Sunnyvale
+telephoneNumber: +1 408 162-8978
+title: Chief Janitorial Director
+userPassword: Password1
+uid: ZorkE
+givenName: Esmaria
+mail: ZorkE@ns-mail6.com
+carLicense: 3NE1SB
+departmentNumber: 4559
+employeeType: Contract
+homePhone: +1 408 844-1132
+initials: E. Z.
+mobile: +1 408 489-3945
+pager: +1 408 435-6682
+roomNumber: 8305
+manager: cn=Millo Sarbutt,ou=Product Development,dc=domain, dc=net
+secretary: cn=Jemie Borowiecki,ou=Administrative,dc=domain, dc=net

@@ -1,10 +1,4 @@
 <registry>
-    <record name="ftw.contactdirectory.showlocalroles">
-        <field type="plone.registry.field.Bool">
-            <title>Show local roles in contact listing</title>
-        </field>
-        <value>False</value>
-    </record>
     <record name="egov.contactdirectory.ldap_plugin_id">
         <field type="plone.registry.field.ASCIILine">
             <title>LDAP Plugin ID</title>
