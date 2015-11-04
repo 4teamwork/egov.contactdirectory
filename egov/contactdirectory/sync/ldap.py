@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import base_hasattr
 from egov.contactdirectory.interfaces import ILDAPSearch
 from ldap.controls import SimplePagedResultsControl
 from plone.registry.interfaces import IRegistry
@@ -40,16 +41,21 @@ class LDAPSearch(object):
         if site is None:
             return None
 
+        uf = getToolByName(site, 'acl_users')
         registry = getUtility(IRegistry)
         plugin_id = registry.get('egov.contactdirectory.ldap_plugin_id')
+
+        # No plugin id configured, try to find an ldap plugin
         if not plugin_id:
+            for obj in uf.objectValues():
+                if base_hasattr(obj, '_getLDAPUserFolder'):
+                    return obj._getLDAPUserFolder()
             return None
 
-        uf = getToolByName(site, 'acl_users')
+        # Get ldap plugin configured in registry
         ldap_plugin = uf.unrestrictedTraverse(plugin_id, None)
         if ldap_plugin is None:
             return None
-
         return ldap_plugin._getLDAPUserFolder()
 
     def search(self, base_dn=None, scope=ldap.SCOPE_SUBTREE,
