@@ -5,6 +5,10 @@ Changelog
 1.7.3 (unreleased)
 ------------------
 
+- Point the link of the contact memberships to the parent object, i.e.
+  the object where the member is assigned to.
+  [mbaechtold]
+
 - No longer use the deprecated "simplelayout.types.common". Use
   "ftw.contentpage" instead.
   [mbaechtold]
