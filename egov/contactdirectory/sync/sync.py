@@ -153,8 +153,10 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
     # 1st pass: create or update profiles
     for dn, entry in ldap_records:
 
-        # Only entries with a contact id
+        if not dn:
+            continue
 
+        # Only entries with a contact id
         contact_id = entry.get(mapper.id(), [None, ])[0]
         if not contact_id:
             skipped += 1
