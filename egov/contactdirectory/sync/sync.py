@@ -4,6 +4,7 @@ from OFS.Image import File
 from Products.Archetypes.event import ObjectEditedEvent
 from Products.Archetypes.event import ObjectInitializedEvent
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
 from egov.contactdirectory.interfaces import IContact
 from egov.contactdirectory.interfaces import ILDAPAttributeMapper
@@ -28,7 +29,8 @@ logger = logging.getLogger('egov.contactdirectory.sync')
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('plone_site', help='Absolute path to the Plone site')
+    parser.add_argument('-p', dest='plone_site', default=None,
+                        help='Absolute path to the Plone site')
     parser.add_argument('-b', dest='base_dn', default=None,
                         help='Base DN for contacts')
     parser.add_argument('-f', dest='filter', default='(objectClass=*)',
@@ -56,13 +58,27 @@ def main():
     if options.verbose:
         logger.setLevel(logging.DEBUG)
 
-    portal = app.unrestrictedTraverse(options.plone_site, None)
+    # If no plone site was provided by the command line, try to find one.
+    if options.plone_site is None:
+        sites = get_plone_sites(app)
+        if len(sites) == 1:
+            portal = sites[0]
+        elif len(sites) > 1:
+            sys.exit("Multiple Plone sites found. Please specify which Plone "
+                     "site should be used.")
+        else:
+            sys.exit("No Plone site found.")
+    else:
+        portal = app.unrestrictedTraverse(options.plone_site, None)
     if not portal:
         sys.exit("Plone site not found at %s" % options.plone_site)
     setSite(portal)
 
     registry = getUtility(IRegistry)
     contacts_path = registry.get('egov.contactdirectory.contacts_path')
+    if not contacts_path:
+        sys.exit("Contacts path not set. Please configure the path to the "
+                 "folder containing contacts in the configuration registry.")
     contacts_folder = portal.unrestrictedTraverse(contacts_path.lstrip('/'),
                                                   None)
     if contacts_folder is None:
@@ -103,6 +119,18 @@ def get_ldap_attribute_mapper():
     if mapper is None:
         mapper = DefaultLDAPAttributeMapper()
     return mapper
+
+
+def get_plone_sites(root):
+    result = []
+    for obj in root.values():
+        if obj.meta_type is 'Folder':
+            result = result + get_plone_sites(obj)
+        elif IPloneSiteRoot.providedBy(obj):
+            result.append(obj)
+        elif obj.getId() in getattr(root, '_mount_points', {}):
+            result.extend(get_plone_sites(obj))
+    return result
 
 
 def sync_contacts(context, ldap_records, delete=True, set_owner=False):
