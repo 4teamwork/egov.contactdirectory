@@ -8,12 +8,14 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
 from egov.contactdirectory.interfaces import IContact
 from egov.contactdirectory.interfaces import ILDAPAttributeMapper
+from egov.contactdirectory.interfaces import ILDAPCustomUpdater
 from egov.contactdirectory.interfaces import ILDAPSearch
 from egov.contactdirectory.sync.mapper import DefaultLDAPAttributeMapper
 from plone.app.blob.interfaces import IBlobWrapper
 from plone.registry.interfaces import IRegistry
 from zExceptions import BadRequest
 from zope import event
+from zope.component import getAdapters
 from zope.component import getUtility
 from zope.component import queryUtility
 from zope.site.hooks import setSite
@@ -224,6 +226,12 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
                 field.set(contact, value)
                 changed = True
+
+        # Update/set fields with custom updaters
+        custom_updaters = getAdapters((contact, entry),
+                                      provided=ILDAPCustomUpdater)
+        for name, updater in custom_updaters:
+            changed = updater.update()
 
         if is_new_object:
             if set_owner:

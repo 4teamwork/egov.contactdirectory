@@ -1,4 +1,6 @@
+from egov.contactdirectory.interfaces import IContact
 from egov.contactdirectory.interfaces import ILDAPAttributeMapper
+from egov.contactdirectory.interfaces import ILDAPCustomUpdater
 from egov.contactdirectory.sync.sync import get_ldap_attribute_mapper
 from egov.contactdirectory.sync.sync import sync_contacts
 from egov.contactdirectory.testing import EGOV_CONTACTDIRECTORY_INTEGRATION_TESTING
@@ -7,7 +9,10 @@ from ftw.builder import Builder
 from ftw.builder import create
 from unittest2 import TestCase
 from zope.interface import implements
+from zope.interface import Interface
+from zope.component import adapts
 from zope.component import provideUtility
+from zope.component import provideAdapter
 from zope.component import getGlobalSiteManager
 
 
@@ -94,3 +99,32 @@ class TestLDAPAttributeMapper(TestCase):
 
         # cleanup
         getGlobalSiteManager().unregisterUtility(my_mapper, ILDAPAttributeMapper)
+
+
+class TestCustomUpdater(TestCase):
+
+    layer = EGOV_CONTACTDIRECTORY_INTEGRATION_TESTING
+
+    class MyCustomUpdater(object):
+        implements(ILDAPCustomUpdater)
+        adapts(IContact, Interface)
+
+        def __init__(self, contact, record):
+            self.contact = contact
+            self.record = record
+
+        def update(self):
+            self.contact.setFirstname('Tania')
+            return True
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        self.contacts = create(Builder('folder').titled('Contacts'))
+        provideAdapter(TestCustomUpdater.MyCustomUpdater)
+
+    def tearDown(self):
+        getGlobalSiteManager().unregisterAdapter(TestCustomUpdater.MyCustomUpdater)
+
+    def test_custom_updater_updates_field(self):
+        sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
+        self.assertEquals('Tania', self.contacts['nina.mueller'].getFirstname())
