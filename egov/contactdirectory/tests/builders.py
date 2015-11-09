@@ -1,4 +1,5 @@
 from ftw.builder import builder_registry
+from ftw.builder.content import ArchetypesBuilder
 from ftw.builder.content import ImageBuilder
 
 
@@ -11,3 +12,9 @@ class ContactBuilder(ImageBuilder):
         return self
 
 builder_registry.register('contact', ContactBuilder)
+
+
+class MemberBuilder(ArchetypesBuilder):
+    portal_type = 'Member'
+
+builder_registry.register('member', MemberBuilder)

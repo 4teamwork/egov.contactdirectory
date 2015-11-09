@@ -62,7 +62,7 @@
               <span tal:replace="context/getCity | nothing" />
             <br /><br />
             <tal:block tal:condition="context/getPhone_office">
-            <span 18n:translate="label_phone_office">Phone number (office)</span>
+            <span i18n:translate="label_phone_office">Phone number (office)</span>
             <span tal:content="context/getPhone_office | nothing">031 000 00 00</span><br />
             </tal:block>
             <tal:block tal:condition="context/getPhone_mobile">
@@ -130,7 +130,7 @@
             <ul>
               <tal:items tal:repeat="obj memberships">
                 <li>
-                  <a href="" tal:attributes="href string:${obj/absolute_url}"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
+                  <a href="" tal:attributes="href python: obj.aq_parent.absolute_url()"><span tal:condition="obj/getOrganization" tal:replace="obj/getOrganization"/> <span tal:condition="obj/getFunction" tal:replace="string:(${obj/getFunction})"/></a>
                 </li>
               </tal:items>
             </ul>
