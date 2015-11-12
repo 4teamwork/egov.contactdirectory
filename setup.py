@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.7.3.dev0'
+version = '1.8.0.dev0'
 maintainer = 'Mathias Leimgruber'
 
 tests_require = ['plone.app.testing',
@@ -9,6 +9,8 @@ tests_require = ['plone.app.testing',
                  'ftw.testbrowser',
                  'ftw.zipexport',
                  'unittest2',
+                 'python-ldap',
+                 'Products.PloneLDAP',
                  ]
 
 extras_require = {
@@ -47,11 +49,15 @@ setup(name='egov.contactdirectory',
 
       tests_require=tests_require,
       extras_require=dict(tests=tests_require,
-                          zip_export=['ftw.zipexport']),
+                          zip_export=['ftw.zipexport'],
+                          ldap=['python-ldap', 'Products.PloneLDAP']),
 
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
       target = plone
+
+      [plone.recipe.zope2instance.ctl]
+      sync_contacts = egov.contactdirectory.sync.sync:do_sync_profiles
       """,
       )

@@ -2,8 +2,11 @@ Changelog
 =========
 
 
-1.7.3 (unreleased)
+1.8.0 (unreleased)
 ------------------
+
+- Add support for synchronization of contacts from LDAP
+  [buchi]
 
 - Point the link of the contact memberships to the parent object, i.e.
   the object where the member is assigned to.
