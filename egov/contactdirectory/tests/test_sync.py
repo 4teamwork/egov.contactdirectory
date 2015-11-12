@@ -70,6 +70,19 @@ class TestContactSynchronization(TestCase):
         self.assertEquals(1, res['deleted'])
         self.assertNotIn('julia.meier', self.contacts.objectIds())
 
+    def test_sync_reindexes_updated_contact(self):
+        create(Builder('contact').within(self.contacts).with_id(
+            'nina.mueller').having(
+            ldap_dn='cn=M\xc3\xbcller Nina,ou=Payroll,dc=domain, dc=net',
+            firstname='Nina',
+            lastname='Meier',
+            ))
+        res = sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
+        self.assertEquals(1, res['modified'])
+        catalog_results = self.portal.portal_catalog(Title='M\xc3\xbcller')
+        self.assertEquals(1, len(catalog_results))
+        self.assertEquals('M\xc3\xbcller Nina', catalog_results[0].Title)
+
 
 class TestLDAPAttributeMapper(TestCase):
 
