@@ -233,10 +233,16 @@ schema = Schema((
             widget=StringWidget(
                 label=_(u"label_ldap_dn", default=u"LDAP DN"),
                 description=_(u"help_ldap_dn", default=u""),
-                visible={'edit': 'invisible', 'view': 'invisible'}
-            ),
-        ),
+                visible={'edit': 'invisible', 'view': 'invisible'})),
 
+        BooleanField(
+            name='show_memberships',
+            schemata='settings',
+            default=True,
+            widget=BooleanWidget(
+                label=_(u'label_show_membership', default='Show membership'),
+                description=_(u'help_show_membership',
+                              default='Show memberships of this contact'))),
 ))
 
 

@@ -121,7 +121,7 @@
             </tr>
           </table>
         </tal:private>
-        <metal:block tal:define="memberships context/getMemberships" tal:condition="memberships">
+        <metal:block tal:define="memberships context/getMemberships" tal:condition="python:context.getShow_memberships() and memberships">
           <div class="memberships">
             <h3 i18n:translate="label_memberships">
               Memberships
