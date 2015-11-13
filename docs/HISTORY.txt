@@ -5,6 +5,10 @@ Changelog
 1.8.0 (unreleased)
 ------------------
 
+- Add functionality to toggle showing memberships with the new
+  show_memberships attribute.
+  [elioschmutz]
+
 - Add support for synchronization of contacts from LDAP
   [buchi]
 
