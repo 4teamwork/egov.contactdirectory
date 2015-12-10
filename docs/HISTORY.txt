@@ -5,6 +5,9 @@ Changelog
 1.8.0 (unreleased)
 ------------------
 
+- Restrict versions of some dependencies so they don't pull in Plone 5.
+  [mbaechtold]
+
 - Add functionality to toggle showing memberships with the new
   show_memberships attribute.
   [elioschmutz]
