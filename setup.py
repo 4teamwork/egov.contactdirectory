@@ -37,6 +37,8 @@ setup(name='egov.contactdirectory',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'collective.geo.openlayers >= 3.0',
+          'collective.geo.mapwidget >= 2.1, < 3.0',
           'setuptools',
           'simplelayout.base',
           'ftw.contentpage',
