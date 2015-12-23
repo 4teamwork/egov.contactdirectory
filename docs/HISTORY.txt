@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.8.0 (unreleased)
+1.8.0 (2015-12-23)
 ------------------
 
 - Restrict versions of some dependencies so they don't pull in Plone 5.
