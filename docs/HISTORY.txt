@@ -5,7 +5,8 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix sync_contacts entry point to handle parameters with spaces correctly.
+  [buchi]
 
 
 1.8.0 (2015-12-23)
