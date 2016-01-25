@@ -46,3 +46,20 @@ class TestContact(FunctionalTestCase):
         browser.login().open(self.contact)
 
         self.assertEqual(0, len(browser.css('.memberships')))
+
+    @browsing
+    def test_resolve_uid_in_contact(self, browser):
+        folder = create(Builder('folder'))
+        link = "<a class='internal-link' href=resolveuid/{}>Folder</a>".format(
+            folder.UID())
+
+        self.contact = create(Builder('contact')
+                              .titled('Hugo Boss')
+                              .having(text=link))
+
+        browser.login().open(self.contact)
+
+        self.assertEqual(
+            folder.absolute_url(),
+            browser.css('#content-core .internal-link').first.get('href'),
+            'The folderurl should be resolved in the template.')
