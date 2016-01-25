@@ -2,14 +2,21 @@ from egov.contactdirectory.tests import builders
 from ftw.builder.testing import BUILDER_LAYER
 from ftw.builder.testing import functional_session_factory
 from ftw.builder.testing import set_builder_session_factory
-from plone.app.testing import applyProfile
+from pkg_resources import get_distribution
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import setRoles, TEST_USER_ID, TEST_USER_NAME, login
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import applyProfile
+from plone.app.testing import login
+from plone.app.testing import setRoles
 from plone.testing import z2
 from zope.configuration import xmlconfig
+
+
+IS_PLONE_4_1 = get_distribution('Plone').version.startswith('4.1')
 
 
 class EgovContactdirectoryLayer(PloneSandboxLayer):

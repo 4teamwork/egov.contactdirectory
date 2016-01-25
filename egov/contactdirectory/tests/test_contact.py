@@ -1,7 +1,9 @@
+from egov.contactdirectory.testing import IS_PLONE_4_1
+from egov.contactdirectory.tests import FunctionalTestCase
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.testbrowser import browsing
-from egov.contactdirectory.tests import FunctionalTestCase
+from unittest2 import skipUnless
 
 
 class TestContact(FunctionalTestCase):
@@ -47,6 +49,7 @@ class TestContact(FunctionalTestCase):
 
         self.assertEqual(0, len(browser.css('.memberships')))
 
+    @skipUnless(not IS_PLONE_4_1, 'requires plone > 4.1')
     @browsing
     def test_resolve_uid_in_contact(self, browser):
         folder = create(Builder('folder'))
