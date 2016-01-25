@@ -188,7 +188,7 @@ schema = Schema((
             searchable=True,
             schemata="Erweitert",
             default_input_type='text/html',
-            default_output_type='text/html',
+            default_output_type='text/x-html-safe',
             widget=RichWidget(
                 label=_(u'label_text', default=u'Text'),
                 rows=25)),

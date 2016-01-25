@@ -5,6 +5,10 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
+- Fix default_output_type of text-field in contact schema.
+  Change it from html to x-html-save.
+  [elioschmutz]
+
 - Fix sync_contacts entry point to handle parameters with spaces correctly.
   [buchi]
 
