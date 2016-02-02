@@ -5,6 +5,10 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
+- Move sync command in it's own module.
+  This prevents an import error if the ldap extra is not installed.
+  [mathias.leimgruber]
+
 - Fix default_output_type of text-field in contact schema.
   Change it from html to x-html-save.
   [elioschmutz]

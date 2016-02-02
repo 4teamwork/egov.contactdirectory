@@ -60,6 +60,6 @@ setup(name='egov.contactdirectory',
       target = plone
 
       [plone.recipe.zope2instance.ctl]
-      sync_contacts = egov.contactdirectory.sync.sync:do_sync_profiles
+      sync_contacts = egov.contactdirectory.sync.command:do_sync_profiles
       """,
       )

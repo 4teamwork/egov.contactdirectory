@@ -299,20 +299,5 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
     )
 
 
-def do_sync_profiles(self, args):
-    script = __file__
-    # execfile() needs the source file
-    if script.endswith('.pyc') or script.endswith('.pyo'):
-        script = script[:-1]
-    cmd = "import sys; sys.argv[:]=[];"
-    if len(self.options.args) > 1:
-        for arg in self.options.args[1:]:
-            cmd += 'sys.argv.append(r\'%s\');' % arg
-    cmd += 'execfile(r\'%s\')' % script
-    cmdline = self.get_startup_cmd(self.options.python, cmd)
-    exitstatus = os.system(cmdline)
-    sys.exit(exitstatus)
-
-
 if __name__ == '__main__':
     main()
