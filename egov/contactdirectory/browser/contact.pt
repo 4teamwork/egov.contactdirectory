@@ -23,7 +23,6 @@
             <span tal:replace="beschreibung" />
           </p>
 
-
           <table class="vertical listing">
             <tr tal:condition="python: context.getFirstname() and context.getLastname()">
               <th i18n:translate="label_name">Name</th>
@@ -33,10 +32,12 @@
               </tal:name>
             </td>
           </tr>
+
           <tr tal:condition="context/getFunction">
             <th i18n:translate="label_function">Function</th>
             <td tal:content="context/getFunction">Boss</td>
           </tr>
+
           <tr tal:condition="context/getAcademic_title">
             <th i18n:translate="label_academic_title">Academic_title</th>
             <td tal:content="context/getAcademic_title">Dr.</td>
@@ -46,10 +47,12 @@
             <th i18n:translate="label_organization">Organization</th>
             <td tal:content="context/getOrganization">XYZ GmbH</td>
           </tr>
+
           <tr tal:condition="context/getDepartment">
             <th i18n:translate="label_department">Department</th>
             <td tal:content="context/getDepartment">Department A</td>
           </tr>
+
           <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
             <th i18n:translate="label_address">Address</th>
             <td>
@@ -60,31 +63,42 @@
               <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
               <span tal:replace="context/getZip | nothing" />
               <span tal:replace="context/getCity | nothing" />
-            <br /><br />
-            <tal:block tal:condition="context/getPhone_office">
-            <span i18n:translate="label_phone_office">Phone number (office)</span>
-            <span tal:content="context/getPhone_office | nothing">031 000 00 00</span><br />
-            </tal:block>
-            <tal:block tal:condition="context/getPhone_mobile">
-            <span i18n:translate="label_phone_mobile">Mobile number</span>
-            <span tal:content="context/getPhone_mobile | nothing">079 000 00 00</span><br />
-            </tal:block>
-            <tal:block tal:condition="context/getFax">
-            <span i18n:translate="label_fax">Mobile number</span>
-            <span tal:content="context/getFax | nothing">079 000 00 00</span><br />
-            </tal:block>
-
-            <tal:block tal:condition="context/getEmail">
-              <a tal:attributes="href string:mailto:${context/getEmail}"
-                tal:content="context/getEmail | nothing">info@mail.com</a>
-            </tal:block>
-
             </td>
           </tr>
-            <tr tal:condition="context/getWww">
-              <th i18n:translate="label_www">WWW</th>
-              <td>
-                <a tal:define="url context/getWww;
+
+          <tr tal:condition="context/getPhone_office">
+            <th i18n:translate="label_phone_office">Phone number (office)</th>
+            <td>
+              <span tal:content="context/getPhone_office | nothing">031 000 00 00</span>
+            </td>
+          </tr>
+
+          <tr tal:condition="context/getPhone_mobile">
+            <th i18n:translate="label_phone_mobile">Mobile number</th>
+            <td>
+              <span tal:content="context/getPhone_mobile | nothing">079 000 00 00</span>
+            </td>
+          </tr>
+
+          <tr tal:condition="context/getFax">
+            <th i18n:translate="label_fax">Fax</th>
+            <td>
+              <span tal:content="context/getFax | nothing">079 000 00 00</span><br />
+            </td>
+          </tr>
+
+          <tr tal:condition="context/getEmail">
+            <th i18n:translate="label_email">Email</th>
+            <td>
+              <a tal:attributes="href string:mailto:${context/getEmail}"
+                tal:content="context/getEmail | nothing">info@mail.com</a>
+            </td>
+          </tr>
+
+          <tr tal:condition="context/getWww">
+            <th i18n:translate="label_www">WWW</th>
+            <td>
+              <a tal:define="url context/getWww;
                  ishttps python:url.find('https') != -1;
                  ishttp python:url.find('http') != -1;
                  formatted_url python:ishttps and url.replace('https://','') or url;
@@ -94,9 +108,9 @@
                  tal:attributes="href context/getWww"
                  target="_blank">
                  www.google.ch
-               </a>
-             </td>
-           </tr>
+              </a>
+            </td>
+          </tr>
          </table>
          <tal:private define="private_address view/private_address" condition="private_address">
           <h2 i18n:translate="label_private_address">Privateaddress</h2>
