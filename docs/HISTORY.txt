@@ -5,6 +5,13 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
+- Adjust address, phone and email handling in contacts view.
+  The phone and email where listed in the address section.
+  If no address is given, the phone and e-mail was no longer be displayed.
+  Each phonenumber and the email is in its own section now and will be toggled
+  if it is available or not.
+  [elioschmutz]
+
 - Add allowable_content_types for contacts text field.
   This will remove the dropdown field to choose the contenttype on
   the text-field widget.
