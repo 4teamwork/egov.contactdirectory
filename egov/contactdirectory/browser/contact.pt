@@ -56,10 +56,12 @@
           <tr tal:condition="python: context.getZip() and context.getCity() and context.getAddress()">
             <th i18n:translate="label_address">Address</th>
             <td>
+              <tal:organization tal:condition="context/getOrganization">
                <span tal:content="context/getOrganization">XYZ GmbH</span><br />
-               <tal:block tal:condition="python: context.getFirstname() and context.getLastname()"><span tal:content="string:${context/getFirstname} ${context/getLastname}">
-                Hugo Boss
-              </span><br /></tal:block>
+              </tal:organization>
+              <tal:name tal:condition="python: context.getFirstname() and context.getLastname()">
+                <span tal:content="string:${context/getFirstname} ${context/getLastname}">Hugo Boss</span><br />
+              </tal:name>
               <span tal:replace="structure python: context.getAddress() and str(context.getAddress()).replace('\n', '<br />') or ''" /><br />
               <span tal:replace="context/getZip | nothing" />
               <span tal:replace="context/getCity | nothing" />
