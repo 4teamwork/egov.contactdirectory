@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.8.1 (unreleased)
+1.9.0 (2016-03-30)
 ------------------
 
 - Adjust address, phone and email handling in contacts view.
