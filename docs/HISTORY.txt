@@ -6,10 +6,10 @@ Changelog
 ------------------
 
 - Adjust address, phone and email handling in contacts view.
-  The phone and email where listed in the address section.
-  If no address is given, the phone and e-mail was no longer be displayed.
-  Each phonenumber and the email is in its own section now and will be toggled
-  if it is available or not.
+  The phone and email were listed in the address section.
+  If no address was given, the phone and e-mail was no longer be displayed.
+  Each phone number and the email are in its own sections now and will be shown
+  when available.
   [elioschmutz]
 
 - Add allowable_content_types for contacts text field.
