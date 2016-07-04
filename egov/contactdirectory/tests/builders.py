@@ -1,9 +1,9 @@
 from ftw.builder import builder_registry
 from ftw.builder.content import ArchetypesBuilder
-from ftw.builder.content import ImageBuilder
+from ftw.builder.content import ATImageBuilder
 
 
-class ContactBuilder(ImageBuilder):
+class ContactBuilder(ATImageBuilder):
     portal_type = 'Contact'
 
     def with_photo(self):
