@@ -5,7 +5,8 @@ Changelog
 1.9.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix ImageBuilder import for testing.
+  [mathias.leimgruber]
 
 
 1.9.1 (2016-06-21)
