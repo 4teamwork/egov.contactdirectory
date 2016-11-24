@@ -15,4 +15,3 @@ msgstr ""
 msgid "contacts"
 msgstr "Kontakte"
 
-

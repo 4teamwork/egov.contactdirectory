@@ -5,7 +5,11 @@ Changelog
 1.9.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove support for Plone 4.1.
+  [mbaechtold]
+
+- Fix translations.
+  [mbaechtold]
 
 
 1.9.2 (2016-07-05)
