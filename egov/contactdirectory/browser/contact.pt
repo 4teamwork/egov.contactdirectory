@@ -39,7 +39,7 @@
           </tr>
 
           <tr tal:condition="context/getAcademic_title">
-            <th i18n:translate="label_academic_title">Academic_title</th>
+            <th i18n:translate="label_academic_title">Academic title</th>
             <td tal:content="context/getAcademic_title">Dr.</td>
           </tr>
 
