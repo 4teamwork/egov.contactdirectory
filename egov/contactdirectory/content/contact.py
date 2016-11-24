@@ -138,7 +138,7 @@ schema = Schema((
             name='fax',
             searchable=1,
             widget=StringWidget(
-                label=_(u'label_fax', default='Fax number'))),
+                label=_(u'label_fax', default='Fax'))),
 
         StringField(
             name='www',

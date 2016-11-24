@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-11-24 10:35+0000\n"
+"POT-Creation-Date: 2016-11-24 11:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,6 @@ msgstr "E-Mail"
 #: ./egov/contactdirectory/browser/contact.pt:86
 #: ./egov/contactdirectory/content/contact.py:141
 #: ./egov/contactdirectory/content/member.py:123
-#, fuzzy
 msgid "label_fax"
 msgstr "Fax"
 
