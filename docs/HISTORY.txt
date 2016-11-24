@@ -5,7 +5,8 @@ Changelog
 1.9.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update gettext catalog.
+  [mbaechtold]
 
 
 1.9.2 (2016-07-05)
