@@ -119,7 +119,7 @@ schema = Schema((
             searchable=1,
             validators=('isEmail',),
             widget=StringWidget(
-                label=_(u'label_email', default='E-Mail'))),
+                label=_(u'label_email', default='Email'))),
 
         StringField(
             name='phone_office',

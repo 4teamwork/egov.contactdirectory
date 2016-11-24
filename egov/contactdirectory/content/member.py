@@ -126,7 +126,7 @@ schema = Schema((
             name='email',
             schemata='Kontakt',
             widget=StringWidget(
-                label=_(u'label_email', default='E-Mail'))),
+                label=_(u'label_email', default='Email'))),
 
         StringField(
             name='www',
