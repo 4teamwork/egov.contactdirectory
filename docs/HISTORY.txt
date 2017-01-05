@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.9.3 (unreleased)
+1.9.3 (2017-01-05)
 ------------------
 
 - Remove support for Plone 4.1.
