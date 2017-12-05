@@ -5,7 +5,7 @@ Changelog
 1.9.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use "python-ldap" < 3.0.0b1. [mbaechtold]
 
 
 1.9.3 (2017-01-05)
