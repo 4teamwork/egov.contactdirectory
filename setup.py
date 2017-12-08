@@ -9,7 +9,7 @@ tests_require = ['plone.app.testing',
                  'ftw.testbrowser',
                  'ftw.zipexport',
                  'unittest2',
-                 'python-ldap',
+                 'python-ldap < 3.0.0b1',
                  'Products.PloneLDAP',
                  ]
 
@@ -54,7 +54,7 @@ setup(name='egov.contactdirectory',
       tests_require=tests_require,
       extras_require=dict(tests=tests_require,
                           zip_export=['ftw.zipexport'],
-                          ldap=['python-ldap', 'Products.PloneLDAP']),
+                          ldap=['python-ldap < 3.0.0b1', 'Products.PloneLDAP']),
 
       entry_points="""
       # -*- Entry points: -*-
