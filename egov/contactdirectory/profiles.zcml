@@ -11,6 +11,15 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="Uninstall egov.contactdirectory"
+        directory="profiles/uninstall"
+        description="Uninstalls the Directory for Egov GemeindePortal"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        />
+
     <!-- Register the import step -->
     <genericsetup:importStep
         name="egov.contactdirectory"
