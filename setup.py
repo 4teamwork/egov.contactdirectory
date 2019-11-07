@@ -12,6 +12,7 @@ tests_require = ['plone.app.testing',
                  'unittest2',
                  'python-ldap < 3.0.0b1',
                  'Products.PloneLDAP',
+                 'Products.LDAPUserFolder < 3.0',
                  ]
 
 extras_require = {
@@ -40,7 +41,7 @@ setup(name='egov.contactdirectory',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'collective.geo.openlayers >= 3.0',
+          'collective.geo.openlayers <4.0, >=3.0',
           'collective.geo.mapwidget >= 2.1, < 3.0',
           'setuptools',
           'simplelayout.base',
