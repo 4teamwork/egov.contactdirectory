@@ -1,0 +1,6 @@
+<registry>
+    <record name="ftw.contactdirectory.showlocalroles" remove="True" />
+    <record name="egov.contactdirectory.ldap_plugin_id" remove="True" />
+    <record name="egov.contactdirectory.contacts_path" remove="True" />
+
+</registry>

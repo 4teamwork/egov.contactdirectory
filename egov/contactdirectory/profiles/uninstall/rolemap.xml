@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="egov.contactdirectory: Add Contact" acquire="True" />
+    <permission name="egov.contactdirectory: Add Member" acquire="True" />
+  </permissions>
+</rolemap>

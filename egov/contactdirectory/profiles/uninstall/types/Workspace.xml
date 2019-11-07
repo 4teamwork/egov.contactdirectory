@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n" name="Workspace"
+        meta_type="Factory-based Type Information with dynamic views"
+        i18n:domain="ftw.tabbedview">
+        
+    <property name="allowed_content_types" purge="False">
+      <element value="Contact" remove="True" />
+    </property>
+
+</object>

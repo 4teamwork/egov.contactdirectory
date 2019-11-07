@@ -37,7 +37,6 @@ def add_catalog_indexes(context, logger=None):
     catalog = getToolByName(context, 'portal_catalog')
     indexes = catalog.indexes()
 
-
     title_extras = Empty()
     #title_extras.doc_attr = 'alphabetical_title'
     title_extras.index_type = 'Cosine Measure'
@@ -58,6 +57,17 @@ def add_catalog_indexes(context, logger=None):
         catalog.manage_reindexIndex(ids=indexables)
 
 
+def remove_catalog_indexes(context, logger=None):
+    """Method to remove indexes from the portal_catalog.
+    """
+    if logger is None:
+        # Called as upgrade step: define our own logger.
+        logger = logging.getLogger('egov.contactdirectory')
+
+    catalog = getToolByName(context, 'portal_catalog')
+    catalog.delIndex('alphabetical_title')
+
+
 def georef_settings(context):
     """Import step to set up Contact as georeferenceable type in
     collective.geo.settings.
@@ -72,13 +82,24 @@ def georef_settings(context):
         geo_content_types.append('Contact')
 
 
+def remove_georef_settings(context):
+    registry = getUtility(IRegistry)
+    geo_content_types = registry.forInterface(IGeoSettings).geo_content_types
+    if 'Contact' in geo_content_types:
+        geo_content_types.remove('Contact')
+
+
 def import_various(context):
     """Import step for configuration that is not handled in xml files.
     """
     # Only run step if a flag file is present
-    if context.readDataFile('egov_contactdirectory-default.txt') is None:
-        return
-    logger = context.getLogger('egov.contactdirectory')
-    site = context.getSite()
-    add_catalog_indexes(site, logger)
-    georef_settings(site)
+    if context.readDataFile('egov_contactdirectory-default.txt') is not None:
+        logger = context.getLogger('egov.contactdirectory')
+        site = context.getSite()
+        add_catalog_indexes(site, logger)
+        georef_settings(site)
+    elif context.readDataFile('egov_contactdirectory-uninstall.txt') is not None:
+        logger = context.getLogger('egov.contactdirectory')
+        site = context.getSite()
+        remove_catalog_indexes(site, logger)
+        remove_georef_settings(site)
