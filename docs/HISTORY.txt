@@ -2,11 +2,17 @@ Changelog
 =========
 
 
-1.9.4 (unreleased)
+1.10.0 (unreleased)
 ------------------
 
-- Use "python-ldap" < 3.0.0b1. [mbaechtold]
-- Add uninstall profile [djowett-ftw]
+- Use "python-ldap" < 3.0.0b1.
+  [mbaechtold]
+
+- Add uninstall profile.
+  [djowett-ftw]
+
+- Drop Plone 4.2 support.
+ [djowett-ftw]
 
 
 1.9.3 (2017-01-05)
