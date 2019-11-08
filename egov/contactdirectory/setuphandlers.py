@@ -82,13 +82,6 @@ def georef_settings(context):
         geo_content_types.append('Contact')
 
 
-def remove_georef_settings(context):
-    registry = getUtility(IRegistry)
-    geo_content_types = registry.forInterface(IGeoSettings).geo_content_types
-    if 'Contact' in geo_content_types:
-        geo_content_types.remove('Contact')
-
-
 def import_various(context):
     """Import step for configuration that is not handled in xml files.
     """
@@ -102,4 +95,3 @@ def import_various(context):
         logger = context.getLogger('egov.contactdirectory')
         site = context.getSite()
         remove_catalog_indexes(site, logger)
-        remove_georef_settings(site)
