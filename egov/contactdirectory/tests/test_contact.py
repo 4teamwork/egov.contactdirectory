@@ -3,7 +3,7 @@ from egov.contactdirectory.tests import FunctionalTestCase
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.testbrowser import browsing
-from unittest2 import skipUnless
+from unittest import skipUnless
 
 
 class TestContact(FunctionalTestCase):

@@ -6,6 +6,7 @@ Changelog
 ------------------
 
 - Use "python-ldap" < 3.0.0b1. [mbaechtold]
+- Use unittest instead of unittest2 for testing [jone]
 
 
 1.9.3 (2017-01-05)

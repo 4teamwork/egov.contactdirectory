@@ -1,4 +1,4 @@
-from unittest2 import TestCase
+from unittest import TestCase
 from egov.contactdirectory.testing import EGOV_CONTACTDIRECTORY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
 from plone.app.testing import login, setRoles

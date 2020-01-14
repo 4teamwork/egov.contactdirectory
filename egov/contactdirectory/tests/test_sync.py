@@ -7,7 +7,7 @@ from egov.contactdirectory.testing import EGOV_CONTACTDIRECTORY_INTEGRATION_TEST
 from egov.contactdirectory.tests.utils import get_ldif_records
 from ftw.builder import Builder
 from ftw.builder import create
-from unittest2 import TestCase
+from unittest import TestCase
 from zope.interface import implements
 from zope.interface import Interface
 from zope.component import adapts

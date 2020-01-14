@@ -8,7 +8,6 @@ tests_require = ['plone.app.testing',
                  'ftw.builder',
                  'ftw.testbrowser',
                  'ftw.zipexport',
-                 'unittest2',
                  'python-ldap < 3.0.0b1',
                  'Products.PloneLDAP',
                  ]
