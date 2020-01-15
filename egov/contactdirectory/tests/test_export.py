@@ -6,7 +6,7 @@ from ftw.builder import Builder
 from ftw.builder import create
 from ftw.testbrowser import browsing
 from StringIO import StringIO
-from unittest2 import TestCase
+from unittest import TestCase
 from zipfile import ZipFile
 import os
 
