@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.9.4 (unreleased)
-------------------
+1.10.0 (2020-01-15)
+-------------------
 
 - Use "python-ldap" < 3.0.0b1. [mbaechtold]
 - Use unittest instead of unittest2 for testing [jone]
