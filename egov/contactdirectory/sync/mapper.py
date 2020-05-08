@@ -15,7 +15,11 @@ class DefaultLDAPAttributeMapper(object):
             'facsimileTelephoneNumber': 'fax',
             'department': 'department',
             'uid': 'uid',
+             # spitex
+             'title': 'function',
+             'sAMAccountName': 'sAMAccountName'
         }
 
     def id(self):
-        return 'uid'
+        # spitex
+        return 'sAMAccountName'
