@@ -241,6 +241,7 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
                 contact.reindexObjectSecurity()
 
             event.notify(ObjectInitializedEvent(contact))
+            contact.reindexObject()
 
             created += 1
             logger.debug("Created new contact '%s (%s)'." % (contact_id, dn))
